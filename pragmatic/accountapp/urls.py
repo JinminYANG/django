@@ -6,5 +6,6 @@ app_name = 'accountapp'
 # url 처리시 편리함을 위한 사용
 
 urlpatterns = [
-    path('hello_world/', hello_world, name='hello_world')
+    path('hello_world/', hello_world, name='hello_world'),
+    # path('showmap/', showmap, name='showmap')
 ]
