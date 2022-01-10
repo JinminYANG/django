@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
-
+from django import forms
 import json
 
 # Create your models here.
@@ -15,9 +16,9 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(
-            default=timezone.now)
+        default=timezone.now)
     published_date = models.DateTimeField(
-            blank=True, null=True)
+        blank=True, null=True)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -25,3 +26,14 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):  # redirect시 활용
+        return reverse('account:post_detail', args=[self.id])
+
+
+def min_length_3_validator(value):
+    if len(value) < 3:
+        raise forms.ValidationError('3글자 이상 입력해주세요')
+
+class Post(models.Model):
+    title = models.CharField(max_length=100, validators=[min_length_3_validator])

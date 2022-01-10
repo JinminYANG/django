@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse
@@ -12,6 +12,7 @@ import json
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Post
+from .forms import PostForm
 
 
 def post_list(request):
@@ -39,26 +40,26 @@ def hello_world(request):
 
         hello_world_list = HelloWorld.objects.all()
         posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-        res = requests.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+        # res = requests.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
         # res_serialized = json.loads(serializers.serialize('json', res))
 
         context = {
             'hello_world_list' : HelloWorld.objects.all(),
             'post_lists' : Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date'),
             # 'json_res' : JsonResponse(res_serialized, safe=False),
-            'res': res,
+            # 'res': res,
         }
 
         return HttpResponseRedirect(reverse('accountapp:hello_world'))
     else:
-        res = requests.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+        # res = requests.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
         # res_serialized = json.dumps(serializers.serialize('json', res))
 
         context = {
             'hello_world_list': HelloWorld.objects.all(),
             'posts': Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date'),
             # 'res': json.loads(serializers.serialize('json', res)),
-            'res': res,
+            # 'res': res,
         }
 
         return render(request, 'accountapp/hello_world.html', context=context)
@@ -90,3 +91,37 @@ class FormView(generic.View): #formtest
         }
         return render(request,self.template_name,context)
 '''
+
+from .forms import NameForm
+
+def index(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = NameForm(request.POST)
+
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/myform/thanks/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = NameForm()
+
+    return render(request, 'myform/name.html', {'form': form})
+
+def thanks(request):
+    return render(request, 'myform/thanks.html')
+
+def post_new(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES) # NOTE: 인자 순서주의 POST, FILES
+        if form.is_valid():
+            post = form.save()
+            return redirect(post)
+    else:
+        form = PostForm()
+        return render(request, 'post_form.html', {'form': form})	# 검증에 실패시 form.error 에 오류 정보를 저장하여 함께 렌더링

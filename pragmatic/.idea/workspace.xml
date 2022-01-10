@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d95db46e-7ea1-44fe-8fa9-4d811095da28" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/../.idea/django_test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../highchart_test/.idea/highchart_test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../locallibrary/.idea/locallibrary.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../locallibrary_원본/.idea/locallibrary.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pinterest/.idea/pinterest.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/accountapp/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountapp/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountapp/migrations/0002_helloworld_team_color.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/accountapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accountapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountapp/templates/accountapp/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/accountapp/templates/accountapp/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountapp/templates/accountapp/hello_world.html" beforeDir="false" afterPath="$PROJECT_DIR$/accountapp/templates/accountapp/hello_world.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accountapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accountapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accountapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accountapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pragmatic/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/pragmatic/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/manage.py" />
+    <property name="last_opened_file_path" value="$USER_HOME$/git/MillieBTB" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -96,7 +84,8 @@
       <workItem from="1641521083218" duration="6386000" />
       <workItem from="1641532025260" duration="16000" />
       <workItem from="1641532053396" duration="137000" />
-      <workItem from="1641532203275" duration="12375000" />
+      <workItem from="1641532203275" duration="12523000" />
+      <workItem from="1641777165099" duration="8425000" />
     </task>
     <servers />
   </component>
