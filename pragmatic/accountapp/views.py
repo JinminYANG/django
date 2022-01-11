@@ -3,8 +3,9 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse
-from django.views import generic
+from django.views import generic, View
 from django.views.decorators.csrf import csrf_exempt
+from requests import Response
 
 from accountapp.models import HelloWorld
 import json
@@ -38,7 +39,7 @@ def hello_world(request):
         new_hello_world.team_color = input_color
         new_hello_world.save()
 
-        hello_world_list = HelloWorld.objects.all()
+        # hello_world_list = HelloWorld.objects.all()
         posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
         # res = requests.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
         # res_serialized = json.loads(serializers.serialize('json', res))
@@ -52,12 +53,14 @@ def hello_world(request):
 
         return HttpResponseRedirect(reverse('accountapp:hello_world'))
     else:
+        # posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+
         # res = requests.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
         # res_serialized = json.dumps(serializers.serialize('json', res))
 
         context = {
             'hello_world_list': HelloWorld.objects.all(),
-            'posts': Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date'),
+            'posts':  Post.objects.all(),
             # 'res': json.loads(serializers.serialize('json', res)),
             # 'res': res,
         }
@@ -125,3 +128,20 @@ def post_new(request):
     else:
         form = PostForm()
         return render(request, 'post_form.html', {'form': form})	# 검증에 실패시 form.error 에 오류 정보를 저장하여 함께 렌더링
+
+
+import json
+
+def test(request):
+    list = [1, 2, 3, 4, 5]
+    json_list = json.dumps(list)
+    context = json_list
+    return render(request, 'accountapp/test.html', context)
+    # render_to_response() 는 Django에서 deprecated 되었음
+
+
+class TestView(View):
+    def post(self, request):
+        user_id = request.POST.get('user_id')
+        return Response()
+

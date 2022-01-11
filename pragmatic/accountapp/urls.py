@@ -9,4 +9,6 @@ urlpatterns = [
     path('hello_world/', views.hello_world, name='hello_world'),
     # path('', views.index, name='index'),
     path('post_new/', views.post_new, name='post_new'),
+    path('test/', views.test, name='test'),
+    path('url/', views.TestView.as_view(), name='url'),
 ]
