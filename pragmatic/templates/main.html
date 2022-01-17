@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+{% endblock head %}
+
+{% block content %}
+
+<div class="date mt-5">
+    <span>2021년 11월</span>
+</div>
+
+<div class="contents row justify-content-between">
+
+    <div class="monthly_average col-6 mt-5 bg-light">
+        <span>우리 회사 직원들은 평균 <span>5권</span>의 책을 읽었습니다</span>
+    </div>
+
+    <div class="monthly_times col-6 mt-5 bg-light">
+        <span>우리 회사 직원들은 평균 <span>1시간 45분</span> 동안의 독서 시간을 가졌습니다</span>
+    </div>
+
+    <div class="monthly_rank col-4 mt-5 bg-light">
+        <h3 class="monthly_rank_title">이달의 다독왕</h3>
+        <div class="monthly_rank_content">
+            <ul>
+                <li>
+                    <span>1</span>
+                    <span>aixcon123</span>
+                    <span>6권</span>
+                </li>
+                <li>
+                    <span>2</span>
+                    <span>aixcon123</span>
+                    <span>5권</span>
+                </li>
+                <li>
+                    <span>3</span>
+                    <span>aixcon123</span>
+                    <span>4권</span>
+                </li>
+                <li>
+                    <span>4</span>
+                    <span>aixcon123</span>
+                    <span>3권</span>
+                </li>
+                <li>
+                    <span>5</span>
+                    <span>aixcon123</span>
+                    <span>2권</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="monthly_book col-4 mt-5 bg-light">
+        <h3 class="monthly_book_title">이달의 가장 사랑받은 도서</h3>
+        <span>1</span>
+        <span>주말에는 더 행복하기로 했다</span>
+        <span>카트리나 온스태드</span>
+        <span>열람 15회</span>
+    </div>
+
+    <div class="monthly_category col-4 mt-5 bg-light">
+        <h3 class="monthly_category_title">이달의 최고 인기 카테고리</h3>
+        <span>소설</span>
+        <span>35%</span>
+    </div>
+
+    <div class="m-auto text-center col-12">
+        <a href="#">
+            <span>+ 더 알아보기</span>
+        </a>
+    </div>
+
+    <div class="my_reading_record col-12">
+        <h3 class="my_reading_record_title">나의 독서 기록</h3>
+        <div class="my_reading_record_content row justify-content-around">
+            <div class="my_reading_record_content_count col-5">
+                <figure class="highcharts-figure">
+                    <div id="my_reading_record_content_count_container"></div>
+                    <p class="highcharts-description">
+                    </p>
+                </figure>
+                <script>
+                    Highcharts.chart('my_reading_record_content_count_container', {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: 0,
+                            plotShadow: false
+                        },
+                        title: {
+                            text: `1권<br>소설`,
+                            align: 'middle',
+                            verticalAlign: 'middle',
+                            x: 200,
+                            y: 20,
+                        },
+                        tooltip: {
+                            enabled: false,
+                        },
+                        accessibility: {
+                            point: {
+                                valueSuffix: '%'
+                            }
+                        },
+                        plotOptions: {
+                            pie: {
+                                dataLabels: {
+                                    enabled: true,
+                                    distance: -50,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: 'white'
+                                    }
+                                },
+                                startAngle: 1,
+                                endAngle: 360,
+                                center: ['50%', '50%'],
+                                size: '100%'
+                            }
+                        },
+                        series: [{
+                            type: 'pie',
+                            name: 'Browser share',
+                            innerSize: '90%',
+                            data: [
+                                ['', 1],
+                            ]
+                        }],
+                        credits: {
+                            enabled: false
+                        },
+                        exporting: {
+                            enabled: false
+                        },
+                    });
+                </script>
+            </div>
+
+            <div class="my_reading_record_content_times col-5">
+                <figure class="highcharts-figure">
+                    <div id="my_reading_record_content_times_container"></div>
+                    <p class="highcharts-description">
+                    </p>
+                </figure>
+                <script>
+                    Highcharts.setOptions({
+                        colors: ['#ED561B', '#ED561B', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                    });
+                    Highcharts.chart('my_reading_record_content_times_container', {
+                        chart: {
+                            plotBackgroundColor: '#FFFFFF',
+                            plotBorderWidth: 0,
+                            plotShadow: false
+                        },
+                        title: {
+                            text: `<span style="text-align: center">총<br><strong>20</strong>분</span>`,
+                            align: 'middle',
+                            verticalAlign: 'middle',
+                            x: 200,
+                            y: 20,
+                        },
+                        tooltip: {
+                            enabled: false
+                        },
+                        plotOptions: {
+                            pie: {
+                                dataLabels: {
+                                    enabled: true,
+                                    distance: -50,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: 'white'
+                                    }
+                                },
+                                startAngle: -150,
+                                endAngle: 150,
+                                center: ['50%', '50%'],
+                                size: '100%'
+                            }
+                        },
+                        series: [{
+                            type: 'pie',
+                            name: '',
+                            innerSize: '90%',
+                            data: [
+                                ['', 10],
+                                ['', 10],
+                                ['', 10],
+                                ['', 10],
+                                ['', 10],
+                                ['', 10],
+                                ['', 10],
+                                ['', 10],
+                                ['', 10],
+                                ['', 10],
+                            ]
+                        }],
+                        credits: {
+                            enabled: false
+                        },
+                        exporting: {
+                            enabled: false
+                        },
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-auto text-center col-12">
+        <a href="#">
+            <span>+ 자세히 알아보기</span>
+        </a>
+    </div>
+
+    <div class="board col-4">
+        <h3 class="board_title d-inline-block">사보 게시판</h3>
+        <a href="#" class="text-right">더 보기</a>
+
+        <table class="table board_list">
+            <tbody>
+            <tr class="board_list_item">
+                <td>2022년 1월호</td>
+                <td>2021-12-30</td>
+            </tr>
+            <tr class="board_list_item">
+                <td>2021년 12월호</td>
+                <td>2021-11-28</td>
+            </tr>
+            <tr class="board_list_item">
+                <td>2021년 11월호</td>
+                <td>2021-10-31</td>
+            </tr>
+            <tr class="board_list_item">
+                <td>2021년 10월호</td>
+                <td>2021-09-30</td>
+            </tr>
+            <tr class="board_list_item">
+                <td>2021년 9월호</td>
+                <td>2021-8-31</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="notice col-5">
+        <h3 class="notice_title d-inline-block">공지사항</h3>
+        <a href="#" class="text-right">더 보기</a>
+
+        <table class="table board_list">
+            <tbody>
+            <tr class="board_list_item">
+                <td>[이벤트] 2021 연말 다독왕 시상 결과 발표</td>
+                <td>2021-12-30</td>
+            </tr>
+            <tr class="board_list_item">
+                <td>[공지] 1월에 꼭 읽어야 할 도서를 추천해주세요</td>
+                <td>2021-12-28</td>
+            </tr>
+            <tr class="board_list_item">
+                <td>[공지] 밀리의 서재 기업 회원 구독권 이용하기</td>
+                <td>2021-12-19</td>
+            </tr>
+            <tr class="board_list_item">
+                <td>[이벤트] 겨울은 연말 독서, 다독왕 선정</td>
+                <td>2021-12-12</td>
+            </tr>
+            <tr class="board_list_item">
+                <td>[공지] 11월 회장님 추천 도서 목록</td>
+                <td>2021-11-30</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text col-3">
+        <a href="#">
+            <span>밀리가 엄선한</span>
+            <strong>추천 도서</strong>
+            <span>GO</span>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

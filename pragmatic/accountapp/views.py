@@ -145,3 +145,14 @@ class TestView(View):
         user_id = request.POST.get('user_id')
         return Response()
 
+
+def main(request):
+    return render(request, 'main.html')
+
+
+def corporate_statistics(request):
+    return render(request, 'corporate_statistics.html')
+
+
+def mypage(request):
+    return render(request, 'mypage.html')
