@@ -10,24 +10,56 @@
 
 {% block content %}
 
+{% include 'header.html' %}
+
 <div class="date mt-5">
+    {% comment %}
+    {% for statistics in statistics_list %}
+    <span class="date">{{ statistics.update_date.year }}년 {{ statistics.update_date.month }}월</span>
+    {% endfor %}
+    위와 같은 형식으로 입력될 듯
+    {% endcomment %}
     <span>2021년 11월</span>
 </div>
 
 <div class="contents row justify-content-between">
-
     <div class="monthly_average col-6 mt-5 bg-light">
-        <span>우리 회사 직원들은 평균 <span>5권</span>의 책을 읽었습니다</span>
+        <span>
+            우리 회사 직원들은 평균
+            <span>5권</span>
+            {% comment %}
+            <span class="emphasis_text">{{ book_count }}권</span>
+            {% endcomment %}
+            의 책을 읽었습니다
+        </span>
     </div>
 
     <div class="monthly_times col-6 mt-5 bg-light">
-        <span>우리 회사 직원들은 평균 <span>1시간 45분</span> 동안의 독서 시간을 가졌습니다</span>
+        <span>
+            우리 회사 직원들은 평균
+            <span>1시간 45분</span>
+            {% comment %}
+            <span class="emphasis_text">{{ hours }}시간 {{ minute }}분</span>
+            {% endcomment %}
+            동안의 독서 시간을 가졌습니다
+        </span>
     </div>
 
     <div class="monthly_rank col-4 mt-5 bg-light">
         <h3 class="monthly_rank_title">이달의 다독왕</h3>
         <div class="monthly_rank_content">
             <ul>
+                {% comment %}
+                millie B2B dashboard 페이지의 독서 순위 참조
+                {% for mem in read_cnt_ranks %}
+                <li>
+                    <span>{{ forloop.counter }}</span>
+                    <span>{{ mem.member.member_id }}</span>
+                    <span>{{ mem.read_book_count }}</span>
+                </li>
+                {% endfor %}
+                {% endcomment %}
+
                 <li>
                     <span>1</span>
                     <span>aixcon123</span>
@@ -59,6 +91,13 @@
 
     <div class="monthly_book col-4 mt-5 bg-light">
         <h3 class="monthly_book_title">이달의 가장 사랑받은 도서</h3>
+        {% comment %}
+        <img src="{% url '' %}"> - 이미지 파일 삽입
+        <span>1</span>
+        <span class="monthly_book_name">{{ book_name }}</span>
+        <span class="monthly_book_author">{{ book_author }}</span>
+        <span class="monthly_book_count">{{ book_count }}</span>
+        {% endcomment %}
         <span>1</span>
         <span>주말에는 더 행복하기로 했다</span>
         <span>카트리나 온스태드</span>
@@ -67,12 +106,17 @@
 
     <div class="monthly_category col-4 mt-5 bg-light">
         <h3 class="monthly_category_title">이달의 최고 인기 카테고리</h3>
+        {% comment %}
+        <img src="{% url '' %}"> - 이미지 파일이 들어갈 경우 (static 이미지 사용할 경우 알아서 처리하겠음)
+        <span class="monthly_category_name">{{ category_name }}</span>
+        <span class="monthly_category_percentage">{{ category_percentage }}</span>
+        {% endcomment %}
         <span>소설</span>
         <span>35%</span>
     </div>
 
     <div class="m-auto text-center col-12">
-        <a href="#">
+        <a href="{% url 'corporate_statistics' %}">
             <span>+ 더 알아보기</span>
         </a>
     </div>
@@ -86,6 +130,24 @@
                     <p class="highcharts-description">
                     </p>
                 </figure>
+                {% comment %}
+                highcharts 안에 들어가는 data의 값이나 title 등 값을 받아와서 처리해야하는 부분이 몇군데 있음
+                title: {
+                    text: `<span style="font-size: 3rem;">1</span>권<br>소설`,
+                    ...
+                }
+                series: [{
+                    ...
+                    data: [
+                        {% for elem in best_category_ranks %}
+                            {
+                                name: `{{ elem.category_name }}`,
+                                y: {{ elem.read_book_percent_detail }},
+                            },
+                        {% endfor %}
+                    ]
+                요런 느낌
+                {% endcomment %}
                 <script>
                     Highcharts.chart('my_reading_record_content_count_container', {
                         chart: {
@@ -94,7 +156,7 @@
                             plotShadow: false
                         },
                         title: {
-                            text: `1권<br>소설`,
+                            text: `<span style="font-size: 3rem;">1</span>권<br>소설`,
                             align: 'middle',
                             verticalAlign: 'middle',
                             x: 200,
@@ -149,6 +211,20 @@
                     </p>
                 </figure>
                 <script>
+                    {% comment %}
+                    분할된 게이지 영역을 이용하려면 받아오는 data의 개수만큼 color 설정을 해줘야할듯
+
+                    {% if athlete_list %}
+                        Number of athletes: {{ athlete_list|length }}
+                    {% endif %}
+
+                    {% for item in array  %}
+                        {{ forloop.counter }}
+                    {% endfor %}
+
+                    {% endcomment %}
+
+
                     Highcharts.setOptions({
                         colors: ['#ED561B', '#ED561B', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                     });
@@ -288,5 +364,7 @@
     </div>
 
 </div>
+
+{% include 'footer.html' %}
 
 {% endblock %}

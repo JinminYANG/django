@@ -1,0 +1,23 @@
+.flatpickr-input {
+    display: none;
+}
+
+.flatpickr-months {
+    display: none;
+}
+
+.flatpickr-day {
+    cursor: default !important;
+}
+
+.flatpickr-day:hover,
+.flatpickr-day.today:hover,
+.flatpickr-day.today:focus {
+    border-color: transparent;
+    background: transparent;
+    color: #393939;
+}
+
+.flatpickr-day.today{
+    border-color: transparent;
+}

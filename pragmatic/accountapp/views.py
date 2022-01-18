@@ -156,3 +156,7 @@ def corporate_statistics(request):
 
 def mypage(request):
     return render(request, 'mypage.html')
+
+
+def login(request):
+    return render(request, 'login.html')

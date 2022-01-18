@@ -1,0 +1,58 @@
+{% load static %}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../img/login/login_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #FFFFFF;
+}
+
+.contents{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header{
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.login_logo{
+    width: 160px;
+    margin-right: 60px;
+}
+
+.header_title{
+    font-size: 2rem;
+}
+
+.general{
+    position: absolute;
+    top: 680px;
+    /*left: 720px;*/
+    left: 28%;
+    cursor: pointer;
+}
+
+.corporation_library{
+    font-size: 1.5rem;
+
+}
+
+.admin{
+    position: absolute;
+    top: 680px;
+    /*right: 720px;*/
+    right: 33%;
+    cursor: pointer;
+}
+
+.login_text{
+    font-size: 3rem;
+    font-weight: bold;
+}

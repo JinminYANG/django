@@ -3,14 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d95db46e-7ea1-44fe-8fa9-4d811095da28" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountapp/templates/accountapp/hello_world.html" beforeDir="false" afterPath="$PROJECT_DIR$/accountapp/templates/accountapp/hello_world.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accountapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accountapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pragmatic/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/pragmatic/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/corporate_statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/corporate_statistics.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/head.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mypage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +23,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -52,6 +54,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -60,6 +63,7 @@
       <recent name="C:\Users\jmyan\django_test\pragmatic\accountapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jmyan\django_test\pragmatic\static\css" />
       <recent name="C:\Users\jmyan\django_test\pragmatic\static\js" />
       <recent name="C:\Users\jmyan\django_test\pragmatic\accountapp" />
     </key>
@@ -112,7 +116,8 @@
       <workItem from="1641863581837" duration="1917000" />
       <workItem from="1641866041205" duration="17406000" />
       <workItem from="1641946344189" duration="610000" />
-      <workItem from="1642386335388" duration="25234000" />
+      <workItem from="1642386335388" duration="25428000" />
+      <workItem from="1642468999284" duration="21205000" />
     </task>
     <servers />
   </component>
@@ -135,8 +140,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/templates/mypage.html</url>
-          <line>262</line>
-          <properties lambdaOrdinal="-1" />
+          <line>273</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
