@@ -1,0 +1,34 @@
+.navbar{
+    background: transparent;
+}
+
+.logo{
+
+}
+
+.logo_img{
+    width: 130px
+}
+
+.navigation{
+    height: 35px;
+    line-height: 35px;
+}
+
+.nav-item{
+    background-image: url("../img/main/nav_item_02.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nav-link{
+    color: #603813;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.navbar-bar{
+    background-image: url("../img/main/nav_item_bar.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
