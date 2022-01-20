@@ -10,285 +10,357 @@
 <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.3.1207/styles/kendo.default-v2.min.css"/>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://kendo.cdn.telerik.com/2021.3.1207/js/kendo.all.min.js"></script>
+
+<link rel="stylesheet" href="{% static '/css/corporate_statistics.css' %}">
+
 {% endblock head %}
 
 {% block content %}
 
 {% include 'header.html' %}
 
-<nav aria-label="Page navigation d-inline row">
-    <ul class="pagination mt-5 col-6">
-        {% if page_obj.has_next %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
-                <span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>
-            </a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-                <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
-            </a>
-        </li>
-        {% endif %}
-        <li class="page-item selectMonth text-center">
-            <input type="text" id="statisticsMonth" class="text-center" autocomplete="off"
-                   value="{% for statistics in statistics_list %}{{ statistics.statistics_month|date:'Y년 M' }}{% endfor %}"/>
-        </li>
-        {% if page_obj.has_previous %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-                <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
-            </a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="?page=1" aria-label="First">
-                <span aria-hidden="true"><i class="fas fa-angle-double-right"></i></span>
-            </a>
-        </li>
-        {% endif %}
-    </ul>
 
-    <div class="col-6 justify-content-right">
-        {% for statistics in statistics_list %}
-        <span class="update align-middle">데이터 반영 기준: {{ statistics.update_date.year }}년 {{ statistics.update_date.month }}월
+
+<div class="container p-0">
+
+    <nav aria-label="Page navigation d-inline row" class="date navigation col-12 p-0">
+        <ul class="pagination mt-5 col-6 mx-auto">
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+                    <span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                </a>
+            </li>
+            {% endif %}
+            <li class="page-item selectMonth text-center">
+                <input type="text" id="statisticsMonth" class="text-center" autocomplete="off"
+                       value="{% for statistics in statistics_list %}{{ statistics.statistics_month|date:'Y년 M' }}{% endfor %}"/>
+            </li>
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="First">
+                    <span aria-hidden="true"><i class="fas fa-angle-double-right"></i></span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+
+        <div class="col-6 justify-content-right">
+            {% for statistics in statistics_list %}
+            <span class="update align-middle">데이터 반영 기준: {{ statistics.update_date.year }}년 {{ statistics.update_date.month }}월
             {{ statistics.update_date.day }}일 {{ statistics.update_date.hour }}시 {{ statistics.update_date.minute }}분까지 이용 분</span>
-        {% endfor %}
-    </div>
-</nav>
+            {% endfor %}
+        </div>
+    </nav>
 
-<div class="contents row justify-content-between">
-
-    <div class="monthly_average col-6 mt-5 bg-light">
-        <span>우리 회사 직원들은 평균 <span>5권</span>의 책을 읽었습니다</span>
-    </div>
-
-    <div class="monthly_times col-6 mt-5 bg-light">
-        <span>우리 회사 직원들은 평균 <span>1시간 45분</span> 동안의 독서 시간을 가졌습니다</span>
-    </div>
-
-    <div class="monthly_rank col-12 mt-5">
-        <h3 class="monthly_rank_title">이달의 다독왕</h3>
-        <div class="row row-cols-1 row-cols-md-5">
-            <div class="col mb-4">
-                <div class="card h-100 bg-light">
-                    <strong>1위</strong>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">aixcon123</h5>
-                        <p class="card-text">6권</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100 bg-light">
-                    <strong>2위</strong>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">aixcon123</h5>
-                        <p class="card-text">5권</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100 bg-light">
-                    <strong>3위</strong>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">aixcon123</h5>
-                        <p class="card-text">4권</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100 bg-light">
-                    <strong>4위</strong>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">aixcon123</h5>
-                        <p class="card-text">3권</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100 bg-light">
-                    <strong>5위</strong>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">aixcon123</h5>
-                        <p class="card-text">2권</p>
-                    </div>
-                </div>
+    <div class="contents row justify-content-between">
+        <div class="monthly_read_count col-6 mt-3">
+            <div class="monthly_read_count_content">
+                <span class="monthly_read_count_text_header">
+                    우리 회사 직원들은
+                </span>
+                <span class="monthly_read_count_text_body">
+                평균 <span class="emphasis_text mx-1">5권</span>의 책을 읽었습니다
+                </span>
             </div>
         </div>
 
-    </div>
-
-    <div class="monthly_favorite_books col-12">
-        <h3 class="monthly_favorite_books_title">월간 인기 도서</h3>
-        <div class="row row-cols-1 row-cols-md-5">
-            <div class="col mb-4">
-                <div class="card h-100 border-0">
-                    <strong>4위</strong>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-1">책제목</h5>
-                        <p class="card-text mb-1">저자</p>
-                        <p class="card-text mb-0">열람 6회</p>
-                    </div>
+        <div class="monthly_times col-6 mt-3 pl-0">
+            <div class="monthly_times_content">
+                <div class="monthly_times_text_header">
+                    <p class="top">우리회사</p>
+                    <p class="bottom mt-2">직원들은</p>
                 </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100 border-0">
-                    <strong>2위</strong>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-1">책제목</h5>
-                        <p class="card-text mb-1">저자</p>
-                        <p class="card-text mb-0">열람 6회</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100 border-0 position-relative">
-                    <span class="position-absolute" style="top: 50%; left: 10%; font-size: 5rem;">1</span>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-1">주말에는 더 행복하기로 했다</h5>
-                        <p class="card-text mb-1">카트리나 온스태드</p>
-                        <p class="card-text mb-0">열람 15회</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100 border-0">
-                    <strong>4위</strong>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-1">책제목</h5>
-                        <p class="card-text mb-1">저자</p>
-                        <p class="card-text mb-0">열람 6회</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card h-100 border-0">
-                    <strong>5위</strong>
-                    <img src="{% static 'img/img_millie_logo.png' %}" class="card-img-top p-5" alt="">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-1">책제목</h5>
-                        <p class="card-text mb-1">저자</p>
-                        <p class="card-text mb-0">열람 6회</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="favorite_category col-12">
-        <h3 class="favorite_category_title">인기 카테고리</h3>
-        <div class="row">
-            <div class="favorite_category_chart col-8 m-0">
-                <figure class="highcharts-figure">
-                    <div id="favorite_category_container"></div>
-                    <p class="highcharts-description">
+                <div class="monthly_times_text_body">
+                    <span class="top">
+                        평균 <span class="emphasis_text mx-1">1시간 45분</span>
+                    </span>
+                    <p class="bottom mt-4">
+                        동안의 독서 시간을 가졌습니다
                     </p>
-                </figure>
-                <script>
-                    Highcharts.chart('favorite_category_container', {
-                        chart: {
-                            plotBackgroundColor: null,
-                            plotBorderWidth: 0,
-                            plotShadow: false
-                        },
-                        title: {
-                            text: ``,
-                            align: 'middle',
-                            verticalAlign: 'middle',
-                            x: 300,
-                            y: 20,
-                        },
-                        tooltip: {
-                            enabled: false,
-                        },
-                        accessibility: {
-                            point: {
-                                valueSuffix: '%'
-                            }
-                        },
-                        plotOptions: {
-                            pie: {
-                                dataLabels: {
-                                    enabled: true,
-                                    distance: -50,
-                                    style: {
-                                        fontWeight: 'bold',
-                                        color: 'white'
-                                    }
-                                },
-                                startAngle: 1,
-                                endAngle: 360,
-                                center: ['50%', '50%'],
-                                size: '100%',
-                                showInLegend: true
-                            }
-                        },
-                        series: [{
-                            type: 'pie',
-                            name: 'Browser share',
-                            innerSize: '90%',
-                            data: [
-                                ['소설', 35],
-                                ['자기계발', 17],
-                                ['경제', 12],
-                                ['에세이', 8],
-                                ['인문', 6],
-                            ]
-                        }],
-                        credits: {
-                            enabled: false
-                        },
-                        exporting: {
-                            enabled: false
-                        },
-                    });
-                </script>
-            </div>
-            <div class="favorite_category_table col-4 m-0">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <th scope="row">1위</th>
-                        <td>소설</td>
-                        <td>35%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2위</th>
-                        <td>자기계발</td>
-                        <td>17%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3위</th>
-                        <td>경제</td>
-                        <td>12%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4위</th>
-                        <td>에세이</td>
-                        <td>8%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5위</th>
-                        <td>인문</td>
-                        <td>6%</td>
-                    </tr>
-                    </tbody>
-                </table>
+                </div>
             </div>
         </div>
+
+        <div class="monthly_user_rank col-12 mt-5">
+            <div class="monthly_user_rank_header mt-3">
+                <h3 class="monthly_user_rank_header_title">이달의 다독왕</h3>
+            </div>
+
+            <div class="monthly_user_rank_content row row-cols-1 row-cols-md-5 mt-3">
+                <div class="monthly_user_rank_content_item col mb-4">
+                    <div class="card h-100 border-0">
+                        <img src="{% static 'img/statistics/user_rank_first.png' %}" class="monthly_user_rank_content_item_img card-img-top px-5 p-4 m-auto" alt="rank_1st">
+                        <div class="monthly_user_rank_content_item_body px-0 card-body text-center">
+                            <h5 class="monthly_user_rank_content_item_body_title mb-2 card-title">aixcon123</h5>
+                            <p class="monthly_user_rank_content_item_body_count card-text">6권</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="monthly_user_rank_content_item col mb-4">
+                    <div class="card h-100 border-0">
+                        <img src="{% static 'img/statistics/user_rank_second.png' %}" class="monthly_user_rank_content_item_img card-img-top px-5 p-4 m-auto" alt="rank_2nd">
+                        <div class="monthly_user_rank_content_item_body px-0 card-body text-center">
+                            <h5 class="monthly_user_rank_content_item_body_title mb-2 card-title">aixcon123</h5>
+                            <p class="monthly_user_rank_content_item_body_count card-text">6권</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="monthly_user_rank_content_item col mb-4">
+                    <div class="card h-100 border-0">
+                        <img src="{% static 'img/statistics/user_rank_third.png' %}" class="monthly_user_rank_content_item_img card-img-top px-5 p-4 m-auto" alt="rank_3th">
+                        <div class="monthly_user_rank_content_item_body px-0 card-body text-center">
+                            <h5 class="monthly_user_rank_content_item_body_title mb-2 card-title">aixcon123</h5>
+                            <p class="monthly_user_rank_content_item_body_count card-text">6권</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="monthly_user_rank_content_item col mb-4">
+                    <div class="card h-100 border-0">
+                        <img src="{% static 'img/statistics/user_rank_fourth.png' %}" class="monthly_user_rank_content_item_img card-img-top px-5 p-4 m-auto" alt="rank_4th">
+                        <div class="monthly_user_rank_content_item_body px-0 card-body text-center">
+                            <h5 class="monthly_user_rank_content_item_body_title mb-2 card-title">aixcon123</h5>
+                            <p class="monthly_user_rank_content_item_body_count card-text">6권</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="monthly_user_rank_content_item col mb-4">
+                    <div class="card h-100 border-0">
+                        <img src="{% static 'img/statistics/user_rank_fifth.png' %}" class="monthly_user_rank_content_item_img card-img-top px-5 p-4 m-auto" alt="rank_5th">
+                        <div class="monthly_user_rank_content_item_body px-0 card-body text-center">
+                            <h5 class="monthly_user_rank_content_item_body_title mb-2 card-title">aixcon123</h5>
+                            <p class="monthly_user_rank_content_item_body_count card-text">6권</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="monthly_favorite_books col-12 mt-5">
+            <div class="monthly_favorite_books_header">
+                <h3 class="monthly_favorite_books_header_title">월간 인기 도서</h3>
+            </div>
+
+            <div class="monthly_favorite_books_content row row-cols-1 row-cols-md-5 m-0">
+                <div class="monthly_favorite_books_content_item fourth col p-0 mb-4">
+                    <div class="monthly_favorite_books_content_item_header">
+                        <img src="{% static 'img/statistics/favorite_books_fourth_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
+                        <img src="{% static 'img/statistics/favorite_books_fourth_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
+                    </div>
+                    <div class="monthly_favorite_books_content_item_body text-center">
+                        <h5 class="monthly_favorite_books_content_item_body_title mb-2">책제목</h5>
+                        <p class="monthly_favorite_books_content_item_body_author mb-2">저자</p>
+                        <div class="monthly_favorite_books_content_item_body_count m-auto">
+                            <p class="monthly_favorite_books_content_item_body_count_text mb-0">열람 6회</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="monthly_favorite_books_content_item second col p-0 mb-4">
+                    <div class="monthly_favorite_books_content_item_header">
+                        <img src="{% static 'img/statistics/favorite_books_second_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
+                        <img src="{% static 'img/statistics/favorite_books_second_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
+                    </div>
+                    <div class="monthly_favorite_books_content_item_body text-center">
+                        <h5 class="monthly_favorite_books_content_item_body_title mb-2">책제목</h5>
+                        <p class="monthly_favorite_books_content_item_body_author mb-2">저자</p>
+                        <div class="monthly_favorite_books_content_item_body_count m-auto">
+                            <p class="monthly_favorite_books_content_item_body_count_text mb-0">열람 6회</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="monthly_favorite_books_content_item first col p-0 mb-4">
+                    <div class="monthly_favorite_books_content_item_header">
+                        <img src="{% static 'img/statistics/favorite_books_first_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
+                        <img src="{% static 'img/statistics/favorite_books_first_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
+                    </div>
+                    <div class="monthly_favorite_books_content_item_body text-center">
+                        <h5 class="monthly_favorite_books_content_item_body_title mb-2">주말에는 더 행복하기로 했다</h5>
+                        <p class="monthly_favorite_books_content_item_body_author mb-2">카트리나 온스태드</p>
+                        <div class="monthly_favorite_books_content_item_body_count m-auto">
+                            <p class="monthly_favorite_books_content_item_body_count_text mb-0">열람 6회</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="monthly_favorite_books_content_item third col p-0 mb-4">
+                    <div class="monthly_favorite_books_content_item_header">
+                        <img src="{% static 'img/statistics/favorite_books_third_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
+                        <img src="{% static 'img/statistics/favorite_books_third_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
+                    </div>
+                    <div class="monthly_favorite_books_content_item_body text-center">
+                        <h5 class="monthly_favorite_books_content_item_body_title mb-2">책제목</h5>
+                        <p class="monthly_favorite_books_content_item_body_author mb-2">저자</p>
+                        <div class="monthly_favorite_books_content_item_body_count m-auto">
+                            <p class="monthly_favorite_books_content_item_body_count_text mb-0">열람 6회</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="monthly_favorite_books_content_item fifth col p-0 mb-4">
+                    <div class="monthly_favorite_books_content_item_header">
+                        <img src="{% static 'img/statistics/favorite_books_fifth_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
+                        <img src="{% static 'img/statistics/favorite_books_fifth_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
+                    </div>
+                    <div class="monthly_favorite_books_content_item_body text-center">
+                        <h5 class="monthly_favorite_books_content_item_body_title mb-2">책제목</h5>
+                        <p class="monthly_favorite_books_content_item_body_author mb-2">저자</p>
+                        <div class="monthly_favorite_books_content_item_body_count m-auto">
+                            <p class="monthly_favorite_books_content_item_body_count_text mb-0">열람 6회</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="favorite_category col-12 mt-5">
+
+            <div class="favorite_category_header">
+                <h3 class="favorite_category_header_title">인기 카테고리</h3>
+            </div>
+
+            <div class="favorite_category_content row mt-2">
+
+                <div class="favorite_category_chart col-7 m-0">
+                    <figure class="highcharts-figure">
+                        <div id="favorite_category_container"></div>
+                        <p class="highcharts-description">
+                        </p>
+                    </figure>
+                    <script>
+                        Highcharts.setOptions({
+                            colors: ['#736357', '#FDEA60', '#A5A5A5', '#0178D3', '#FFB704', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                        });
+                        Highcharts.chart('favorite_category_container', {
+                            chart: {
+                                plotBackgroundColor: null,
+                                plotBorderWidth: 0,
+                                plotShadow: false,
+                                backgroundColor: 'rgba(255, 255, 255, 0)',
+                                style: {
+                                    fontFamily: 'Noto Serif KR',
+                                    color: '#595959',
+                                }
+                            },
+                            title: {
+                                text: ``,
+                                align: 'middle',
+                                verticalAlign: 'middle',
+                                x: 300,
+                                y: 20,
+                            },
+                            tooltip: {
+                                enabled: false,
+                            },
+                            accessibility: {
+                                point: {
+                                    valueSuffix: '%'
+                                }
+                            },
+                            plotOptions: {
+                                pie: {
+                                    dataLabels: {
+                                        enabled: true,
+                                        distance: -50,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: 'white'
+                                        }
+                                    },
+                                    startAngle: 0,
+                                    endAngle: 360,
+                                    center: ['50%', '50%'],
+                                    size: '90%',
+                                    showInLegend: true,
+                                    borderColor: 'rgba(255,255,255,0)',
+                                }
+                            },
+                            legend: {
+                                symbolHeight: 10,
+                                symbolWidth: 10,
+                                symbolPadding: 5,
+                                symbolRadius: 0,
+                                itemStyle: {
+                                    color: '#595959',
+                                    fontSize: '14px',
+                                    fontWeight:'bold'
+                                }
+                            },
+                            series: [{
+                                type: 'pie',
+                                name: '',
+                                innerSize: '80%',
+                                data: [
+                                    ['소설', 35],
+                                    ['자기계발', 17],
+                                    ['경제', 12],
+                                    ['에세이', 8],
+                                    ['인문', 6],
+                                ],
+                                dataLabels: {
+                                    enabled: false,
+                                }
+                            }],
+                            dataLabels: {
+                                enabled:false
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            exporting: {
+                                enabled: false
+                            },
+                        });
+                    </script>
+                </div>
+
+                <div class="favorite_category_table col-5 m-0">
+                    <div class="favorite_category_table_header text-right mr-4">
+                        <img src="{% static 'img/statistics/favorite_category_table_header.png' %}" alt="favorite_category_table_header" class="favorite_category_table_header_img">
+                    </div>
+
+                    <div class="favorite_category_table_content mt-2">
+                        <table class="table favorite_category_table_content_list text-right ml-auto mr-4 mb-0 pt-5">
+                            <tbody>
+                            <tr class="favorite_category_table_content_item">
+                                <td class="favorite_category_table_content_item_title border-0 text-left w-50">소설</td>
+                                <td class="favorite_category_table_content_item_percentage border-0 w-50">35%</td>
+                            </tr>
+                            <tr class="favorite_category_table_content_item">
+                                <td class="favorite_category_table_content_item_title border-0 text-left">자기계발</td>
+                                <td class="favorite_category_table_content_item_percentage border-0">17%</td>
+                            </tr>
+                            <tr class="favorite_category_table_content_item">
+                                <td class="favorite_category_table_content_item_title border-0 text-left">경제</td>
+                                <td class="favorite_category_table_content_item_percentage border-0">12%</td>
+                            </tr>
+                            <tr class="favorite_category_table_content_item">
+                                <td class="favorite_category_table_content_item_title border-0 text-left">에세이</td>
+                                <td class="favorite_category_table_content_item_percentage border-0">8%</td>
+                            </tr>
+                            <tr class="favorite_category_table_content_item">
+                                <td class="favorite_category_table_content_item_title border-0 text-left">인문</td>
+                                <td class="favorite_category_table_content_item_percentage border-0">6%</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
-
-
 </div>
+
 
 
 {% include 'footer.html' %}
@@ -299,7 +371,7 @@
 
 <script>
     $("#statisticsMonth").kendoDatePicker({
-        start: "year"
+        start: "year",
     });
 </script>
 

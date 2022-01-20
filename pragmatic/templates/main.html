@@ -15,7 +15,7 @@
 
 {% include 'header.html' %}
 
-<div class="container">
+<div class="container p-0">
     <div class="date mt-5">
         {% comment %}
         {% for statistics in statistics_list %}
@@ -38,20 +38,20 @@
             </div>
         </div>
 
-        <div class="monthly_times col-6 mt-3">
+        <div class="monthly_times col-6 mt-3 pl-0">
             <div class="monthly_times_content">
-                <span class="monthly_times_text_header">
+                <div class="monthly_times_text_header">
                     <p class="top">우리회사</p>
                     <p class="bottom mt-2">직원들은</p>
-                </span>
-                <span class="monthly_times_text_body">
+                </div>
+                <div class="monthly_times_text_body">
                     <span class="top">
                         평균 <span class="emphasis_text mx-1">1시간 45분</span>
                     </span>
                     <p class="bottom mt-4">
                         동안의 독서 시간을 가졌습니다
                     </p>
-                </span>
+                </div>
             </div>
         </div>
 
@@ -71,7 +71,7 @@
 
             <div class="monthly_user_rank_content mt-2">
                 <div class="monthly_user_rank_content_list row justify-content-around">
-                    <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
+                    <div class="monthly_user_rank_content_item col-4 m-0 text-center">
                         <img src="{% static 'img/main/user_rank_first.png' %}" alt="rank_1st" class="monthly_user_rank_content_item_img">
                         <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
                         <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
@@ -172,13 +172,16 @@
                                 plotBackgroundColor: null,
                                 plotBorderWidth: 0,
                                 plotShadow: false,
-                                backgroundColor: 'rgba(255, 255, 255, 0)'
+                                backgroundColor: 'rgba(255, 255, 255, 0)',
+                                style: {
+                                    fontFamily: 'Noto Serif KR'
+                                }
                             },
                             title: {
-                                text: `<span>총<br><strong style="font-size: 30px;">20</strong>분</span>`,
+                                text: `<div style="font-size: 12px; text-align: center;">총<br><strong style="font-size: 30px;">20</strong>분</div>`,
                                 align: 'middle',
                                 verticalAlign: 'middle',
-                                x: 130,
+                                x: 190,
                                 y: -50,
                             },
                             tooltip: {
@@ -197,7 +200,7 @@
                                     },
                                     startAngle: -150,
                                     endAngle: 150,
-                                    center: ['25%', '30%'],
+                                    center: ['35%', '30%'],
                                     size: '45%'
                                 }
                             },
@@ -238,13 +241,16 @@
                                 plotBorderWidth: 0,
                                 plotShadow: false,
                                 margin: [50, 50, 50, 50],
-                                backgroundColor: 'rgba(255, 255, 255, 0)'
+                                backgroundColor: 'rgba(255, 255, 255, 0)',
+                                style: {
+                                    fontFamily: 'Noto Serif KR'
+                                }
                             },
                             title: {
-                                text: `<span><strong style="font-size: 30px;">1</strong>권<br>소설</span>`,
+                                text: `<div style="font-size: 12px;"><strong style="font-size: 30px;">1</strong>권<br>소설</div>`,
                                 align: 'middle',
                                 verticalAlign: 'middle',
-                                x: 75,
+                                x: 130,
                                 y: -40,
                             },
                             tooltip: {
@@ -263,7 +269,7 @@
                                     },
                                     startAngle: 1,
                                     endAngle: 360,
-                                    center: ['30%', '22%'],
+                                    center: ['80%', '23%'],
                                     size: '140%'
                                 }
                             },

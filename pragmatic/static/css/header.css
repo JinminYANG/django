@@ -15,10 +15,15 @@
     line-height: 35px;
 }
 
-.nav-item{
+.navbar-nav .nav-item{
     background-image: url("../img/main/nav_item_02.png");
     background-repeat: no-repeat;
     background-size: cover;
+    transition: all 0.3s;
+}
+
+.navbar-nav .nav-item:hover{
+    background-image: url("../img/main/nav_item_02_hover.png");
 }
 
 .nav-link{
@@ -27,8 +32,17 @@
     font-weight: bold;
 }
 
+.navbar-nav .nav-item:hover .nav-link{
+    color: #A56B44;
+}
+
 .navbar-bar{
     background-image: url("../img/main/nav_item_bar.png");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.dropdown-menu{
+    left: inherit;
+    right: 0;
 }

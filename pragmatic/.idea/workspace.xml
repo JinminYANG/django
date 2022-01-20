@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d95db46e-7ea1-44fe-8fa9-4d811095da28" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/head.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/reset.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/corporate_statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/corporate_statistics.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
     </list>
@@ -113,7 +115,8 @@
       <workItem from="1641946344189" duration="610000" />
       <workItem from="1642386335388" duration="25428000" />
       <workItem from="1642468999284" duration="21318000" />
-      <workItem from="1642555243542" duration="24793000" />
+      <workItem from="1642555243542" duration="24939000" />
+      <workItem from="1642640493328" duration="24445000" />
     </task>
     <servers />
   </component>
