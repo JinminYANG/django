@@ -14,13 +14,29 @@
     height: 35px;
     line-height: 35px;
 }
+.navbar-nav{
+    flex: 0 0 44%;
+    max-width: 44%;
+}
 
 .navbar-nav .nav-item{
     background-image: url("../img/main/nav_item_02.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     transition: all 0.3s;
 }
+
+.navbar-nav .nav-item:first-child,
+.navbar-nav .nav-item:nth-child(2){
+    background-image: url("../img/main/nav_item_01.png");
+    background-size: contain;
+}
+
+.navbar-nav .nav-item:first-child:hover,
+.navbar-nav .nav-item:nth-child(2):hover{
+    background-image: url("../img/main/nav_item_01_hover.png");
+}
+
 
 .navbar-nav .nav-item:hover{
     background-image: url("../img/main/nav_item_02_hover.png");
@@ -37,6 +53,8 @@
 }
 
 .navbar-bar{
+    flex: 0 0 56%;
+    max-width: 56%;
     background-image: url("../img/main/nav_item_bar.png");
     background-repeat: no-repeat;
     background-size: cover;

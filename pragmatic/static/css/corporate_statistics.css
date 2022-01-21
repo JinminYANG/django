@@ -12,6 +12,24 @@
 
 }
 
+/* datepicker */
+
+.k-icon{
+    font-family: WebComponentsIcons !important;
+}
+
+.k-input{
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 1.2rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.selectMonth{
+    line-height: 46px;
+}
+
 .monthly_read_count {
     position: relative;
     color: #736357;

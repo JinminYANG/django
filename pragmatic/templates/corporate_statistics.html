@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.3.1207/styles/kendo.default-v2.min.css"/>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://kendo.cdn.telerik.com/2021.3.1207/js/kendo.all.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2021.3.1207/js/cultures/kendo.culture.ko-KR.min.js"></script>
 
 <link rel="stylesheet" href="{% static '/css/corporate_statistics.css' %}">
 
@@ -18,7 +19,6 @@
 {% block content %}
 
 {% include 'header.html' %}
-
 
 
 <div class="container p-0">
@@ -39,7 +39,11 @@
             {% endif %}
             <li class="page-item selectMonth text-center">
                 <input type="text" id="statisticsMonth" class="text-center" autocomplete="off"
-                       value="{% for statistics in statistics_list %}{{ statistics.statistics_month|date:'Y년 M' }}{% endfor %}"/>
+                       value="2022년 01월"/>
+                {% comment %}
+                value='' 에 들어갈 값 형식
+                {% for statistics in statistics_list %}{{ statistics.statistics_month|date:'Y년 M' }}{% endfor %}
+                {% endcomment %}
             </li>
             {% if page_obj.has_previous %}
             <li class="page-item">
@@ -235,6 +239,7 @@
                         <p class="highcharts-description">
                         </p>
                     </figure>
+
                     <script>
                         Highcharts.setOptions({
                             colors: ['#736357', '#FDEA60', '#A5A5A5', '#0178D3', '#FFB704', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
@@ -369,10 +374,38 @@
 
 {% block script %}
 
+{% comment %}
+    현재 static 파일로 kendoDatePicker를 불러오지 못하는 오류가 발생했는데
+    소장님이 base 만들어주시면 거기에 작업할 때 다시 테스트 진행 예정
+{% endcomment %}
+
 <script>
-    $("#statisticsMonth").kendoDatePicker({
+    const today = new Date();
+    const setDay = 1;   // '월' 값을 기준으로 처리하기 위한 '1' 사용
+    const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), setDay);
+    const lastMonth = new Date(firstDayOfMonth.setDate(firstDayOfMonth.getDate() - setDay));
+
+    var statisticsMonth = $("#statisticsMonth").kendoDatePicker({
+        culture: "ko-KR",
         start: "year",
+        depth: "year",
+        format: "yyyy년 MM월",
+        max: lastMonth,
+    }).data("kendoDatePicker");
+
+    // input 클릭 시 datepicker가 open 되는 기능을 위한 테스트 코드
+    var statisticsMonthpicker = $("#statisticsMonth").data("kendoDatePicker");
+    $("#statisticsMonth").click(function () {
+        statisticsMonthpicker.open();
     });
+
+    // 텍스트 입력을 막기 위한 코드
+    $("#statisticsMonth").on("keydown", function (e) {
+        e.preventDefault();
+    });
+
+    // 대시보드 페이지 달력(월) 선택기능 일시정지
+    // statisticsMonthpicker.enable(false);
 </script>
 
 {% endblock script %}

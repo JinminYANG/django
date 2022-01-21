@@ -2,6 +2,12 @@
     display: none;
 }
 
+.flatpickr-calendar{
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: scale(0.5);
+}
+
 .flatpickr-months {
     display: none;
 }
@@ -21,3 +27,8 @@
 .flatpickr-day.today{
     border-color: transparent;
 }
+
+.flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover{
+    color: rgba(57, 57, 57, 0);
+}
+

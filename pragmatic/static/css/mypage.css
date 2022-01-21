@@ -1,0 +1,224 @@
+body{
+    background-image: url("../img/mypage/body_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.navbar-nav .nav-item{
+    background-image: url("../img/mypage/nav_item_02.png") !important;
+}
+
+.navbar-nav .nav-item:first-child,
+.navbar-nav .nav-item:nth-child(2){
+    background-image: url("../img/mypage/nav_item_01.png") !important;
+}
+
+.navbar-bar{
+    background-image: url("../img/mypage/nav_item_bar.png") !important;
+    background-size: contain !important;
+}
+
+
+.monthly{
+
+}
+
+.monthly_header,
+.year_in_header{
+    height: 30px;
+    background-image: url("../img/mypage/monthly_header.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+    margin-top: 96px;
+}
+
+.monthly_header_title,
+.year_in_header_title{
+    position: absolute;
+    left: 60px;
+    /*top: 1px;*/
+    font-size: 15px;
+    color: #FFFFFF;
+    line-height: 28px;
+}
+
+.monthly_content,
+.year_in_content{
+    height: 233px;
+}
+
+.monthly_taste,
+.monthly_reading_time,
+.monthly_reading_routine,
+.year_in_taste,
+.year_in_reading_time,
+.year_in_settlement{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/mypage/monthly_item_bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.monthly_taste_header,
+.monthly_reading_time_header,
+.monthly_reading_routine_header,
+.year_in_taste_header,
+.year_in_reading_time_header,
+.year_in_settlement_header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+}
+
+.monthly_taste_header_title,
+.monthly_reading_time_header_title,
+.monthly_reading_routine_header_title,
+.year_in_taste_header_title,
+.year_in_reading_time_header_title,
+.year_in_settlement_header_title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-35%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #EAE6DB;
+    writing-mode: vertical-rl;
+    letter-spacing: 8px;
+}
+
+.monthly_taste_content,
+.monthly_reading_time_content,
+.monthly_reading_routine_content,
+.year_in_taste_content,
+.year_in_reading_time_content,
+.year_in_settlement_content{
+    position: absolute;
+    right: 10px;
+    width: 80%;
+    height: 100%;
+}
+
+.monthly_taste_content_chart,
+.monthly_reading_time_content_chart,
+.year_in_taste_content_chart,
+.year_in_reading_time_content_chart,
+.year_in_settlement_content_chart{
+
+}
+
+.monthly_taste_content_table,
+.monthly_reading_time_content_table,
+.year_in_taste_content_table,
+.year_in_reading_time_content_table{
+    position: absolute;
+    top: 160px;
+    right: 0;
+    width: 100%;
+    font-size: 8px;
+    max-height: 50px;
+    overflow: hidden;
+}
+
+.table td, .table th {
+    padding: 0.5rem;
+}
+
+.monthly .table .rank,
+.monthly .table .emphasis_text{
+    font-weight: bold;
+    color: #A56B44;
+}
+
+.monthly .table .count,
+.monthly .table .percentage,
+.monthly .table .date{
+    color: lightgray;
+}
+
+.monthly_reading_time_content_table_item .title{
+    width: 40%;
+}
+
+.monthly_reading_routine_content_text{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #998675;
+    line-height: 1.5;
+}
+
+.monthly_reading_routine_content_text .emphasis_text{
+    font-weight: bold;
+    color: #603813;
+}
+
+.flatpickr-calendar{
+    position: absolute !important;
+    top: -11px !important;
+    right: -30px !important;
+    /*width: 60%;*/
+    flex: 0 0 58.333333%;
+    /*max-width: 58.333333%;*/
+}
+
+.monthly_reading_routine .date_check{
+    position: absolute;
+    top: 25px;
+    right: 105px;
+    font-size: 10px;
+}
+
+.monthly_reading_routine .date_check .emphasis_text{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.monthly_reading_routine .description{
+    position: absolute;
+    bottom: 25px;
+    right: 90px;
+    font-size: 8px;
+    color: lightgray;
+}
+
+
+
+
+.year_in{
+
+}
+
+.year_in_header{
+    margin-top: 60px;
+}
+
+.year_in_taste,
+.year_in_reading_time,
+.year_in_settlement{
+    background-image: url("../img/mypage/year_in_item_bg.png");
+}
+
+
+
+.year_in .table .rank,
+.year_in .table .emphasis_text{
+    font-weight: bold;
+    color: #000000;
+}
+
+.year_in .table .count,
+.year_in .table .percentage,
+.year_in .table .date{
+    color: lightgray;
+}
+
+

@@ -18,326 +18,582 @@
 <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
 <link href="{% static 'css/customFlatpickr.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static '/css/mypage.css' %}">
+
 {% endblock head %}
 
 {% block content %}
 
 {% include 'header.html' %}
 
-<div class="contents">
-    <h3 class="monthly_title mt-5">이번 달 나의 독서 기록</h3>
+<div class="contents container">
+
     <div class="monthly row mt-3">
-        <div class="monthly_taste bg-light col-4">
-            <h3 class="monthly_taste_title">나의 취향</h3>
-            <div class="monthly_taste_content bg-white m-0">
-                <figure class="highcharts-figure">
-                    <div id="monthly_taste_content_container"></div>
-                    <p class="highcharts-description">
-                    </p>
-                </figure>
-                <script>
-                    Highcharts.chart('monthly_taste_content_container', {
-                        chart: {
-                            plotBackgroundColor: null,
-                            plotBorderWidth: 0,
-                            plotShadow: false
-                        },
-                        title: {
-                            text: `1권<br>1분야`,
-                            align: 'middle',
-                            verticalAlign: 'middle',
-                            x: 150,
-                            y: 0,
-                        },
-                        tooltip: {
-                            enabled: false,
-                        },
-                        accessibility: {
-                            point: {
-                                valueSuffix: '%'
-                            }
-                        },
-                        plotOptions: {
-                            pie: {
-                                dataLabels: {
-                                    enabled: true,
-                                    distance: -50,
-                                    style: {
-                                        fontWeight: 'bold',
-                                        color: 'white'
-                                    }
-                                },
-                                startAngle: 1,
-                                endAngle: 360,
-                                center: ['50%', '50%'],
-                                size: '100%',
-                                showInLegend: true
-                            }
-                        },
-                        series: [{
-                            type: 'pie',
-                            name: 'Browser share',
-                            innerSize: '90%',
-                            data: [
-                                ['라이프스타일', 100],
-                            ]
-                        }],
-                        credits: {
-                            enabled: false
-                        },
-                        exporting: {
-                            enabled: false
-                        },
-                    });
-                </script>
-            </div>
+
+        <div class="monthly_header col-12">
+            <h3 class="monthly_header_title">이번 달 나의 독서 기록</h3>
         </div>
 
-        <div class="monthly_reading_time bg-light col-4">
-            <h3 class="monthly_reading_time_title">독서 시간</h3>
-            <div class="monthly_reading_time_content bg-white m-0">
-                <figure class="highcharts-figure">
-                    <div id="monthly_reading_time_container"></div>
-                    <p class="highcharts-description">
-                    </p>
-                </figure>
-                <script>
-                    Highcharts.setOptions({
-                        colors: ['#ED561B', '#ED561B', '#ED561B', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
-                    });
-                    Highcharts.chart('monthly_reading_time_container', {
-                        chart: {
-                            plotBackgroundColor: '#FFFFFF',
-                            plotBorderWidth: 0,
-                            plotShadow: false
-                        },
-                        title: {
-                            text: `<span style="text-align: center">총<br><strong>20</strong>분</span>`,
-                            align: 'middle',
-                            verticalAlign: 'middle',
-                            x: 200,
-                            y: 20,
-                        },
-                        tooltip: {
-                            enabled: false
-                        },
-                        plotOptions: {
-                            pie: {
-                                dataLabels: {
-                                    enabled: true,
-                                    distance: -50,
+        <div class="monthly_content row col-12 mt-3">
+
+            <div class="monthly_taste col-4 p-0">
+                <div class="monthly_taste_header col-2 m-0 p-0 d-inline-block">
+                    <h3 class="monthly_taste_header_title m-0 d-inline-block">나의취향</h3>
+                </div>
+
+                <div class="monthly_taste_content col-10 m-0 p-0 d-inline-block">
+                    <div class="monthly_taste_content_chart">
+                        <figure class="highcharts-figure">
+                            <div id="monthly_taste_content_container"></div>
+                            <p class="highcharts-description">
+                            </p>
+                        </figure>
+                        <script>
+                            Highcharts.setOptions({
+                                colors: ['#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                            });
+                            Highcharts.chart('monthly_taste_content_container', {
+                                chart: {
+                                    plotBackgroundColor: null,
+                                    plotBorderWidth: 0,
+                                    plotShadow: false,
+                                    backgroundColor:'rgba(255, 255, 255, 0)',
                                     style: {
-                                        fontWeight: 'bold',
-                                        color: 'white'
+                                        fontFamily: 'Noto Serif KR'
                                     }
                                 },
-                                startAngle: -150,
-                                endAngle: 150,
-                                center: ['50%', '50%'],
-                                size: '100%',
-                                showInLegend: true
-                            }
-                        },
-                        legend: {
-                            layout: 'vertical',
-                            backgroundColor: '',
-                            floating: true,
-                            align: 'left',
-                            verticalAlign: 'top',
-                            x: 90,
-                            y: 45,
-                            labelFormatter: function () {
-                                // console.log(this);
-                                if(this.name == ''){
-                                    return ;
-                                }
-                                return this.name + ' (click to hide)';
-                            }
-                        },
-                        series: [{
-                            type: 'pie',
-                            name: '',
-                            innerSize: '90%',
-                            data: [
-                                ['짧게 읽은 날', 10],
-                                ['오래 읽은 날', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                            ]
-                        }],
-                        credits: {
-                            enabled: false
-                        },
-                        exporting: {
-                            enabled: false
-                        },
-                    });
-                </script>
-            </div>
-        </div>
+                                title: {
+                                    text: `<div style="font-size: 9px;"><strong style="font-size: 20px;">1</strong>권<br>1분야</div>`,
+                                    align: 'middle',
+                                    verticalAlign: 'middle',
+                                    x: 125,
+                                    y: -85,
+                                },
+                                tooltip: {
+                                    enabled: false,
+                                },
+                                accessibility: {
+                                    point: {
+                                        valueSuffix: '%'
+                                    }
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        dataLabels: {
+                                            enabled: true,
+                                            distance: -50,
+                                            style: {
+                                                fontWeight: 'bold',
+                                                color: 'white'
+                                            }
+                                        },
+                                        startAngle: 1,
+                                        endAngle: 360,
+                                        center: ['45%', '20%'],
+                                        size: '35%',
+                                        showInLegend: true
+                                    }
+                                },
+                                series: [{
+                                    type: 'pie',
+                                    name: '',
+                                    innerSize: '90%',
+                                    data: [
+                                        ['', 100],
+                                    ]
+                                }],
+                                credits: {
+                                    enabled: false
+                                },
+                                exporting: {
+                                    enabled: false
+                                },
+                            });
+                        </script>
+                    </div>
 
-        <div class="monthly_reading_routine bg-light col-4">
-            <h3 class="monthly_reading_routine_title">독서 루틴</h3>
-            <div class="monthly_reading_routine_content m-0">
-                {% comment %}
-                <input type="text" id="readingRoutineCalendar" class="text-center" autocomplete="off"
-                       value="{% for statistics in statistics_list %}{{ statistics.statistics_month|date:'Y년 M' }}{% endfor %}"/>
-                {% endcomment %}
-                <input class="dateSelector">
+                    <div class="monthly_taste_content_table">
+                        <table class="monthly_taste_content_table_list table m-0">
+                            <tbody>
+                            <tr class="monthly_taste_content_table_item">
+                                <td class="monthly_taste_content_table_item_rank border-0">1</td>
+                                <td class="monthly_taste_content_table_item_title border-0">라이프스타일</td>
+                                <td class="monthly_taste_content_table_item_count border-0"><span class="emphasis_text">1</span>권</td>
+                                <td class="monthly_taste_content_table_item_percentage border-0"><span class="emphasis_text">100</span>%</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="monthly_reading_time col-4">
+                <div class="monthly_reading_time_header col-2 m-0 p-0 d-inline-block">
+                    <h3 class="monthly_reading_time_header_title m-0 d-inline-block">독서시간</h3>
+                </div>
+
+                <div class="monthly_reading_time_content col-10 m-0 p-0 d-inline-block">
+                    <div class="monthly_reading_time_content_chart m-0">
+                        <figure class="highcharts-figure">
+                            <div id="monthly_reading_time_container"></div>
+                            <p class="highcharts-description">
+                            </p>
+                        </figure>
+                        <script>
+                            Highcharts.setOptions({
+                                colors: ['#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                            });
+                            Highcharts.chart('monthly_reading_time_container', {
+                                chart: {
+                                    plotBackgroundColor: null,
+                                    plotBorderWidth: 0,
+                                    plotShadow: false,
+                                    backgroundColor:'rgba(255, 255, 255, 0)',
+                                    style: {
+                                        fontFamily: 'Noto Serif KR'
+                                    }
+                                },
+                                title: {
+                                    text: `<div style="font-size: 9px;">총<br><strong style="font-size: 20px;">20</strong>분</div>`,
+                                    align: 'middle',
+                                    verticalAlign: 'middle',
+                                    x: 120,
+                                    y: -90,
+                                },
+                                tooltip: {
+                                    enabled: false
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        dataLabels: {
+                                            enabled: true,
+                                            distance: -50,
+                                            style: {
+                                                fontWeight: 'bold',
+                                                color: 'white'
+                                            }
+                                        },
+                                        startAngle: -150,
+                                        endAngle: 150,
+                                        center: ['45%', '20%'],
+                                        size: '35%',
+                                        showInLegend: false
+                                    }
+                                },
+                                series: [{
+                                    type: 'pie',
+                                    name: '',
+                                    innerSize: '90%',
+                                    data: [
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                    ]
+                                }],
+                                credits: {
+                                    enabled: false
+                                },
+                                exporting: {
+                                    enabled: false
+                                },
+                            });
+                        </script>
+                    </div>
+
+                    <div class="monthly_reading_time_content_table">
+                        <table class="monthly_reading_time_content_table_list table m-0">
+                            <tbody>
+                            <tr class="monthly_reading_time_content_table_item table_item text-center">
+                                <td class="title border-0">오래 읽은 날</td>
+                                <td class="date border-0"><span class="emphasis_text">12</span>/<span class="emphasis_text">29</span></td>
+                                <td class="minute border-0"><span class="emphasis_text">20</span>분</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="monthly_reading_routine col-4">
+                <div class="monthly_reading_routine_header col-2 m-0 p-0 d-inline-block">
+                    <h3 class="monthly_reading_routine_header_title m-0 d-inline-block">독서루틴</h3>
+                </div>
+
+                <div class="monthly_reading_routine_content col-10 m-0 p-0 d-inline-block">
+                    <div class="monthly_reading_routine_content_text col-5">
+                        <span>
+                            <span class="emphasis_text">월요일</span>에<br>
+                            가장 많이 읽고,<br>
+                            <span class="emphasis_text">오전</span> 시간대에<br>
+                            자주 들어와요.
+                        </span>
+                    </div>
+
+                    <input class="dateSelector">
+
+                    <div class="date_check">
+                        <span class="emphasis_text">1</span>일/<span class="emphasis_text">2</span>회
+                    </div>
+
+                    <div class="description">
+                        <span class="">독서루틴은 2020년 5월부터 체크됩니다.</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
-    <h3 class="year_in_title mt-5">올해 나의 독서 기록</h3>
     <div class="year_in row mt-3">
-        <div class="year_in_taste bg-light col-4">
-            <h3 class="year_in_taste_title">나의 취향</h3>
-            <div class="year_in_taste_content bg-white m-0">
-                <figure class="highcharts-figure">
-                    <div id="year_in_taste_content_container"></div>
-                    <p class="highcharts-description">
-                    </p>
-                </figure>
-                <script>
-                    Highcharts.chart('year_in_taste_content_container', {
-                        chart: {
-                            plotBackgroundColor: null,
-                            plotBorderWidth: 0,
-                            plotShadow: false
-                        },
-                        title: {
-                            text: `1권<br>1분야`,
-                            align: 'middle',
-                            verticalAlign: 'middle',
-                            x: 150,
-                            y: 0,
-                        },
-                        tooltip: {
-                            enabled: false,
-                        },
-                        accessibility: {
-                            point: {
-                                valueSuffix: '%'
-                            }
-                        },
-                        plotOptions: {
-                            pie: {
-                                dataLabels: {
-                                    enabled: true,
-                                    distance: -50,
+
+        <div class="year_in_header col-12">
+            <h3 class="year_in_header_title">이번 달 나의 독서 기록</h3>
+        </div>
+
+        <div class="year_in_content row col-12 mt-3">
+            <div class="year_in_taste col-4 p-0">
+
+                <div class="year_in_taste_header col-2 m-0 p-0 d-inline-block">
+                    <h3 class="year_in_taste_header_title m-0 d-inline-block">나의취향</h3>
+                </div>
+
+                <div class="year_in_taste_content col-10 m-0 p-0 d-inline-block">
+                    <div class="year_in_taste_content_chart">
+                        <figure class="highcharts-figure">
+                            <div id="year_in_taste_content_container"></div>
+                            <p class="highcharts-description">
+                            </p>
+                        </figure>
+                        <script>
+                            Highcharts.setOptions({
+                                colors: ['#000000', '#000000', '#000000', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                            });
+                            Highcharts.chart('year_in_taste_content_container', {
+                                chart: {
+                                    plotBackgroundColor: null,
+                                    plotBorderWidth: 0,
+                                    plotShadow: false,
+                                    backgroundColor: 'rgba(255, 255, 255, 0)',
                                     style: {
-                                        fontWeight: 'bold',
-                                        color: 'white'
+                                        fontFamily: 'Noto Serif KR'
                                     }
                                 },
-                                startAngle: 1,
-                                endAngle: 360,
-                                center: ['50%', '50%'],
-                                size: '100%',
-                                showInLegend: true
-                            }
-                        },
-                        series: [{
-                            type: 'pie',
-                            name: 'Browser share',
-                            innerSize: '90%',
-                            data: [
-                                ['라이프스타일', 100],
-                            ]
-                        }],
-                        credits: {
-                            enabled: false
-                        },
-                        exporting: {
-                            enabled: false
-                        },
-                    });
-                </script>
+                                title: {
+                                    text: `<div style="font-size: 9px;"><strong style="font-size: 12px;">총</strong><strong style="font-size: 20px;">1</strong>권<br>1분야</div>`,
+                                    align: 'middle',
+                                    verticalAlign: 'middle',
+                                    x: 105,
+                                    y: -85,
+                                },
+                                tooltip: {
+                                    enabled: false,
+                                },
+                                accessibility: {
+                                    point: {
+                                        valueSuffix: '%'
+                                    }
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        dataLabels: {
+                                            enabled: true,
+                                            distance: -50,
+                                            style: {
+                                                fontWeight: 'bold',
+                                                color: 'white'
+                                            }
+                                        },
+                                        startAngle: 1,
+                                        endAngle: 360,
+                                        center: ['40%', '18%'],
+                                        size: '35%',
+                                        showInLegend: false
+                                    }
+                                },
+                                series: [{
+                                    type: 'pie',
+                                    name: '',
+                                    innerSize: '80%',
+                                    data: [
+                                        ['', 100],
+                                    ]
+                                }],
+                                credits: {
+                                    enabled: false
+                                },
+                                exporting: {
+                                    enabled: false
+                                },
+                            });
+                        </script>
+                    </div>
+
+                    <div class="year_in_taste_content_table">
+                        <table class="year_in_taste_content_table_list table m-0">
+                            <tbody>
+                            <tr class="year_in_taste_content_table_item">
+                                <td class="rank border-0">1</td>
+                                <td class="title border-0">라이프스타일</td>
+                                <td class="count border-0"><span class="emphasis_text">1</span>권</td>
+                                <td class="percentage border-0"><span class="emphasis_text">100</span>%</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year_in_reading_time col-4">
+
+                <div class="year_in_reading_time_header col-2 m-0 p-0 d-inline-block">
+                    <h3 class="year_in_reading_time_header_title m-0 d-inline-block">독서시간</h3>
+                </div>
+
+                <div class="year_in_reading_time_content col-10 m-0 p-0 d-inline-block">
+                    <div class="year_in_reading_time_content_chart m-0">
+                        <figure class="highcharts-figure">
+                            <div id="year_in_reading_time_container"></div>
+                            <p class="highcharts-description">
+                            </p>
+                        </figure>
+                        <script>
+                            Highcharts.setOptions({
+                                colors: ['#BBBBBB', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                            });
+                            Highcharts.chart('year_in_reading_time_container', {
+                                chart: {
+                                    plotBackgroundColor: null,
+                                    plotBorderWidth: 0,
+                                    plotShadow: false,
+                                    backgroundColor:'rgba(255, 255, 255, 0)',
+                                    style: {
+                                        fontFamily: 'Noto Serif KR'
+                                    }
+                                },
+                                title: {
+                                    text: `<div style="font-size: 9px;">총<br><strong style="font-size: 20px;">20</strong>분</div>`,
+                                    align: 'middle',
+                                    verticalAlign: 'middle',
+                                    x: 120,
+                                    y: -90,
+                                },
+                                tooltip: {
+                                    enabled: false
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        dataLabels: {
+                                            enabled: true,
+                                            distance: -50,
+                                            style: {
+                                                fontWeight: 'bold',
+                                                color: 'white'
+                                            }
+                                        },
+                                        startAngle: -150,
+                                        endAngle: 150,
+                                        center: ['45%', '20%'],
+                                        size: '35%',
+                                        showInLegend: false
+                                    }
+                                },
+                                series: [{
+                                    type: 'pie',
+                                    name: '',
+                                    innerSize: '80%',
+                                    data: [
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                    ]
+                                }],
+                                credits: {
+                                    enabled: false
+                                },
+                                exporting: {
+                                    enabled: false
+                                },
+                            });
+                        </script>
+                    </div>
+
+                    <div class="year_in_reading_time_content_table">
+                        <table class="year_in_reading_time_content_table_list table m-0">
+                            <tbody>
+                            <tr class="year_in_reading_time_content_table_item table_item text-center">
+                                <td class="title border-0">오래 읽은 날</td>
+                                <td class="date border-0"><span class="emphasis_text">12</span>/<span class="emphasis_text">29</span></td>
+                                <td class="minute border-0"><span class="emphasis_text">20</span>분</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="year_in_settlement col-4">
+
+                <div class="year_in_settlement_header col-2 m-0 p-0 d-inline-block">
+                    <h3 class="year_in_settlement_header_title m-0 d-inline-block">독서결산</h3>
+                </div>
+
+                <div class="year_in_settlement_content col-10 m-0 p-0 d-inline-block">
+                    <div class="year_in_settlement_content_chart m-0">
+                        <figure class="highcharts-figure">
+                            <div id="year_in_settlement_container"></div>
+                            <p class="highcharts-description">
+                            </p>
+                        </figure>
+                        <script>
+                            Highcharts.setOptions({
+                                colors: ['#CC0066', '#0357ad','#fa219c', '#1aba00']
+                            });
+                            // Set up the chart
+                            Highcharts.chart('year_in_settlement_container', {
+                                chart: {
+                                    type: 'column',
+                                    margin: [30, 30, 30, 30],
+                                    style: {
+                                        color: '#333333',
+                                        fontFamily: 'notoSans'
+                                    },
+                                    backgroundColor:'rgba(255, 255, 255, 0)',
+                                    height: 200,
+                                    width: 280
+                                },
+                                credits: {
+                                    enabled: false
+                                },
+                                exporting: {
+                                    enabled: false
+                                },
+                                title:{
+                                    text: ''
+                                },
+                                legend: {
+                                    enabled: false
+                                },
+                                xAxis: [{
+                                    categories: [
+                                        '1',
+                                        '2',
+                                        '3',
+                                        '4',
+                                        '5',
+                                        '6',
+                                        '7',
+                                        '8',
+                                        '9',
+                                        '10',
+                                        '11',
+                                        '12',
+                                        '13',
+                                        '14',
+                                        '15',
+                                        '16',
+                                        '17',
+                                        '18',
+                                        '19',
+                                        '20',
+                                        '21',
+                                        '22',
+                                        '23',
+                                        '24',
+                                        '25',
+                                        '26',
+                                        '27',
+                                        '28',
+                                        '29',
+                                        '30',
+                                        '31',
+                                    ],
+                                    crosshair: true,
+                                    labels: {
+                                        style: {
+                                            color: '#AAAAAA'
+                                        },
+                                        formatter: function () {
+                                            if (this.value) {
+                                                console.log(this);
+                                                return '<span style="fill: red;">' + this.value + '</span>';
+                                            } else {
+                                                return this.value;
+                                            }
+                                        }
+                                    }
+                                }],
+                                yAxis: [{
+                                    //y axis 왼쪽
+                                    gridLineWidth: 0,
+                                    title: {
+                                        text: ''
+                                    },
+                                    labels: {
+                                        enabled: false
+                                    },
+                                    plotLines: [
+                                        {   //기준점 사용 옵션.
+                                            color: '#fa219c',
+                                            width: 3,
+                                            value: 30,
+                                            dashStyle: 'shortdash', //라인 스타일 지정 옵션
+                                            zIndex: 5,
+                                            label: {
+                                                text: '국민평균 30',
+                                                align: 'right',
+                                                x: -10,
+                                                y: -6,
+                                                style: {
+                                                    color:'#fa219c',
+                                                }
+                                            }
+                                        },
+                                        {
+                                            color: '#111111',
+                                            width: 3,
+                                            value: 70,
+                                            dashStyle: 'shortdot',
+                                            zIndex: 5,
+                                            label: {
+                                                text:'밀리평균 70',
+                                                align: 'right',
+                                                x: -10,
+                                                y: -6,
+                                                style: {
+                                                    color:'#111111',
+                                                },
+                                            }
+                                        }
+                                    ]
+                                }],
+                                series:  [{
+                                    name: '',
+                                    data: [49.9, '', 71.5, 106.4, 49.9, 71.5, 106.4, '', '', 10]
+                                }]
+                            });
+                        </script>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="year_in__reading_time bg-light col-4">
-            <h3 class="year_in_reading_time_title">독서 시간</h3>
-            <div class="year_in_reading_time_content bg-white m-0">
-                <figure class="highcharts-figure">
-                    <div id="year_in_reading_time_container"></div>
-                    <p class="highcharts-description">
-                    </p>
-                </figure>
-                <script>
-                    Highcharts.setOptions({
-                        colors: ['#ED561B', '#ED561B', '#ED561B', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
-                    });
-                    Highcharts.chart('year_in_reading_time_container', {
-                        chart: {
-                            plotBackgroundColor: '#FFFFFF',
-                            plotBorderWidth: 0,
-                            plotShadow: false
-                        },
-                        title: {
-                            text: `<span style="text-align: center">총<br><strong>20</strong>분</span>`,
-                            align: 'middle',
-                            verticalAlign: 'middle',
-                            x: 200,
-                            y: 20,
-                        },
-                        tooltip: {
-                            enabled: false
-                        },
-                        plotOptions: {
-                            pie: {
-                                dataLabels: {
-                                    enabled: true,
-                                    distance: -50,
-                                    style: {
-                                        fontWeight: 'bold',
-                                        color: 'white'
-                                    }
-                                },
-                                startAngle: -150,
-                                endAngle: 150,
-                                center: ['50%', '50%'],
-                                size: '100%',
-                                showInLegend: true
-                            }
-                        },
-                        series: [{
-                            type: 'pie',
-                            name: '',
-                            innerSize: '90%',
-                            data: [
-                                ['짧게 읽은 날', 10],
-                                ['오래 읽은 날', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                                ['', 10],
-                            ]
-                        }],
-                        credits: {
-                            enabled: false
-                        },
-                        exporting: {
-                            enabled: false
-                        },
-                    });
-                </script>
-            </div>
-        </div>
-
-        <div class="year_in_settlement bg-light col-4">
-
-        </div>
     </div>
 </div>
 
@@ -346,12 +602,6 @@
 {% endblock %}
 
 {% block script %}
-
-{% comment %}
-<script>
-    $("#readingRoutineCalendar").kendoDatePicker({});
-</script>
-{% endcomment %}
 
 
 <script src="{% static 'js/setOptionflatpickr.js' %}"></script>

@@ -3,12 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d95db46e-7ea1-44fe-8fa9-4d811095da28" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/corporate_statistics.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/corporate_statistics.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/customFlatpickr.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/customFlatpickr.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/reset.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/selectMonthTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/selectMonthTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/corporate_statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/corporate_statistics.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mypage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +51,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jmyan\django_test\pragmatic\static\js" />
       <recent name="C:\Users\jmyan\django_test\pragmatic\accountapp\templates\accountapp" />
       <recent name="C:\Users\jmyan\django_test\pragmatic\accountapp" />
     </key>
@@ -116,7 +118,8 @@
       <workItem from="1642386335388" duration="25428000" />
       <workItem from="1642468999284" duration="21318000" />
       <workItem from="1642555243542" duration="24939000" />
-      <workItem from="1642640493328" duration="24445000" />
+      <workItem from="1642640493328" duration="24580000" />
+      <workItem from="1642723573476" duration="26725000" />
     </task>
     <servers />
   </component>
@@ -134,18 +137,7 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/templates/mypage.html</url>
-          <line>273</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/pragmatic$manage.coverage" NAME="manage Coverage Results" MODIFIED="1642386368251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pragmatic$manage.coverage" NAME="manage Coverage Results" MODIFIED="1642723574666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
