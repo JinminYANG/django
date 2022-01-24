@@ -12,14 +12,13 @@
 <script src="https://kendo.cdn.telerik.com/2021.3.1207/js/kendo.all.min.js"></script>
 <script src="https://kendo.cdn.telerik.com/2021.3.1207/js/cultures/kendo.culture.ko-KR.min.js"></script>
 
-<link rel="stylesheet" href="{% static '/css/corporate_statistics.css' %}">
+<link rel="stylesheet" href="{% static '/css/analysis.css' %}">
 
 {% endblock head %}
 
 {% block content %}
 
 {% include 'header.html' %}
-
 
 <div class="container p-0">
 
@@ -74,6 +73,12 @@
                     우리 회사 직원들은
                 </span>
                 <span class="monthly_read_count_text_body">
+
+                    {% comment %}
+                        ex) {% statistics.book_count %}
+                        평균 <span class="emphasis_text mx-1">{% statistics.book_count %}권</span>의 책을 읽었습니다
+                    {% endcomment %}
+
                 평균 <span class="emphasis_text mx-1">5권</span>의 책을 읽었습니다
                 </span>
             </div>
@@ -87,6 +92,12 @@
                 </div>
                 <div class="monthly_times_text_body">
                     <span class="top">
+
+                        {% comment %}
+                            ex) {% statistics.hours %} {% statistics.minute %}
+                            평균 <span class="emphasis_text mx-1">{% statistics.hours %}시간 {% statistics.minute %}분</span>
+                        {% endcomment %}
+
                         평균 <span class="emphasis_text mx-1">1시간 45분</span>
                     </span>
                     <p class="bottom mt-4">
@@ -100,6 +111,28 @@
             <div class="monthly_user_rank_header mt-3">
                 <h3 class="monthly_user_rank_header_title">이달의 다독왕</h3>
             </div>
+
+            {% comment %}
+            ex)
+            millie B2B dashboard 페이지의 독서 순위 참조
+
+            {% for mem in read_cnt_ranks %}
+            <div class="monthly_user_rank_content_item col mb-4">
+                <div class="card h-100 border-0">
+
+                    이 이미지는 DB에서 불러올지 아니면 static을 이용해서 가져올지 -> 일단 static 으로 진행
+                    <img src="{% url '' %}" alt="rank_{{ forloop.counter }}" class="monthly_user_rank_content_item_img card-img-top px-5 p-4 m-auto">
+                    <img src="{% static 'img/statistics/user_rank_first.png' %}" alt="rank_{{ forloop.counter }}" class="monthly_user_rank_content_item_img card-img-top px-5 p-4 m-auto">
+
+                    <div class="monthly_user_rank_content_item_body px-0 card-body text-center">
+                        <h5 class="monthly_user_rank_content_item_body_title mb-2 card-title">{{ mem.member.member_id }}</h5>
+                        <p class="monthly_user_rank_content_item_body_count card-text">{{ mem.read_book_count }}권</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% endcomment %}
 
             <div class="monthly_user_rank_content row row-cols-1 row-cols-md-5 mt-3">
                 <div class="monthly_user_rank_content_item col mb-4">
@@ -156,8 +189,35 @@
                 <h3 class="monthly_favorite_books_header_title">월간 인기 도서</h3>
             </div>
 
+            {% comment %}
+            ex)
+            millie B2B dashboard 페이지의 독서 순위 참조
+
+            {% for item in list %}
+            <div class="monthly_favorite_books_content_item col p-0 mb-4">
+
+                <div class="monthly_favorite_books_content_item_header">
+                    <img src="{% static 'img/statistics/favorite_books_fourth_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
+
+                    <img src="{% url '' %}" alt="monthly_favorite_books_content_item_img_{{ forloop.counter }}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
+                    <img src="{% static 'img/statistics/favorite_books_fourth_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
+                </div>
+
+                <div class="monthly_favorite_books_content_item_body text-center">
+                    <h5 class="monthly_favorite_books_content_item_body_title mb-2">{{ item.book_title }}</h5>
+                    <p class="monthly_favorite_books_content_item_body_author mb-2">{{ item.book_author }}</p>
+                    <div class="monthly_favorite_books_content_item_body_count m-auto">
+                        <p class="monthly_favorite_books_content_item_body_count_text mb-0">열람 {{ item.book_count }}회</p>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+
+            {% endcomment %}
+
             <div class="monthly_favorite_books_content row row-cols-1 row-cols-md-5 m-0">
-                <div class="monthly_favorite_books_content_item fourth col p-0 mb-4">
+                <div class="monthly_favorite_books_content_item col p-0 mb-4">
                     <div class="monthly_favorite_books_content_item_header">
                         <img src="{% static 'img/statistics/favorite_books_fourth_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
                         <img src="{% static 'img/statistics/favorite_books_fourth_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
@@ -170,7 +230,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="monthly_favorite_books_content_item second col p-0 mb-4">
+                <div class="monthly_favorite_books_content_item col p-0 mb-4">
                     <div class="monthly_favorite_books_content_item_header">
                         <img src="{% static 'img/statistics/favorite_books_second_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
                         <img src="{% static 'img/statistics/favorite_books_second_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
@@ -183,7 +243,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="monthly_favorite_books_content_item first col p-0 mb-4">
+                <div class="monthly_favorite_books_content_item col p-0 mb-4">
                     <div class="monthly_favorite_books_content_item_header">
                         <img src="{% static 'img/statistics/favorite_books_first_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
                         <img src="{% static 'img/statistics/favorite_books_first_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
@@ -196,7 +256,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="monthly_favorite_books_content_item third col p-0 mb-4">
+                <div class="monthly_favorite_books_content_item col p-0 mb-4">
                     <div class="monthly_favorite_books_content_item_header">
                         <img src="{% static 'img/statistics/favorite_books_third_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
                         <img src="{% static 'img/statistics/favorite_books_third_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
@@ -209,7 +269,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="monthly_favorite_books_content_item fifth col p-0 mb-4">
+                <div class="monthly_favorite_books_content_item col p-0 mb-4">
                     <div class="monthly_favorite_books_content_item_header">
                         <img src="{% static 'img/statistics/favorite_books_fifth_icon.png' %}" class="monthly_favorite_books_content_item_icon" alt="monthly_favorite_books_content_item_icon">
                         <img src="{% static 'img/statistics/favorite_books_fifth_img.png' %}" class="monthly_favorite_books_content_item_img" alt="monthly_favorite_books_content_item_img">
@@ -244,6 +304,7 @@
                         Highcharts.setOptions({
                             colors: ['#736357', '#FDEA60', '#A5A5A5', '#0178D3', '#FFB704', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                         });
+
                         Highcharts.chart('favorite_category_container', {
                             chart: {
                                 plotBackgroundColor: null,
@@ -304,6 +365,13 @@
                                 name: '',
                                 innerSize: '80%',
                                 data: [
+
+                                    {% comment %}
+                                        {% for item in list %}
+                                            [`{{ item.category_title }}`, {{ item.category_percentage }}],
+                                        {% endfor %}
+                                    {% endcomment %}
+
                                     ['소설', 35],
                                     ['자기계발', 17],
                                     ['경제', 12],
@@ -335,6 +403,20 @@
                     <div class="favorite_category_table_content mt-2">
                         <table class="table favorite_category_table_content_list text-right ml-auto mr-4 mb-0 pt-5">
                             <tbody>
+
+                           {% comment %}
+                            ex)
+                            리스트를 5개만 뿌리도록 view 에서 설정 후
+
+                            {% for item in list %}
+                            <tr class="favorite_category_table_content_item">
+                                <td class="favorite_category_table_content_item_title border-0 text-left w-50">{{ item.category_title }}</td>
+                                <td class="favorite_category_table_content_item_percentage border-0 w-50">{{ item.category_percentage }}%</td>
+                            </tr>
+                            {% endfor %}
+
+                            {% endcomment %}
+
                             <tr class="favorite_category_table_content_item">
                                 <td class="favorite_category_table_content_item_title border-0 text-left w-50">소설</td>
                                 <td class="favorite_category_table_content_item_percentage border-0 w-50">35%</td>
@@ -375,8 +457,8 @@
 {% block script %}
 
 {% comment %}
-    현재 static 파일로 kendoDatePicker를 불러오지 못하는 오류가 발생했는데
-    소장님이 base 만들어주시면 거기에 작업할 때 다시 테스트 진행 예정
+현재 static 파일로 kendoDatePicker를 불러오지 못하는 오류가 발생했는데
+소장님이 base 만들어주시면 거기에 작업할 때 다시 테스트 진행 예정
 {% endcomment %}
 
 <script>

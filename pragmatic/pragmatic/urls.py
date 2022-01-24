@@ -20,10 +20,14 @@ from accountapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+
     path('', views.login, name='login'),
     path('main/', views.main, name='main'),
-    path('corporate_statistics/', views.corporate_statistics, name='corporate_statistics'),
+    path('analysis/', views.analysis, name='analysis'),
     path('mypage/', views.mypage, name='mypage'),
+
+
     path('account/', include('accountapp.urls')),
     path('myform/', include('accountapp.urls')),
 ]

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
@@ -146,12 +147,29 @@ class TestView(View):
         return Response()
 
 
+
+
+
+
+class mainView(LoginRequiredMixin):
+    template_name = 'comLib/main.html'
+    login_url = '/login/'
+
+    ordering = ['-pk']
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+# MILcomLib
+
 def main(request):
     return render(request, 'main.html')
 
 
-def corporate_statistics(request):
-    return render(request, 'corporate_statistics.html')
+def analysis(request):
+    return render(request, 'analysis.html')
 
 
 def mypage(request):

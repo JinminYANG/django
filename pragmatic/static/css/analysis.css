@@ -233,21 +233,21 @@
     width: 100px;
 }
 
-.monthly_favorite_books_content_item.first .monthly_favorite_books_content_item_img{
+.monthly_favorite_books_content_item:nth-child(3) .monthly_favorite_books_content_item_img{
     width: 160px;
 }
 
-.monthly_favorite_books_content_item.second .monthly_favorite_books_content_item_img,
-.monthly_favorite_books_content_item.third .monthly_favorite_books_content_item_img{
+.monthly_favorite_books_content_item:nth-child(2) .monthly_favorite_books_content_item_img,
+.monthly_favorite_books_content_item:nth-child(4) .monthly_favorite_books_content_item_img{
     width: 140px;
 }
 
-.monthly_favorite_books_content_item.first .monthly_favorite_books_content_item_icon{
+.monthly_favorite_books_content_item:nth-child(3) .monthly_favorite_books_content_item_icon{
     left: 10%;
 }
 
-.monthly_favorite_books_content_item.second .monthly_favorite_books_content_item_icon,
-.monthly_favorite_books_content_item.third .monthly_favorite_books_content_item_icon{
+.monthly_favorite_books_content_item:nth-child(2) .monthly_favorite_books_content_item_icon,
+.monthly_favorite_books_content_item:nth-child(4) .monthly_favorite_books_content_item_icon{
     left: 15%;
 }
 

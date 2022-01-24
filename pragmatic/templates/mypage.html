@@ -50,9 +50,24 @@
                             </p>
                         </figure>
                         <script>
+                            {% comment %}
+                                Highcharts.setOptions({
+                                    colors: [
+                                        {% for item in list %}
+                                            {% if forloop.counter %}
+                                                '#A56B44',
+                                            {% else %}
+                                                '#EEEEEE',
+                                            {% endif %}
+                                        {% endfor %}
+                                    ]
+                                });
+                            {% endcomment %}
+
                             Highcharts.setOptions({
                                 colors: ['#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                             });
+
                             Highcharts.chart('monthly_taste_content_container', {
                                 chart: {
                                     plotBackgroundColor: null,
@@ -64,6 +79,12 @@
                                     }
                                 },
                                 title: {
+                                    {% comment %}
+                                     ex)
+                                        {{ record.my_read_count }} {{ record.my_category }}
+                                    text: `<div style="font-size: 12px;"><strong style="font-size: 30px;">{{ record.my_read_count }}</strong>권<br>{{ record.my_category }}</div>`,
+                                    {% endcomment %}
+
                                     text: `<div style="font-size: 9px;"><strong style="font-size: 20px;">1</strong>권<br>1분야</div>`,
                                     align: 'middle',
                                     verticalAlign: 'middle',
@@ -100,6 +121,14 @@
                                     name: '',
                                     innerSize: '90%',
                                     data: [
+                                        {% comment %}
+
+                                         ex)
+                                            {% for item in list %}
+                                                 ['', {{ record.my_read_count }}]
+                                            {% endfor %}
+
+                                        {% endcomment %}
                                         ['', 100],
                                     ]
                                 }],
@@ -116,6 +145,19 @@
                     <div class="monthly_taste_content_table">
                         <table class="monthly_taste_content_table_list table m-0">
                             <tbody>
+
+                            {% comment %}
+                                {% for item in list %}
+                                 <tr class="monthly_taste_content_table_item">
+                                    <td class="monthly_taste_content_table_item_rank border-0">{{ forloop.counter }}</td>
+                                    <td class="monthly_taste_content_table_item_title border-0">{{ item.category_title }}</td>
+                                    <td class="monthly_taste_content_table_item_count border-0"><span class="emphasis_text">{{ item_category_count }}</span>권</td>
+                                    <td class="monthly_taste_content_table_item_percentage border-0"><span class="emphasis_text">{{ item_category_percentage }}</span>%</td>
+                                </tr>
+                                {% endfor %}
+
+                            {% endcomment %}
+
                             <tr class="monthly_taste_content_table_item">
                                 <td class="monthly_taste_content_table_item_rank border-0">1</td>
                                 <td class="monthly_taste_content_table_item_title border-0">라이프스타일</td>
@@ -141,6 +183,20 @@
                             </p>
                         </figure>
                         <script>
+                            {% comment %}
+                                Highcharts.setOptions({
+                                    colors: [
+                                    {% for item in list %}
+                                        {% if forloop.counter %}
+                                            '#A56B44',
+                                        {% else %}
+                                            '#EEEEEE',
+                                        {% endif %}
+                                    {% endfor %}
+                                    ]
+                                });
+                            {% endcomment %}
+
                             Highcharts.setOptions({
                                 colors: ['#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                             });
@@ -155,6 +211,12 @@
                                     }
                                 },
                                 title: {
+                                    {% comment %}
+                                    ex)
+                                        {{ record.minute }}
+                                        text: `<div style="font-size: 12px; text-align: center;">총<br><strong style="font-size: 30px;">{{ record.minute }}</strong>분</div>`,
+                                    {% endcomment %}
+
                                     text: `<div style="font-size: 9px;">총<br><strong style="font-size: 20px;">20</strong>분</div>`,
                                     align: 'middle',
                                     verticalAlign: 'middle',
@@ -211,6 +273,18 @@
                     <div class="monthly_reading_time_content_table">
                         <table class="monthly_reading_time_content_table_list table m-0">
                             <tbody>
+
+                            {% comment %}
+                                {% for item in list %}
+                                <tr class="monthly_reading_time_content_table_item table_item text-center">
+                                    <td class="title border-0">{{ item.record_title }}</td>
+                                    <td class="date border-0"><span class="emphasis_text">{{ item.record_date_month }}</span>/<span class="emphasis_text">{{ item.record_date_day }}</span></td>
+                                    <td class="minute border-0"><span class="emphasis_text">{{ item.record_date_minute }}</span>분</td>
+                                </tr>
+                                {% endfor %}
+
+                            {% endcomment %}
+
                             <tr class="monthly_reading_time_content_table_item table_item text-center">
                                 <td class="title border-0">오래 읽은 날</td>
                                 <td class="date border-0"><span class="emphasis_text">12</span>/<span class="emphasis_text">29</span></td>
@@ -528,64 +602,83 @@
                                         style: {
                                             color: '#AAAAAA'
                                         },
-                                        formatter: function () {
-                                            if (this.value) {
-                                                console.log(this);
-                                                return '<span style="fill: red;">' + this.value + '</span>';
-                                            } else {
-                                                return this.value;
+                                    {% comment %}
+                            formatter: function () {
+                                if (this.value) {
+                                    console.log(this);
+                                    // console.log(this.chart);
+                                    // console.log(this.chart.series);
+                                    console.log(this.chart.series[0].data);
+                                    let hi = this.chart.series[0].data;
+                                    console.log(this.chart.series[0].data[0]);
+
+                                    Array.from(hi).forEach((el) => {
+                                        console.log(el.options);
+                                    });
+
+                                    function nearest_y_from_x(series, x) {
+                                        const x_data_value = series.xAxis.toPixels(x, true);
+                                        return series.chart.pointer.findNearestKDPoint([series], false, {chartX: x_data_value}).y;
+                                    }
+
+                                    nearest_y_from_x(this.chart.series[0], this.value);
+
+                                    return '<span style="fill: red;">' + this.value + '</span>';
+                                } else {
+                                    return this.value;
+                                }
+                            }
+                            {% endcomment %}
+                            }
+                            }],
+                            yAxis: [{
+                                //y axis 왼쪽
+                                gridLineWidth: 0,
+                                title: {
+                                    text: ''
+                                },
+                                labels: {
+                                    enabled: false
+                                },
+                                plotLines: [
+                                    {   //기준점 사용 옵션.
+                                        color: '#fa219c',
+                                        width: 3,
+                                        value: 30,
+                                        dashStyle: 'shortdash', //라인 스타일 지정 옵션
+                                        zIndex: 5,
+                                        label: {
+                                            text: '국민평균 30',
+                                            align: 'right',
+                                            x: -10,
+                                            y: -6,
+                                            style: {
+                                                color:'#fa219c',
                                             }
+                                        }
+                                    },
+                                    {
+                                        color: '#111111',
+                                        width: 3,
+                                        value: 70,
+                                        dashStyle: 'shortdot',
+                                        zIndex: 5,
+                                        label: {
+                                            text:'밀리평균 70',
+                                            align: 'right',
+                                            x: -10,
+                                            y: -6,
+                                            style: {
+                                                color:'#111111',
+                                            },
                                         }
                                     }
-                                }],
-                                yAxis: [{
-                                    //y axis 왼쪽
-                                    gridLineWidth: 0,
-                                    title: {
-                                        text: ''
-                                    },
-                                    labels: {
-                                        enabled: false
-                                    },
-                                    plotLines: [
-                                        {   //기준점 사용 옵션.
-                                            color: '#fa219c',
-                                            width: 3,
-                                            value: 30,
-                                            dashStyle: 'shortdash', //라인 스타일 지정 옵션
-                                            zIndex: 5,
-                                            label: {
-                                                text: '국민평균 30',
-                                                align: 'right',
-                                                x: -10,
-                                                y: -6,
-                                                style: {
-                                                    color:'#fa219c',
-                                                }
-                                            }
-                                        },
-                                        {
-                                            color: '#111111',
-                                            width: 3,
-                                            value: 70,
-                                            dashStyle: 'shortdot',
-                                            zIndex: 5,
-                                            label: {
-                                                text:'밀리평균 70',
-                                                align: 'right',
-                                                x: -10,
-                                                y: -6,
-                                                style: {
-                                                    color:'#111111',
-                                                },
-                                            }
-                                        }
-                                    ]
-                                }],
+                                ]
+                            }],
                                 series:  [{
-                                    name: '',
-                                    data: [49.9, '', 71.5, 106.4, 49.9, 71.5, 106.4, '', '', 10]
-                                }]
+                                name: '',
+                                data: [49.9, '', 71.5, 106.4, 49.9, 71.5, 106.4, '', '', 10]
+                            }]
                             });
                         </script>
                     </div>

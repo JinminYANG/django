@@ -130,7 +130,8 @@
 }
 
 .monthly_user_rank_content_list{
-    padding: 10px 50px 0 50px;
+    padding: 12px 50px 0 55px;
+    gap: 12px 0;
 }
 
 .monthly_user_rank_content_item{
@@ -468,11 +469,11 @@
 .notice_list{
     margin: 0 auto;
     width: 80%;
+    max-width: 80%;
     height: 92%;
 }
 
 .notice_list_item{
-
 }
 
 .notice_list_item_title{
@@ -480,6 +481,10 @@
     font-size: 12px;
     color: #666666;
     border-top: 1px solid #FFFFFF !important;
+    white-space: nowrap;
+    max-width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .notice_list_item_title a{
@@ -493,6 +498,7 @@
 }
 
 .notice_list_item_date{
+    min-width: 80px;
     font-size: 9px;
     color: #808080;
     text-align: right;
