@@ -32,3 +32,8 @@
     color: rgba(57, 57, 57, 0);
 }
 
+.flatpickr-day.selected{
+    background: antiquewhite;
+    color: #000000;
+    border-color: antiquewhite;
+}

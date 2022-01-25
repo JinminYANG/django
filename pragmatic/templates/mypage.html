@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load comLib_tags %}
 
 {% block head %}
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -25,17 +26,17 @@
 
 {% block content %}
 
-{% include 'header.html' %}
+{% comLib_navbar %}
 
-<div class="contents container">
+<div class="contents container p-0">
 
-    <div class="monthly row mt-3">
+    <div class="monthly row mt-3 m-0">
 
-        <div class="monthly_header col-12">
+        <div class="monthly_header col-12 ml-4">
             <h3 class="monthly_header_title">이번 달 나의 독서 기록</h3>
         </div>
 
-        <div class="monthly_content row col-12 mt-3">
+        <div class="monthly_content row col-12 mt-3 mx-0 p-0">
 
             <div class="monthly_taste col-4 p-0">
                 <div class="monthly_taste_header col-2 m-0 p-0 d-inline-block">
@@ -53,19 +54,16 @@
                             {% comment %}
                                 Highcharts.setOptions({
                                     colors: [
-                                        {% for item in list %}
-                                            {% if forloop.counter %}
-                                                '#A56B44',
-                                            {% else %}
-                                                '#EEEEEE',
-                                            {% endif %}
+                                        {% for elem in list %}
+                                            '#A56B44',
                                         {% endfor %}
+                                        '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE',
                                     ]
                                 });
                             {% endcomment %}
 
                             Highcharts.setOptions({
-                                colors: ['#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                                colors: ['#A56B44']
                             });
 
                             Highcharts.chart('monthly_taste_content_container', {
@@ -82,7 +80,9 @@
                                     {% comment %}
                                      ex)
                                         {{ record.my_read_count }} {{ record.my_category }}
-                                    text: `<div style="font-size: 12px;"><strong style="font-size: 30px;">{{ record.my_read_count }}</strong>권<br>{{ record.my_category }}</div>`,
+                                    text: `<div style="font-size: 12px;">
+                                            <strong style="font-size: 30px;">{{ record.my_read_count }}</strong>권<br>{{ record.my_category }}
+                                           </div>`,
                                     {% endcomment %}
 
                                     text: `<div style="font-size: 9px;"><strong style="font-size: 20px;">1</strong>권<br>1분야</div>`,
@@ -121,6 +121,7 @@
                                     name: '',
                                     innerSize: '90%',
                                     data: [
+
                                         {% comment %}
 
                                          ex)
@@ -129,6 +130,7 @@
                                             {% endfor %}
 
                                         {% endcomment %}
+
                                         ['', 100],
                                     ]
                                 }],
@@ -149,21 +151,22 @@
                             {% comment %}
                                 {% for item in list %}
                                  <tr class="monthly_taste_content_table_item">
-                                    <td class="monthly_taste_content_table_item_rank border-0">{{ forloop.counter }}</td>
-                                    <td class="monthly_taste_content_table_item_title border-0">{{ item.category_title }}</td>
-                                    <td class="monthly_taste_content_table_item_count border-0"><span class="emphasis_text">{{ item_category_count }}</span>권</td>
-                                    <td class="monthly_taste_content_table_item_percentage border-0"><span class="emphasis_text">{{ item_category_percentage }}</span>%</td>
+                                    <td class="rank border-0 text-center">{{ forloop.counter }}</td>
+                                    <td class="title border-0">{{ item.category_title }}</td>
+                                    <td class="count border-0 text-center"><span class="emphasis_text">{{ item_category_count }}</span>권</td>
+                                    <td class="percentage border-0"><span class="emphasis_text">{{ item_category_percentage }}</span>%</td>
                                 </tr>
                                 {% endfor %}
 
                             {% endcomment %}
 
                             <tr class="monthly_taste_content_table_item">
-                                <td class="monthly_taste_content_table_item_rank border-0">1</td>
-                                <td class="monthly_taste_content_table_item_title border-0">라이프스타일</td>
-                                <td class="monthly_taste_content_table_item_count border-0"><span class="emphasis_text">1</span>권</td>
-                                <td class="monthly_taste_content_table_item_percentage border-0"><span class="emphasis_text">100</span>%</td>
+                                <td class="rank border-0 text-center">1</td>
+                                <td class="title border-0">라이프스타일</td>
+                                <td class="count border-0 text-center"><span class="emphasis_text">1</span>권</td>
+                                <td class="percentage border-0"><span class="emphasis_text">100</span>%</td>
                             </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -186,13 +189,10 @@
                             {% comment %}
                                 Highcharts.setOptions({
                                     colors: [
-                                    {% for item in list %}
-                                        {% if forloop.counter %}
+                                        {% for elem in list %}
                                             '#A56B44',
-                                        {% else %}
-                                            '#EEEEEE',
-                                        {% endif %}
-                                    {% endfor %}
+                                        {% endfor %}
+                                        '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE',
                                     ]
                                 });
                             {% endcomment %}
@@ -200,6 +200,7 @@
                             Highcharts.setOptions({
                                 colors: ['#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                             });
+
                             Highcharts.chart('monthly_reading_time_container', {
                                 chart: {
                                     plotBackgroundColor: null,
@@ -214,7 +215,9 @@
                                     {% comment %}
                                     ex)
                                         {{ record.minute }}
-                                        text: `<div style="font-size: 12px; text-align: center;">총<br><strong style="font-size: 30px;">{{ record.minute }}</strong>분</div>`,
+                                        text: `<div style="font-size: 12px; text-align: center;">
+                                                총<br><strong style="font-size: 30px;">{{ record.minute }}</strong>분
+                                               </div>`,
                                     {% endcomment %}
 
                                     text: `<div style="font-size: 9px;">총<br><strong style="font-size: 20px;">20</strong>분</div>`,
@@ -302,18 +305,81 @@
                 </div>
 
                 <div class="monthly_reading_routine_content col-10 m-0 p-0 d-inline-block">
-                    <div class="monthly_reading_routine_content_text col-5">
-                        <span>
+                    <span class="monthly_reading_routine_content_text col-5">
+
+                        {% comment %}
+
+                        {% for item in list %}
+                            <span class="emphasis_text">{{ item.day }}요일</span>에<br>
+                            가장 많이 읽고,<br>
+                            <span class="emphasis_text">{{ item.morning }}</span> 시간대에<br>
+                            자주 들어와요.
+
+                        {% endfor %}
+
+                        {% endcomment %}
+
                             <span class="emphasis_text">월요일</span>에<br>
                             가장 많이 읽고,<br>
                             <span class="emphasis_text">오전</span> 시간대에<br>
                             자주 들어와요.
-                        </span>
-                    </div>
+                    </span>
 
                     <input class="dateSelector">
+                    <script>
+                        {% comment %}
+
+                            이번 달에 대한 정보를 받아와서 표시해주기 위한 코드
+                            {% for statistics in statistics_list %}
+                                {{ statistics.statistics_month|date:'Y년 M' }}
+                            {% endfor %}
+
+                            let date = {{ statistics_list.statistics }};
+                            let thisMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+                            let thisMonthLastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+                        {% endcomment %}
+
+                        let date = new Date();
+                        let thisMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+                        let thisMonthLastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+
+                        const dateSelector = document.querySelector('.dateSelector');
+                        flatpickr.localize(flatpickr.l10ns.ko);
+                        dateSelector.flatpickr({
+                            local: 'ko',
+                            inline: true,
+                            mode: "multiple",
+                            dateFormat: "Y-m-d",
+
+                            {% comment %}
+
+                            독서 기록이 있는 날짜 정보를 받아와서 뿌림
+
+                                defaultDate: [
+                                    {% for item in list %}
+                                        `{{ item.year }}-{{ item.month }}-{{ item.day }}`
+                                    {% endfor %}
+                                ],
+
+                            {% endcomment %}
+
+                            defaultDate: ["2022-1-19", "2022-1-25"],
+                            enable: [{
+                                from: thisMonth,
+                                to: thisMonthLastDay
+                            }],
+                        });
+
+                    </script>
 
                     <div class="date_check">
+
+                        {% comment %}
+                        <span class="emphasis_text">{{ item.date }}</span>일/<span class="emphasis_text">{{ item.count }}</span>회
+                        {% endcomment %}
+
                         <span class="emphasis_text">1</span>일/<span class="emphasis_text">2</span>회
                     </div>
 
@@ -326,13 +392,13 @@
         </div>
     </div>
 
-    <div class="year_in row mt-3">
+    <div class="year_in row mt-3 m-0">
 
-        <div class="year_in_header col-12">
-            <h3 class="year_in_header_title">이번 달 나의 독서 기록</h3>
+        <div class="year_in_header col-12 ml-4">
+            <h3 class="year_in_header_title">올해 나의 독서 기록</h3>
         </div>
 
-        <div class="year_in_content row col-12 mt-3">
+        <div class="year_in_content row col-12 mt-3 mx-0 p-0">
             <div class="year_in_taste col-4 p-0">
 
                 <div class="year_in_taste_header col-2 m-0 p-0 d-inline-block">
@@ -347,9 +413,22 @@
                             </p>
                         </figure>
                         <script>
+
+                            {% comment %}
+                                Highcharts.setOptions({
+                                    colors: [
+                                        {% for elem in list %}
+                                            '#000000',
+                                        {% endfor %}
+                                        '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE',
+                                    ]
+                                });
+                            {% endcomment %}
+
                             Highcharts.setOptions({
-                                colors: ['#000000', '#000000', '#000000', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                                colors: ['#000000', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                             });
+
                             Highcharts.chart('year_in_taste_content_container', {
                                 chart: {
                                     plotBackgroundColor: null,
@@ -361,7 +440,10 @@
                                     }
                                 },
                                 title: {
-                                    text: `<div style="font-size: 9px;"><strong style="font-size: 12px;">총</strong><strong style="font-size: 20px;">1</strong>권<br>1분야</div>`,
+                                    text: `<div style="font-size: 9px;">
+                                            <strong style="font-size: 12px;">총</strong>
+                                            <strong style="font-size: 20px;">1</strong>권<br>1분야
+                                           </div>`,
                                     align: 'middle',
                                     verticalAlign: 'middle',
                                     x: 105,
@@ -397,6 +479,16 @@
                                     name: '',
                                     innerSize: '80%',
                                     data: [
+
+                                        {% comment %}
+
+                                         ex)
+                                            {% for item in list %}
+                                                 ['', {{ record.my_read_count }}]
+                                            {% endfor %}
+
+                                        {% endcomment %}
+
                                         ['', 100],
                                     ]
                                 }],
@@ -413,12 +505,26 @@
                     <div class="year_in_taste_content_table">
                         <table class="year_in_taste_content_table_list table m-0">
                             <tbody>
+
+                            {% comment %}
+                                {% for item in list %}
+                                 <tr class="year_in_taste_content_table_item">
+                                    <td class="rank border-0 text-center">{{ forloop.counter }}</td>
+                                    <td class="title border-0">{{ item.category_title }}</td>
+                                    <td class="count border-0 text-center"><span class="emphasis_text">{{ item_category_count }}</span>권</td>
+                                    <td class="percentage border-0"><span class="emphasis_text">{{ item_category_percentage }}</span>%</td>
+                                </tr>
+                                {% endfor %}
+
+                            {% endcomment %}
+
                             <tr class="year_in_taste_content_table_item">
-                                <td class="rank border-0">1</td>
+                                <td class="rank border-0 text-center">1</td>
                                 <td class="title border-0">라이프스타일</td>
-                                <td class="count border-0"><span class="emphasis_text">1</span>권</td>
+                                <td class="count border-0 text-center"><span class="emphasis_text">1</span>권</td>
                                 <td class="percentage border-0"><span class="emphasis_text">100</span>%</td>
                             </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -439,9 +545,22 @@
                             </p>
                         </figure>
                         <script>
+
+                            {% comment %}
+                                Highcharts.setOptions({
+                                    colors: [
+                                        {% for elem in list %}
+                                            '#BBBBBB',
+                                        {% endfor %}
+                                        '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE',
+                                    ]
+                                });
+                            {% endcomment %}
+
                             Highcharts.setOptions({
-                                colors: ['#BBBBBB', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                                colors: ['#BBBBBB', '#BBBBBB', '#BBBBBB', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                             });
+
                             Highcharts.chart('year_in_reading_time_container', {
                                 chart: {
                                     plotBackgroundColor: null,
@@ -449,14 +568,25 @@
                                     plotShadow: false,
                                     backgroundColor:'rgba(255, 255, 255, 0)',
                                     style: {
-                                        fontFamily: 'Noto Serif KR'
+
+                                        fontFamily: 'notoSans'
                                     }
                                 },
                                 title: {
-                                    text: `<div style="font-size: 9px;">총<br><strong style="font-size: 20px;">20</strong>분</div>`,
+                                    {% comment %}
+                                    ex)
+                                        {{ record.minute }}
+                                        text: `<div style="font-size: 12px; text-align: center;">
+                                                총<br><strong style="font-size: 30px;">{{ record.minute }}</strong>분
+                                               </div>`,
+                                    {% endcomment %}
+
+                                    text: `<div style="font-size: 12px;">
+                                            총<br><strong style="font-size: 20px;">5</strong>분
+                                           </div>`,
                                     align: 'middle',
                                     verticalAlign: 'middle',
-                                    x: 120,
+                                    x: 125,
                                     y: -90,
                                 },
                                 tooltip: {
@@ -509,11 +639,29 @@
                     <div class="year_in_reading_time_content_table">
                         <table class="year_in_reading_time_content_table_list table m-0">
                             <tbody>
-                            <tr class="year_in_reading_time_content_table_item table_item text-center">
-                                <td class="title border-0">오래 읽은 날</td>
-                                <td class="date border-0"><span class="emphasis_text">12</span>/<span class="emphasis_text">29</span></td>
+
+                            {% comment %}
+                                {% for item in list %}
+                                <tr class="year_in_reading_time_content_table_item table_item text-center">
+                                    <td class="title border-0">{{ item.record_title }}</td>
+                                    <td class="date border-0"><span class="emphasis_text">{{ item.record_date_month }}</span>/<span class="emphasis_text">{{ item.record_date_day }}</span></td>
+                                    <td class="minute border-0"><span class="emphasis_text">{{ item.record_date_minute }}</span>분</td>
+                                </tr>
+                                {% endfor %}
+
+                            {% endcomment %}
+
+                            <tr class="monthly_reading_time_content_table_item table_item text-center">
+                                <td class="title border-0">오래 읽은 달</td>
+                                <td class="date border-0"><span class="emphasis_text">1</span>월</td>
                                 <td class="minute border-0"><span class="emphasis_text">20</span>분</td>
                             </tr>
+                            <tr class="monthly_reading_time_content_table_item table_item text-center">
+                                <td class="title border-0">짧게 읽은 달</td>
+                                <td class="date border-0"><span class="emphasis_text">12</span>월</td>
+                                <td class="minute border-0"><span class="emphasis_text">20</span>분</td>
+                            </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -535,14 +683,16 @@
                             </p>
                         </figure>
                         <script>
+
                             Highcharts.setOptions({
-                                colors: ['#CC0066', '#0357ad','#fa219c', '#1aba00']
+                                colors: ['#CC0066']
                             });
+
                             // Set up the chart
                             Highcharts.chart('year_in_settlement_container', {
                                 chart: {
                                     type: 'column',
-                                    margin: [30, 30, 30, 30],
+                                    margin: [30, 0, 30, 40],
                                     style: {
                                         color: '#333333',
                                         fontFamily: 'notoSans'
@@ -562,6 +712,11 @@
                                 },
                                 legend: {
                                     enabled: false
+                                },
+                                tooltip: {
+                                    headerFormat: '<span style="font-size:10px">{point.key}일</span><br>',
+                                    shared: true,
+                                    useHTML: true
                                 },
                                 xAxis: [{
                                     categories: [
@@ -600,85 +755,84 @@
                                     crosshair: true,
                                     labels: {
                                         style: {
-                                            color: '#AAAAAA'
+                                            color: '#AAAAAA',
                                         },
-                                    {% comment %}
-                            formatter: function () {
-                                if (this.value) {
-                                    console.log(this);
-                                    // console.log(this.chart);
-                                    // console.log(this.chart.series);
-                                    console.log(this.chart.series[0].data);
-                                    let hi = this.chart.series[0].data;
-                                    console.log(this.chart.series[0].data[0]);
-
-                                    Array.from(hi).forEach((el) => {
-                                        console.log(el.options);
-                                    });
-
-                                    function nearest_y_from_x(series, x) {
-                                        const x_data_value = series.xAxis.toPixels(x, true);
-                                        return series.chart.pointer.findNearestKDPoint([series], false, {chartX: x_data_value}).y;
                                     }
-
-                                    nearest_y_from_x(this.chart.series[0], this.value);
-
-                                    return '<span style="fill: red;">' + this.value + '</span>';
-                                } else {
-                                    return this.value;
-                                }
-                            }
-                            {% endcomment %}
-                            }
-                            }],
-                            yAxis: [{
-                                //y axis 왼쪽
-                                gridLineWidth: 0,
-                                title: {
-                                    text: ''
-                                },
-                                labels: {
-                                    enabled: false
-                                },
-                                plotLines: [
-                                    {   //기준점 사용 옵션.
-                                        color: '#fa219c',
-                                        width: 3,
-                                        value: 30,
-                                        dashStyle: 'shortdash', //라인 스타일 지정 옵션
-                                        zIndex: 5,
-                                        label: {
-                                            text: '국민평균 30',
-                                            align: 'right',
-                                            x: -10,
-                                            y: -6,
-                                            style: {
-                                                color:'#fa219c',
-                                            }
-                                        }
-                                    },
-                                    {
-                                        color: '#111111',
-                                        width: 3,
-                                        value: 70,
-                                        dashStyle: 'shortdot',
-                                        zIndex: 5,
-                                        label: {
-                                            text:'밀리평균 70',
-                                            align: 'right',
-                                            x: -10,
-                                            y: -6,
-                                            style: {
-                                                color:'#111111',
+                                    }],
+                                    yAxis: [{
+                                        //y axis 왼쪽
+                                        gridLineWidth: 0,
+                                        title: {
+                                            text: ''
+                                        },
+                                        labels: {
+                                            enabled: false
+                                        },
+                                        plotLines: [
+                                            {   //기준점 사용 옵션.
+                                                color: 'lightgray',
+                                                width: 3,
+                                                value: 30,
+                                                {% comment %}
+                                                    value: {{ item.total_average }},
+                                                {% endcomment %}
+                                                dashStyle: 'shortdash', //라인 스타일 지정 옵션
+                                                zIndex: 5,
+                                                label: {
+                                                    {% comment %}
+                                                        text: `국민평균 {{ item.total_average }}`,
+                                                    {% endcomment %}
+                                                    text:
+                                                        '국민평균 30',
+                                                    align: 'right',
+                                                    x: -10,
+                                                    y: -6,
+                                                    style: {
+                                                        color:'lightgray',
+                                                    }
+                                                }
                                             },
-                                        }
-                                    }
-                                ]
-                            }],
-                                series:  [{
-                                name: '',
-                                data: [49.9, '', 71.5, 106.4, 49.9, 71.5, 106.4, '', '', 10]
-                            }]
+                                            {
+                                                color: 'orange',
+                                                width: 3,
+                                                {% comment %}
+                                                    value: {{ item.millie_average }},
+                                                {% endcomment %}
+                                                value: 70,
+                                                dashStyle: 'shortdot',
+                                                zIndex: 5,
+                                                label: {
+                                                    {% comment %}
+                                                        text: `밀리평균 {{ item.millie_average }}`,
+                                                    {% endcomment %}
+                                                    text:'밀리평균 70',
+                                                    align: 'right',
+                                                    x: -10,
+                                                    y: -6,
+                                                    style: {
+                                                        color:'orange',
+                                                    },
+                                                }
+                                            }
+                                        ]
+                                    }],
+                                    series:  [{
+                                    name: '',
+
+                                    {% comment %}
+                                    data: [
+                                        {% for item in list %}
+                                            {% if item.data === null or item.data === '' %}
+                                                '',
+                                            {% else %}
+                                                {{ item.data }},
+                                            {% endif %}
+                                        {% endfor %}
+                                    ]
+                                    {% endcomment %}
+
+                                    data: [49, '', 71, 106, 49, 71, 106, '', '', 10]
+                                }]
                             });
                         </script>
                     </div>
@@ -690,14 +844,14 @@
     </div>
 </div>
 
-{% include 'footer.html' %}
+{% comLib_footer %}
 
 {% endblock %}
 
 {% block script %}
 
 
-<script src="{% static 'js/setOptionflatpickr.js' %}"></script>
+
 
 
 {% endblock script %}

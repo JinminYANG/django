@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load comLib_tags %}
 
 {% block head %}
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -13,7 +14,7 @@
 
 {% block content %}
 
-{% include 'header.html' %}
+{% comLib_navbar %}
 
 <div class="container p-0">
     <div class="date mt-5">
@@ -488,6 +489,6 @@
 
 </div>
 
-{% include 'footer.html' %}
+{% comLib_footer %}
 
 {% endblock %}

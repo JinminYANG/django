@@ -4,16 +4,23 @@
 
 <link rel="stylesheet" href="{% static '/css/header.css' %}">
 
+
 {% endblock head %}
 
 <nav class="navbar navbar-expand-lg navbar-inverse container mt-5 p-0">
     <div class="collapse navbar-collapse flex-column" id="navbarCollapse">
         <div class="row w-100">
+
             {% comment %}
             기업 로고 DB에서 받아올 수 있으면 img 파일 {{ 값 }} 입력하면 될 것 같고
             없으면 대체 텍스트인 alt 속성에 {{ conpany_name }} 이런식으로 입력하면 될듯
             {% endcomment %}
-            <h1 class="d-inline-block col-12 m-0 p-0 text-center logo"><a href="{% url 'main' %}"><img src="{% static 'img/main/header_logo.png'%}" alt="logo_img" class="logo_img"></a></h1>
+
+            <h1 class="d-inline-block col-12 m-0 p-0 text-center logo">
+                <a href="{% url 'main' %}">
+                    <img src="{% static 'img/main/header_logo.png'%}" alt="logo_img" class="logo_img">
+                </a>
+            </h1>
         </div>
 
         <div class="row w-100 navigation mt-4">
@@ -53,3 +60,5 @@
 
     </div>
 </nav>
+
+<script src="{% static 'js/navActiveEffectTest.js' %}"></script>
