@@ -16,6 +16,46 @@
 
 {% comLib_navbar %}
 
+
+{{ date }}
+<br>
+
+{{ company_read_data }}
+<br>
+
+{{ user_rank }}
+<br>
+{% for item in user_rank.list %}
+    {{ item }}<br>
+
+    {% for i in item %}
+        {{ i }}<br>
+    {% endfor %}
+{% endfor %}
+<br>
+
+{{ user_rank2 }}
+<br>
+{% for item in user_rank2 %}
+    {{ item.title }}<br>
+{% endfor %}
+
+{{ book_rank }}
+<br>
+
+{{ category }}
+<br>
+
+{{ my_reading_record }}
+<br>
+
+{{ board }}
+<br>
+
+{{ notice }}
+<br>
+
+
 <div class="container p-0">
     <div class="date mt-5">
 
@@ -26,7 +66,7 @@
         위와 같은 형식으로 입력될 듯
         {% endcomment %}
 
-        <span class="date_text">2021년 11월</span>
+        <span class="date_text">{{ date }}</span>
     </div>
 
     <div class="contents row justify-content-between">
@@ -42,7 +82,7 @@
                         평균 <span class="emphasis_text mx-1">{% statistics.book_count %}권</span>의 책을 읽었습니다
                     {% endcomment %}
 
-                평균 <span class="emphasis_text mx-1">5권</span>의 책을 읽었습니다
+                평균 <span class="emphasis_text mx-1">{{ company_read_data.count }}권</span>의 책을 읽었습니다
                 </span>
             </div>
         </div>
@@ -61,7 +101,7 @@
                             평균 <span class="emphasis_text mx-1">{% statistics.hours %}시간 {% statistics.minute %}분</span>
                         {% endcomment %}
 
-                        평균 <span class="emphasis_text mx-1">1시간 45분</span>
+                        평균 <span class="emphasis_text mx-1">{{ company_read_data.hours }}시간 {{ company_read_data.minute }}분</span>
                     </span>
                     <p class="bottom mt-4">
                         동안의 독서 시간을 가졌습니다
@@ -96,6 +136,11 @@
 
             <div class="monthly_user_rank_content mt-2">
                 <div class="monthly_user_rank_content_list row justify-content-around">
+                    {% for item in user_rank.list %}
+                        {% for i in item %}
+                        <span class="monthly_user_rank_content_item_id d-block mt-1">{{ i }}</span>
+                        {% endfor %}
+                    {% endfor %}
                     <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
                         <img src="{% static 'img/main/user_rank_first.png' %}" alt="rank_1st"
                              class="monthly_user_rank_content_item_img">
@@ -204,18 +249,16 @@
                         <div id="my_reading_record_content_times_container"></div>
                     </figure>
                     <script>
+
                         {% comment %}
-                        Highcharts.setOptions({
-                            colors: [
-                            {% for item in list %}
-                                {% if forloop.counter %}
-                                    '#A56B44',
-                                {% else %}
-                                    '#EEEEEE',
-                                {% endif %}
-                            {% endfor %}
-                            ]
-                        });
+                            Highcharts.setOptions({
+                                colors: [
+                                    {% for elem in list %}
+                                        '#A56B44',
+                                    {% endfor %}
+                                    '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE',
+                                ]
+                            });
                         {% endcomment %}
 
                         Highcharts.setOptions({
@@ -456,7 +499,7 @@
                     {% endcomment %}
 
                     <tr class="notice_list_item">
-                        <td class="notice_list_item_title py-0 align-middle"><a href="#">[이벤트] 2021 연말 다독왕 시상 결과 발표[이벤트] 2021 연말 다독왕 시상 결과 발표</a></td>
+                        <td class="notice_list_item_title py-0 align-middle"><a href="#">[이벤트] 2021 연말 다독왕 시상 결과 발표</a></td>
                         <td class="notice_list_item_date py-0 align-middle">2021-12-30</td>
                     </tr>
                     <tr class="notice_list_item">
