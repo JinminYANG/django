@@ -1,0 +1,64 @@
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+
+{% endblock head %}
+
+
+<nav class="navbar navbar-expand-lg navbar-inverse container mt-5 p-0">
+    <div class="collapse navbar-collapse flex-column" id="navbarCollapse">
+        <div class="row w-100">
+
+            {% comment %}
+            기업 로고 DB에서 받아올 수 있으면 img 파일 {{ 값 }} 입력하면 될 것 같고
+            없으면 대체 텍스트인 alt 속성에 {{ conpany_name }} 이런식으로 입력하면 될듯
+            {% endcomment %}
+
+            <h1 class="d-inline-block col-12 m-0 p-0 text-center logo">
+                <a href="{% url 'library:main' %}">
+                    <img src="{% static 'img/main/header_logo.png'%}" alt="logo_img" class="logo_img">
+                </a>
+            </h1>
+        </div>
+
+        <div class="row w-100 navigation mt-4">
+            <ul class="navbar-nav m-0 p-0 col-5 text-center">
+                <li class="nav-item col p-0 px-3 mr-2">
+                    <a class="nav-link py-0 px-3" href="{% url 'library:analysis' %}">기업 통계</a>
+                </li>
+                <li class="nav-item col p-0 px-3 mr-2">
+                    <a class="nav-link py-0 px-3" href="{% url 'library:mypage' %}">마이페이지</a>
+                </li>
+                <li class="nav-item col p-0 mr-1">
+                    {% comment %}
+                    path 완성되면 url '' 값 입력
+                    {% endcomment %}
+                    <a class="nav-link py-0 px-3" href="#">게시판</a>
+                </li>
+                <li class="nav-item col p-0 mr-1">
+                    {% comment %}
+                    북러닝은 다음 기획에 구현
+                    {% endcomment %}
+                    <a class="nav-link py-0 px-3" href="#">북러닝</a>
+                </li>
+            </ul>
+
+            <ul class="d-inline-block ml-auto p-0 col-7 text-right justify-content-end navbar-bar">
+                <li class="nav-item dropdown col">
+                    <a class="nav-link dropdown-toggle p-0 mr-3" href="#" id="navbardrop2" data-toggle="dropdown">aixcon</a>
+                    <div class="dropdown-menu justify-content-end text-right">
+                        {% comment %}
+                        href 주소 값에 이전처럼 {% url 'logout' %} 만들어주시면 넣으면 될듯
+                        {% endcomment %}
+                        <a href="#" class="dropdown-item">로그아웃</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<script src="{% static 'js/navActiveEffectTest.js' %}"></script>

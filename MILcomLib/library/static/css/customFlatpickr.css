@@ -1,0 +1,39 @@
+.flatpickr-input {
+    display: none;
+}
+
+.flatpickr-calendar{
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: scale(0.5);
+}
+
+.flatpickr-months {
+    display: none;
+}
+
+.flatpickr-day {
+    cursor: default !important;
+}
+
+.flatpickr-day:hover,
+.flatpickr-day.today:hover,
+.flatpickr-day.today:focus {
+    border-color: transparent;
+    background: transparent;
+    color: #393939;
+}
+
+.flatpickr-day.today{
+    border-color: transparent;
+}
+
+.flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover{
+    color: rgba(57, 57, 57, 0);
+}
+
+.flatpickr-day.selected{
+    background: antiquewhite;
+    color: #000000;
+    border-color: antiquewhite;
+}

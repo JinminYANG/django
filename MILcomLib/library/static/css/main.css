@@ -1,0 +1,528 @@
+.date{
+    position: relative;
+    height: 40px;
+    width: 250px;
+    background-image: url("../img/main/read_count_header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.date_text{
+    position: absolute;
+    left: 30px;
+    font-size: 16px;
+    /*font-weight: bold;*/
+    color: #FFFFFF;
+    line-height: 50px;
+}
+
+.monthly_read_count {
+    position: relative;
+    color: #FFFFFF;
+    height: 390px;
+}
+
+.monthly_read_count_content{
+    width: 90%;
+    height: 100%;
+    background-image: url("../img/main/read_count_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.monthly_read_count_text_header{
+    position: absolute;
+    right: 146px;
+    top: 50px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.monthly_read_count_text_body{
+    position: absolute;
+    bottom: 45px;
+    right: 100px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #A56B44;
+}
+
+.monthly_read_count_text_body .emphasis_text{
+    font-size: 70px;
+}
+
+.monthly_times{
+    position: relative;
+    color: #A56B44;
+    height: 390px;
+}
+
+.monthly_times_content{
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/main/times_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.monthly_times_text_header{
+    position: absolute;
+    top: 116px;
+    right: 102px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.monthly_times_text_header .top{
+
+}
+.monthly_times_text_header .bottom{
+    margin-left: 70px;
+}
+
+.monthly_times_text_body{
+    position: absolute;
+    left: 62px;
+    bottom: 40px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.monthly_times_text_body .emphasis_text{
+    font-size: 50px;
+    color: #603813;
+}
+
+.monthly_times_text_body .bottom{
+    margin-left: 160px;
+}
+
+
+.monthly_user_rank{
+    height: 250px;
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+
+.monthly_user_rank_header{
+    width: 180px;
+    height: 30px;
+    background-image: url("../img/main/user_rank_header.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+}
+
+.monthly_user_rank_header_title{
+    position: absolute;
+    left: 56px;
+    /*top: 1px;*/
+    font-size: 15px;
+    color: #FFFFFF;
+    line-height: 25px;
+}
+
+.monthly_user_rank_content{
+    height: 200px;
+    background-image: url("../img/main/user_rank_bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.monthly_user_rank_content_list{
+    padding: 12px 50px 0 55px;
+    gap: 12px 0;
+}
+
+.monthly_user_rank_content_item{
+    /*height: 80px;*/
+}
+
+.monthly_user_rank_content_item_img{
+    width: 56px;
+}
+
+.monthly_user_rank_content_item:nth-child(4) .monthly_user_rank_content_item_img,
+.monthly_user_rank_content_item:nth-child(5) .monthly_user_rank_content_item_img{
+    width: 40px;
+}
+
+.monthly_user_rank_content_item_id{
+    color: #8B6239;
+    font-size: 12px;
+}
+
+.monthly_user_rank_content_item_count{
+    color: #8B6239;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+
+.monthly_book_rank{
+    height: 250px;
+}
+
+.monthly_book_rank_header{
+    width: 280px;
+    height: 30px;
+    background-image: url("../img/main/book_rank_header.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+}
+
+.monthly_book_rank_header_title{
+    position: absolute;
+    left: 48px;
+    /*top: 1px;*/
+    font-size: 15px;
+    color: #FFFFFF;
+    line-height: 25px;
+}
+
+.monthly_book_rank_content{
+    position: relative;
+    height: 200px;
+    background-image: url("../img/main/book_rank_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.monthly_book_rank_content_img{
+    position: absolute;
+    top: 25px;
+    left: 45px;
+    width: 100px;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.2);
+}
+
+.monthly_book_rank_content_first_icon{
+    position: absolute;
+    top: 25px;
+    left: 175px;
+    width: 78px;
+}
+
+.monthly_book_rank_content_title{
+    position: absolute;
+    top: 105px;
+    left: 170px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #754C24;
+}
+
+.monthly_book_rank_content_author{
+    position: absolute;
+    top: 130px;
+    left: 170px;
+    font-size: 12px;
+}
+
+.monthly_book_rank_content_count_container{
+    width: 55px;
+    height: 45px;
+    position: absolute;
+    top: 140px;
+    left: 320px;
+    background-image: url("../img/main/book_rank_count_bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.monthly_book_rank_content_count_text{
+    font-size: 10px;
+}
+
+
+.monthly_category{
+    height: 250px;
+}
+
+.monthly_category_header{
+    width: 280px;
+    height: 30px;
+    background-image: url("../img/main/category_header.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+}
+
+.monthly_category_header_title{
+    position: absolute;
+    left: 64px;
+    /*top: 1px;*/
+    font-size: 15px;
+    color: #FFFFFF;
+    line-height: 25px;
+}
+
+.monthly_category_content{
+    position: relative;
+    height: 200px;
+    background-image: url("../img/main/category_bg.png");
+    background-repeat: no-repeat;
+    background-size: 380px 200px;
+    background-position-x: right;
+}
+
+.monthly_category_content_title{
+    position: absolute;
+    top: 38px;
+    right: 38px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #A56B44;
+}
+
+.monthly_category_content_percentage{
+    position: absolute;
+    top: 80px;
+    left: 100px;
+    font-size: 40px;
+    font-weight: 900;
+    color: #FFFFFF;
+}
+
+.monthly_category_content_percentage_sign{
+    font-size: 30px;
+    margin-left: -10px;
+}
+
+
+.statistics_more{
+}
+
+.statistics_more_btn{
+    width: 230px;
+    height: 50px;
+    background-image: url("../img/main/more_btn_bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.statistics_more_btn_text{
+    font-size: 18px;
+    font-weight: bold;
+    color: #A56B44;
+    line-height: 50px;
+}
+
+
+.my_reading_record{
+    position: relative;
+    width: 100%;
+    height: 260px;
+    background-image: url("../img/main/my_reading_record_bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.my_reading_record_title{
+    position: absolute;
+    top: 46px;
+    left: 48px;
+    font-size: 42px;
+    font-weight: bold;
+    color: #A56B44;
+    line-height: 1.3;
+}
+
+.my_reading_record_content{
+    position: absolute;
+    left: 200px;
+    height: 250px;
+}
+
+
+.mypage_more{
+
+}
+
+.mypage_more_btn{
+    width: 230px;
+    height: 50px;
+    background-image: url("../img/main/more_btn_bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.mypage_more_btn_text{
+    font-size: 18px;
+    font-weight: bold;
+    color: #A56B44;
+    line-height: 50px;
+}
+
+
+.board{
+    height: 250px;
+}
+
+.board_header{
+    width: 180px;
+    height: 30px;
+    background-image: url("../img/main/user_rank_header.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+}
+
+.board_header_title{
+    position: absolute;
+    left: 65px;
+    /*top: 1px;*/
+    font-size: 15px;
+    color: #FFFFFF;
+    line-height: 25px;
+}
+
+.board_header_more{
+    position: absolute;
+    right: 50px;
+    top: 5px;
+    font-size: 14px;
+    color: #A56B44;
+}
+
+.board_content{
+    height: 200px;
+    background-image: url("../img/main/notice_bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.board_list{
+    margin: 0 auto;
+    width: 80%;
+    height: 92%;
+}
+
+.board_list_item{
+
+}
+
+.board_list_item_title{
+    font-size: 12px;
+    color: #666666;
+    border-top: 1px solid #FFFFFF !important;
+}
+
+.board_list_item_title a{
+    color: #666666;
+}
+
+.board_list_item:first-child .board_list_item_title,
+.board_list_item:first-child .board_list_item_date{
+    border-top: none !important;
+
+}
+
+.board_list_item_date{
+    font-size: 9px;
+    color: #808080;
+    text-align: right;
+    border-top: 1px solid #FFFFFF !important;
+}
+
+
+
+.notice{
+    height: 250px;
+}
+
+.notice_header{
+    width: 180px;
+    height: 30px;
+    background-image: url("../img/main/user_rank_header.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+}
+
+.notice_header_title{
+    position: absolute;
+    left: 74px;
+    /*top: 1px;*/
+    font-size: 15px;
+    color: #FFFFFF;
+    line-height: 25px;
+}
+
+.notice_header_more{
+    position: absolute;
+    right: 50px;
+    top: 5px;
+    font-size: 14px;
+    color: #A56B44;
+}
+
+.notice_content{
+    height: 200px;
+    background-image: url("../img/main/notice_bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.notice_list{
+    margin: 0 auto;
+    width: 80%;
+    max-width: 80%;
+    height: 92%;
+}
+
+.notice_list_item{
+}
+
+.notice_list_item_title{
+    width: 70%;
+    font-size: 12px;
+    color: #666666;
+    border-top: 1px solid #FFFFFF !important;
+    white-space: nowrap;
+    max-width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notice_list_item_title a{
+    color: #666666;
+}
+
+.notice_list_item:first-child .notice_list_item_title,
+.notice_list_item:first-child .notice_list_item_date{
+    border-top: none !important;
+
+}
+
+.notice_list_item_date{
+    min-width: 80px;
+    font-size: 9px;
+    color: #808080;
+    text-align: right;
+    border-top: 1px solid #FFFFFF !important;
+}
+
+.recommend{
+    position: relative;
+    height: 250px;
+    background-image: url("../img/main/recommend_bg.png");
+    background-size: 380px 225px;
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+.recommend_btn{
+    position: absolute;
+    right: 30px;
+    bottom: 40px;
+    width: 60px;
+    height: 60px;
+}
+
+.recommend_btn_img{
+    width: 100%;
+    height: 100%;
+}

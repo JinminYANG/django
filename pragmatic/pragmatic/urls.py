@@ -16,18 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from accountapp import views
+from pragmatic import views
 
+app_name = 'pragmatic'
 urlpatterns = [
     path('admin/', admin.site.urls),
-
 
     path('', views.login, name='login'),
     path('main/', views.main, name='main'),
     path('analysis/', views.analysis, name='analysis'),
     path('mypage/', views.mypage, name='mypage'),
 
-
-    path('account/', include('accountapp.urls')),
-    path('myform/', include('accountapp.urls')),
 ]

@@ -16,7 +16,7 @@
 
 {% comLib_navbar %}
 
-
+{% comment %}
 {{ date }}
 <br>
 
@@ -53,6 +53,19 @@
 <br>
 
 {{ notice }}
+<br>
+{% endcomment %}
+
+{{ context }}
+
+{{ tq }}
+
+{{ user_rank }}
+<br>
+
+{% for item in user_rank %}
+{{ item }}<br>
+{% endfor %}
 <br>
 
 

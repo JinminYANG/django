@@ -1,14 +1,18 @@
+from datetime import datetime
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
+from django.template import context
 from django.urls import reverse
 from django.views import generic, View
 from django.views.decorators.csrf import csrf_exempt
 # from requests import Response
+from requests import request
 
-from accountapp.models import HelloWorld
 import json
 
 from django.shortcuts import render
@@ -168,7 +172,10 @@ class mainView(LoginRequiredMixin):
 
 # MILcomLib
 # data context text 진행중
+'''
 def main(request):
+    context = datetime
+
     return render(request, 'main.html', {
         'date': '2021년 11월',
         'company_read_data': {
@@ -207,7 +214,6 @@ def main(request):
                 'count': 1,
             },
         },
-        '''
         'user_rank3': {
             {
                 'title': 'aixcon01',
@@ -230,7 +236,6 @@ def main(request):
                 'count': 1,
             },
         },
-        '''
         'book_rank': {
             'title': '주말에는 더 행복하기로 했다',
             'author': '카트리나 온스태드',
@@ -269,15 +274,4 @@ def main(request):
             ],
         },
     })
-
-
-def analysis(request):
-    return render(request, 'analysis.html')
-
-
-def mypage(request):
-    return render(request, 'mypage.html')
-
-
-def login(request):
-    return render(request, 'login.html')
+'''

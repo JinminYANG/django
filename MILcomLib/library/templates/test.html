@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    var paymentdata = {
+        // 서버로 보낼 데이터(dictionary 형태)
+    }
+
+    jQuery.ajax({
+          url: "{% url 'destination' %}",
+          type: "POST",
+          dataType: "json",
+          data: JSON.stringify(paymentdata)
+    }).done(function (data) {
+          alert("결제가 성공적으로 진행되었습니다.");
+    }).fail(function (data) {
+          alert("결제중 서버와의 통신에 문제가 발생하였습니다.\n원인: " + data.reason);
+    })
+</script>
+
+</body>
+</html>
