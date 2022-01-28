@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 
-from .models import Question, Statistics, Company, StatisticsMember, StatisticsBestBook, StatisticsBestCategory
+from .models import Question
 from django.shortcuts import render
 
 # test
@@ -34,20 +34,14 @@ def vote(request, question_id):
 class Main(TemplateView):
     template_name = 'main.html'
 
-    def get_queryset(self):
-        self.user = get_object_or_404(User, username=self.kwargs['company_name'])
-        self.company = get_object_or_404(Company, user=self.user)
-        self.statistics = Statistics.objects.filter(company=self.company).order_by('-statistics_month')
-        return self.statistics
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['company'] = self.company
+        # context['company'] = self.company
         context['latest_question_list'] = Question.objects.order_by('-pub_date')[:5]
         # context['date'] = Question.pub_date
         # context['company'] = Company.objects.all()
         context['company_read_data'] = {'count': 5, 'hours': 1, 'minute': 45}
-        context['statistics'] = Statistics.objects.all()
+        # context['statistics'] = Statistics.objects.all()
 
         return context
 

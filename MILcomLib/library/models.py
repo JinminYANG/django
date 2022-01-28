@@ -24,6 +24,33 @@ class Choice(models.Model):
         return self.choice_text
 
 
+# User와 1대1 대응되는 모델
+# 역참조를 통한 생성 메뉴 필요
+class Company(models.Model):
+    # mapping
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  # 인증 모델과 연결
+
+    # 추가 정보
+    name = models.CharField(max_length=200, default='noname_company')
+
+    # 관리 정보
+    is_active = models.BooleanField(default=False)  # 계정 활성화 여부
+    created_at = models.DateTimeField(auto_now_add=True)  # 계정 생성일
+    updated_at = models.DateTimeField(auto_now=True)  # 계정 수정일
+
+    is_updating = models.BooleanField(default=False)  # 업데이트 중
+    statistics_updated_at = models.DateTimeField()  # 통계 정보 수정일
+    member_updated_at = models.DateTimeField()  # 회원 정보 수정일
+    coupon_updated_at = models.DateTimeField()  # 구독권 정보 수정일
+
+    def __str__(self):
+        return '{0}({1})'.format(self.name, self.user)
+
+    def __unicode__(self):
+        return '{0}({1})'.format(self.name, self.user)
+
+
+'''
 class DBfCompany(models.Model):
     company_seq = models.IntegerField(primary_key=True)  # external Company PK
     company_name = models.CharField(max_length=50, blank=True, null=True)
@@ -47,11 +74,11 @@ class Company(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # 인증 모델과 연결
 
     # company_seq = models.ForeignKey(DBfCompany, on_delete=models.PROTECT)  # DBfCompany PK
-    '''
+
     지금 이거때문에 계속 에러나는데 왜냐하면 기존에 내가 만들어놓은 테이블이 있었는데 그 안에 필드를 새로 추가하는 경우
-    기존에 테이블은 새로 추가하는 필드에 대한 데이터가 없기 때문에 default 값이나 이런거를 통해 처리를 해야하는데 
+    기존에 테이블은 새로 추가하는 필드에 대한 데이터가 없기 때문에 default 값이나 이런거를 통해 처리를 해야하는데
     sequence의 default를 뭘로 해야할지 모르겠다..
-    '''
+
 
     # 추가 정보
     name = models.CharField(max_length=200, default='noname_company')
@@ -211,3 +238,4 @@ class CouponPublish(models.Model):
 
     def __unicode__(self):
         return '{0}({1})'.format(self.coupon_id, self.coupon_master.title)
+'''
