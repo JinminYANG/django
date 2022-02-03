@@ -4,18 +4,18 @@
 
 {% block head %}
 
-<link rel="stylesheet" href="{% static '/css/login.css' %}">
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
 
 {% endblock head %}
 
 {% block content %}
 
-<div class="contents">
+    <div class="contents">
 
-    <div class="header">
-        <img src="{% static 'img/login/login_logo.png' %}" alt="login_logo" class="login_logo align-middle">
-        <h1 class="header_title d-inline align-middle">기업도서관 로그인</h1>
-    </div>
+        <div class="header">
+            <img src="{% static 'img/login/login_logo.png' %}" alt="login_logo" class="login_logo align-middle">
+            <h1 class="header_title d-inline align-middle">기업도서관 로그인</h1>
+        </div>
 
         <div class="general text-center" onclick="location.href='{% url 'library:main' %}'" >
             <span class="corporation_library d-block mb-5">기업도서관</span>
@@ -26,8 +26,7 @@
             <span class="corporation_library d-block mb-5">기업도서관</span>
             <span class="login_text d-block">관리자</span>
         </div>
-    </div>
 
-</div>
+    </div>
 
 {% endblock %}

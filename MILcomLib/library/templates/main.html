@@ -16,6 +16,8 @@
 
 {% comLib_navbar %}
 
+{% comment %}
+
     {{ context }}
 
     {{ latest_question_list }}
@@ -48,10 +50,9 @@
         {{ statistic.statistics_month }}<br>
         {{ statistic.statistics_month|date:'Y년 M' }}<br>
         {{ statistic.sum_member_count }}<br>
-
     {% endfor %}
 
-
+{% endcomment %}
 
 
 <div class="container p-0">
@@ -64,7 +65,10 @@
         위와 같은 형식으로 입력될 듯
         {% endcomment %}
 
-        <span class="date_text">{{ date|date:'Y년 M' }}</span>
+        {% for item in latest_question_list %}
+            <span class="date_text">{{ item.pub_date|date:'Y년 M' }}</span>
+        {% endfor %}
+
     </div>
 
     <div class="contents row justify-content-between">
@@ -242,7 +246,7 @@
             <h3 class="my_reading_record_title">나의<br>독서<br>기록</h3>
             <div class="my_reading_record_content row">
 
-                <div class="my_reading_record_content_times col-5">
+                <div class="my_reading_record_content_times col">
                     <figure class="highcharts-figure">
                         <div id="my_reading_record_content_times_container"></div>
                     </figure>
@@ -271,7 +275,8 @@
                                 backgroundColor: 'rgba(255, 255, 255, 0)',
                                 style: {
                                     fontFamily: 'Noto Serif KR'
-                                }
+                                },
+                                {#width: 250,#}
                             },
                             title: {
                                 {% comment %}
@@ -283,7 +288,7 @@
                                 text: `<div style="font-size: 12px; text-align: center;">총<br><strong style="font-size: 30px;">20</strong>분</div>`,
                                 align: 'middle',
                                 verticalAlign: 'middle',
-                                x: 190,
+                                x: 70,
                                 y: -50,
                             },
                             tooltip: {
@@ -302,8 +307,8 @@
                                     },
                                     startAngle: -150,
                                     endAngle: 150,
-                                    center: ['35%', '30%'],
-                                    size: '45%'
+                                    {#center: ['35%', '30%'],#}
+                                    {#size: '85%'#}
                                 }
                             },
                             series: [{
@@ -329,27 +334,43 @@
                             exporting: {
                                 enabled: false
                             },
+
+                            {# 차트 반응형 테스트 #}
+                            {% comment %}responsive: {
+                                rules: [{
+                                    condition: {
+                                        maxWidth: 200
+                                    },
+                                }],
+                                plotOptions: {
+                                    pie: {
+                                        center: ['80%', '23%'],
+                                        size: '10%'
+                                    }
+                                },
+                            },{% endcomment %}
                         });
                     </script>
                 </div>
-                <div class="my_reading_record_content_count col-5">
+                <div class="my_reading_record_content_count col">
                     <figure class="highcharts-figure">
                         <div id="my_reading_record_content_count_container"></div>
                     </figure>
                     <script>
                         Highcharts.setOptions({
-                            colors: ['red', 'orange', 'yellow', 'green', 'blue', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                            colors: ['#A56B44', '#A56B44', '#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                         });
                         Highcharts.chart('my_reading_record_content_count_container', {
                             chart: {
                                 plotBackgroundColor: null,
                                 plotBorderWidth: 0,
                                 plotShadow: false,
-                                margin: [50, 50, 50, 50],
+                                {#margin: [50, 50, 50, 50],#}
                                 backgroundColor: 'rgba(255, 255, 255, 0)',
                                 style: {
                                     fontFamily: 'Noto Serif KR'
-                                }
+                                },
+                                {#width: 250,#}
                             },
                             title: {
                                 {% comment %}
@@ -380,8 +401,8 @@
                                     },
                                     startAngle: 1,
                                     endAngle: 360,
-                                    center: ['80%', '23%'],
-                                    size: '140%'
+                                    {#center: ['80%', '23%'],#}
+                                    {#size: '140%'#}
                                 }
                             },
                             series: [{
@@ -410,6 +431,21 @@
                             exporting: {
                                 enabled: false
                             },
+
+                            {# 차트 반응형 테스트 #}
+                            {% comment %}responsive: {
+                                rules: [{
+                                    condition: {
+                                        maxWidth: 300
+                                    },
+                                }],
+                                plotOptions: {
+                                    pie: {
+                                        center: ['80%', '23%'],
+                                        size: '200%'
+                                    }
+                                },
+                            },{% endcomment %}
                         });
                     </script>
                 </div>

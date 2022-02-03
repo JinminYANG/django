@@ -40,7 +40,7 @@
             {% endif %}
             <li class="page-item selectMonth text-center">
                 <input type="text" id="statisticsMonth" class="text-center" autocomplete="off"
-                       value="2022년 01월"/>
+                       value="2022년 01월" disabled/>
                 {% comment %}
                 value='' 에 들어갈 값 형식
                 {% for statistics in statistics_list %}{{ statistics.statistics_month|date:'Y년 M' }}{% endfor %}

@@ -359,17 +359,22 @@
 
                                 defaultDate: [
                                     {% for item in list %}
-                                        `{{ item.year }}-{{ item.month }}-{{ item.day }}`
+                                        `{{ item.year }}-{{ item.month }}-{{ item.day }}`,
                                     {% endfor %}
                                 ],
 
                             {% endcomment %}
 
-                            defaultDate: ["2022-1-19", "2022-1-25"],
+                            defaultDate: ["2022-1-19", "2022-1-25", "2022-2-1", "2022-2-2", "2022-2-10",],
                             enable: [{
                                 from: thisMonth,
                                 to: thisMonthLastDay
                             }],
+                            onDayCreate: function (dObj, dStr, fp, dayElem) {
+                                if (dayElem.dateObj.getDay() < 7) {
+                                    dayElem.className += " flatpickr-disabled ";
+                                }
+                            },
                         });
 
                     </script>
@@ -714,7 +719,7 @@
                                     enabled: false
                                 },
                                 tooltip: {
-                                    headerFormat: '<span style="font-size:10px">{point.key}일</span><br>',
+                                    headerFormat: '<span style="font-size:10px">{point.key}월</span><br>',
                                     shared: true,
                                     useHTML: true
                                 },
