@@ -4,19 +4,19 @@
 {% load comLib_tags %}
 
 {% block head %}
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
 
 {% endblock head %}
 
 {% block content %}
 
-{% comLib_navbar %}
+    {% comLib_navbar %}
 
-{% comment %}
+    {% comment %}
 
     {{ context }}
 
@@ -55,29 +55,29 @@
 {% endcomment %}
 
 
-<div class="container p-0">
-    <div class="date mt-5">
+    <div class="container p-0">
+        <div class="date mt-5">
 
-        {% comment %}
+            {% comment %}
         {% for statistics in statistics_list %}
         <span class="date_text">{{ statistics.update_date.year }}년 {{ statistics.update_date.month }}월</span>
         {% endfor %}
         위와 같은 형식으로 입력될 듯
         {% endcomment %}
 
-        {% for item in latest_question_list %}
-            <span class="date_text">{{ item.pub_date|date:'Y년 M' }}</span>
-        {% endfor %}
+            {% for item in latest_question_list %}
+                <span class="date_text">{{ item.pub_date|date:'Y년 M' }}</span>
+            {% endfor %}
 
-    </div>
+        </div>
 
-    <div class="contents row justify-content-between">
-        <div class="monthly_read_count col-6 mt-3">
-            <div class="monthly_read_count_content">
+        <div class="contents row justify-content-between">
+            <div class="monthly_read_count col-6 mt-3">
+                <div class="monthly_read_count_content">
                 <span class="monthly_read_count_text_header">
                     우리 회사 직원들은
                 </span>
-                <span class="monthly_read_count_text_body">
+                    <span class="monthly_read_count_text_body">
 
                     {% comment %}
                         ex) {% statistics.book_count %}
@@ -86,16 +86,16 @@
 
                 평균 <span class="emphasis_text mx-1">{{ company_read_data.count }}권</span>의 책을 읽었습니다
                 </span>
-            </div>
-        </div>
-
-        <div class="monthly_times col-6 mt-3 pl-0">
-            <div class="monthly_times_content">
-                <div class="monthly_times_text_header">
-                    <p class="top">우리회사</p>
-                    <p class="bottom mt-2">직원들은</p>
                 </div>
-                <div class="monthly_times_text_body">
+            </div>
+
+            <div class="monthly_times col-6 mt-3 pl-0">
+                <div class="monthly_times_content">
+                    <div class="monthly_times_text_header">
+                        <p class="top">우리회사</p>
+                        <p class="bottom mt-2">직원들은</p>
+                    </div>
+                    <div class="monthly_times_text_body">
                     <span class="top">
 
                         {% comment %}
@@ -105,20 +105,20 @@
 
                         평균 <span class="emphasis_text mx-1">{{ company_read_data.hours }}시간 {{ company_read_data.minute }}분</span>
                     </span>
-                    <p class="bottom mt-4">
-                        동안의 독서 시간을 가졌습니다
-                    </p>
+                        <p class="bottom mt-4">
+                            동안의 독서 시간을 가졌습니다
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="monthly_user_rank col-4 mt-5">
+            <div class="monthly_user_rank col-4 mt-5">
 
-            <div class="monthly_user_rank_header">
-                <h3 class="monthly_user_rank_header_title">이달의 다독왕</h3>
-            </div>
+                <div class="monthly_user_rank_header">
+                    <h3 class="monthly_user_rank_header_title">이달의 다독왕</h3>
+                </div>
 
-            {% comment %}
+                {% comment %}
             ex)
             millie B2B dashboard 페이지의 독서 순위 참조
 
@@ -136,55 +136,55 @@
 
             {% endcomment %}
 
-            <div class="monthly_user_rank_content mt-2">
-                <div class="monthly_user_rank_content_list row justify-content-around">
-                    {% for item in user_rank.list %}
-                        {% for i in item %}
-                        <span class="monthly_user_rank_content_item_id d-block mt-1">{{ i }}</span>
+                <div class="monthly_user_rank_content mt-2">
+                    <div class="monthly_user_rank_content_list row justify-content-around">
+                        {% for item in user_rank.list %}
+                            {% for i in item %}
+                                <span class="monthly_user_rank_content_item_id d-block mt-1">{{ i }}</span>
+                            {% endfor %}
                         {% endfor %}
-                    {% endfor %}
-                    <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
-                        <img src="{% static 'img/main/user_rank_first.png' %}" alt="rank_1st"
-                             class="monthly_user_rank_content_item_img">
-                        <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
-                        <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
-                    </div>
-                    <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
-                        <img src="{% static 'img/main/user_rank_second.png' %}" alt="rank_1st"
-                             class="monthly_user_rank_content_item_img">
-                        <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
-                        <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
-                    </div>
-                    <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
-                        <img src="{% static 'img/main/user_rank_third.png' %}" alt="rank_1st"
-                             class="monthly_user_rank_content_item_img">
-                        <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
-                        <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
-                    </div>
-                    <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
-                        <img src="{% static 'img/main/user_rank_fourth.png' %}" alt="rank_1st"
-                             class="monthly_user_rank_content_item_img">
-                        <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
-                        <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
-                    </div>
-                    <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
-                        <img src="{% static 'img/main/user_rank_fifth.png' %}" alt="rank_1st"
-                             class="monthly_user_rank_content_item_img">
-                        <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
-                        <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
+                        <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
+                            <img src="{% static 'img/main/user_rank_first.png' %}" alt="rank_1st"
+                                 class="monthly_user_rank_content_item_img">
+                            <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
+                            <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
+                        </div>
+                        <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
+                            <img src="{% static 'img/main/user_rank_second.png' %}" alt="rank_1st"
+                                 class="monthly_user_rank_content_item_img">
+                            <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
+                            <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
+                        </div>
+                        <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
+                            <img src="{% static 'img/main/user_rank_third.png' %}" alt="rank_1st"
+                                 class="monthly_user_rank_content_item_img">
+                            <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
+                            <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
+                        </div>
+                        <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
+                            <img src="{% static 'img/main/user_rank_fourth.png' %}" alt="rank_1st"
+                                 class="monthly_user_rank_content_item_img">
+                            <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
+                            <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
+                        </div>
+                        <div class="monthly_user_rank_content_item col-4 m-0 p-0 text-center">
+                            <img src="{% static 'img/main/user_rank_fifth.png' %}" alt="rank_1st"
+                                 class="monthly_user_rank_content_item_img">
+                            <span class="monthly_user_rank_content_item_id d-block mt-1">aixcon123</span>
+                            <span class="monthly_user_rank_content_item_count d-block mt-1">6권</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="monthly_book_rank col-4 mt-5 p-0">
-            <div class="monthly_book_rank_header">
-                <h3 class="monthly_book_rank_header_title">이달의 가장 사랑 받은 도서</h3>
-            </div>
+            <div class="monthly_book_rank col-4 mt-5 p-0">
+                <div class="monthly_book_rank_header">
+                    <h3 class="monthly_book_rank_header_title">이달의 가장 사랑 받은 도서</h3>
+                </div>
 
-            <div class="monthly_book_rank_content mt-2">
+                <div class="monthly_book_rank_content mt-2">
 
-                {% comment %}
+                    {% comment %}
                 ex)
                     <img src="{% url '' %}" alt="book_rank_item" class="monthly_book_rank_content_img">
                     <img src="{% static 'img/main/book_rank_first_icon.png' %}" alt="book_rank_item" class="monthly_book_rank_content_first_icon">
@@ -197,28 +197,28 @@
                     </div>
                 {% endcomment %}
 
-                <img src="{% static 'img/main/book_rank_item.png' %}" alt="book_rank_item"
-                     class="monthly_book_rank_content_img">
-                <img src="{% static 'img/main/book_rank_first_icon.png' %}" alt="book_rank_item"
-                     class="monthly_book_rank_content_first_icon">
+                    <img src="{% static 'img/main/book_rank_item.png' %}" alt="book_rank_item"
+                         class="monthly_book_rank_content_img">
+                    <img src="{% static 'img/main/book_rank_first_icon.png' %}" alt="book_rank_item"
+                         class="monthly_book_rank_content_first_icon">
 
-                <h4 class="monthly_book_rank_content_title">주말에는 더 행복하기로 했다</h4>
-                <h5 class="monthly_book_rank_content_author">카트리나 온스태드</h5>
+                    <h4 class="monthly_book_rank_content_title">주말에는 더 행복하기로 했다</h4>
+                    <h5 class="monthly_book_rank_content_author">카트리나 온스태드</h5>
 
-                <div class="monthly_book_rank_content_count_container text-center">
-                    <p class="monthly_book_rank_content_count_text mt-2">열람 15회</p>
+                    <div class="monthly_book_rank_content_count_container text-center">
+                        <p class="monthly_book_rank_content_count_text mt-2">열람 15회</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="monthly_category col-4 mt-5">
-            <div class="monthly_category_header">
-                <h3 class="monthly_category_header_title">이달의 최고 인기 카테고리</h3>
-            </div>
+            <div class="monthly_category col-4 mt-5">
+                <div class="monthly_category_header">
+                    <h3 class="monthly_category_header_title">이달의 최고 인기 카테고리</h3>
+                </div>
 
-            <div class="monthly_category_content mt-2">
+                <div class="monthly_category_content mt-2">
 
-                {% comment %}
+                    {% comment %}
                 ex)
                 <span class="monthly_category_content_title">{{ book_category_name }}</span>
                 <div class="monthly_category_content_percentage">
@@ -227,247 +227,251 @@
                 </div>
                 {% endcomment %}
 
-                <span class="monthly_category_content_title">소설</span>
-                <div class="monthly_category_content_percentage">
-                    <span class="monthly_category_content_percentage_text">35</span>
-                    <span class="monthly_category_content_percentage_sign">%</span>
+                    <span class="monthly_category_content_title">소설</span>
+                    <div class="monthly_category_content_percentage">
+                        <span class="monthly_category_content_percentage_text">35</span>
+                        <span class="monthly_category_content_percentage_sign">%</span>
+                    </div>
                 </div>
+
             </div>
 
-        </div>
+            <div class="statistics_more m-auto text-center col-12 ">
+                <a href="{% url 'library:analysis' %}" class="statistics_more_btn d-inline-block mt-5">
+                    <span class="statistics_more_btn_text">+ 더 알아보기</span>
+                </a>
+            </div>
 
-        <div class="statistics_more m-auto text-center col-12 ">
-            <a href="{% url 'library:analysis' %}" class="statistics_more_btn d-inline-block mt-5">
-                <span class="statistics_more_btn_text">+ 더 알아보기</span>
-            </a>
-        </div>
+            <div class="my_reading_record col-12 mt-5">
+                <h3 class="my_reading_record_title">나의<br>독서<br>기록</h3>
+                <div class="my_reading_record_content row">
 
-        <div class="my_reading_record col-12 mt-5">
-            <h3 class="my_reading_record_title">나의<br>독서<br>기록</h3>
-            <div class="my_reading_record_content row">
+                    <div class="my_reading_record_content_times col-6 py-3">
+                        <figure class="highcharts-figure">
+                            <div id="my_reading_record_content_times_container"></div>
+                        </figure>
 
-                <div class="my_reading_record_content_times col">
-                    <figure class="highcharts-figure">
-                        <div id="my_reading_record_content_times_container"></div>
-                    </figure>
-                    <script>
+                        <script>
 
-                        {% comment %}
+                            {% comment %}
+                                Highcharts.setOptions({
+                                    colors: [
+                                        {% for elem in list %}
+                                            '#A56B44',
+                                        {% endfor %}
+                                        '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE',
+                                    ]
+                                });
+                            {% endcomment %}
+
                             Highcharts.setOptions({
-                                colors: [
-                                    {% for elem in list %}
-                                        '#A56B44',
-                                    {% endfor %}
-                                    '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE',
-                                ]
+                                colors: ['#A56B44', '#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                             });
-                        {% endcomment %}
 
-                        Highcharts.setOptions({
-                            colors: ['#A56B44', '#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
-                        });
-
-                        Highcharts.chart('my_reading_record_content_times_container', {
-                            chart: {
-                                plotBackgroundColor: null,
-                                plotBorderWidth: 0,
-                                plotShadow: false,
-                                backgroundColor: 'rgba(255, 255, 255, 0)',
-                                style: {
-                                    fontFamily: 'Noto Serif KR'
-                                },
-                                {#width: 250,#}
-                            },
-                            title: {
-                                {% comment %}
-                                ex)
-                                    {{ record.minute }}
-                                    text: `<div style="font-size: 12px; text-align: center;">총<br><strong style="font-size: 30px;">{{ record.minute }}</strong>분</div>`,
-                                {% endcomment %}
-
-                                text: `<div style="font-size: 12px; text-align: center;">총<br><strong style="font-size: 30px;">20</strong>분</div>`,
-                                align: 'middle',
-                                verticalAlign: 'middle',
-                                x: 70,
-                                y: -50,
-                            },
-                            tooltip: {
-                                enabled: false
-                            },
-                            plotOptions: {
-                                pie: {
-                                    dataLabels: {
-                                        enabled: true,
-                                        distance: 0,
-                                        style: {
-                                            fontWeight: '700',
-                                            color: 'white',
-                                            textOutline: 0,
-                                        }
+                            let timesChart = Highcharts.chart('my_reading_record_content_times_container', {
+                                chart: {
+                                    plotBackgroundColor: null,
+                                    plotBorderWidth: 0,
+                                    plotShadow: false,
+                                    backgroundColor: 'rgba(255, 255, 255, 0)',
+                                    style: {
+                                        fontFamily: 'Noto Serif KR'
                                     },
-                                    startAngle: -150,
-                                    endAngle: 150,
-                                    {#center: ['35%', '30%'],#}
-                                    {#size: '85%'#}
-                                }
-                            },
-                            series: [{
-                                type: 'pie',
-                                name: '',
-                                innerSize: '90%',
-                                data: [
-                                    ['', 10],
-                                    ['', 10],
-                                    ['', 10],
-                                    ['', 10],
-                                    ['', 10],
-                                    ['', 10],
-                                    ['', 10],
-                                    ['', 10],
-                                    ['', 10],
-                                    ['', 10],
-                                ]
-                            }],
-                            credits: {
-                                enabled: false
-                            },
-                            exporting: {
-                                enabled: false
-                            },
-
-                            {# 차트 반응형 테스트 #}
-                            {% comment %}responsive: {
-                                rules: [{
-                                    condition: {
-                                        maxWidth: 200
-                                    },
-                                }],
-                                plotOptions: {
-                                    pie: {
-                                        center: ['80%', '23%'],
-                                        size: '10%'
-                                    }
+                                    width: 350,
+                                    height: 230
                                 },
-                            },{% endcomment %}
-                        });
-                    </script>
-                </div>
-                <div class="my_reading_record_content_count col">
-                    <figure class="highcharts-figure">
-                        <div id="my_reading_record_content_count_container"></div>
-                    </figure>
-                    <script>
-                        Highcharts.setOptions({
-                            colors: ['#A56B44', '#A56B44', '#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
-                        });
-                        Highcharts.chart('my_reading_record_content_count_container', {
-                            chart: {
-                                plotBackgroundColor: null,
-                                plotBorderWidth: 0,
-                                plotShadow: false,
-                                {#margin: [50, 50, 50, 50],#}
-                                backgroundColor: 'rgba(255, 255, 255, 0)',
-                                style: {
-                                    fontFamily: 'Noto Serif KR'
-                                },
-                                {#width: 250,#}
-                            },
-                            title: {
-                                {% comment %}
-                                    ex)
-                                    {{ record.my_read_count }} {{ record.my_category }}
-                                    text: `<div style="font-size: 12px;"><strong style="font-size: 30px;">{{ record.my_read_count }}</strong>권<br>{{ record.my_category }}</div>`,
-                                {% endcomment %}
-
-                                text: `<div style="font-size: 12px;"><strong style="font-size: 30px;">1</strong>권<br>소설</div>`,
-                                align: 'middle',
-                                verticalAlign: 'middle',
-                                x: 130,
-                                y: -40,
-                            },
-                            tooltip: {
-                                enabled: false,
-                            },
-                            plotOptions: {
-                                pie: {
-                                    dataLabels: {
-                                        enabled: true,
-                                        distance: 0,
-                                        style: {
-                                            fontWeight: '700',
-                                            color: 'white',
-                                            textOutline: 0,
-                                        }
-                                    },
-                                    startAngle: 1,
-                                    endAngle: 360,
-                                    {#center: ['80%', '23%'],#}
-                                    {#size: '140%'#}
-                                }
-                            },
-                            series: [{
-                                type: 'pie',
-                                name: '',
-                                innerSize: '90%',
-                                data: [
-
+                                title: {
                                     {% comment %}
                                     ex)
-                                        {% for item in list %}
-                                            ['', {{ record.my_read_count }}]
-                                        {% endfor %}
-
+                                        {{ record.minute }}
+                                        text: `<div style="font-size: 12px; text-align: center;">총<br><strong style="font-size: 30px;">{{ record.minute }}</strong>분</div>`,
                                     {% endcomment %}
 
-                                    ['', 1],
-                                    ['', 1],
-                                    ['', 3],
-                                    ['', 7],
-                                ],
-                            }],
-                            credits: {
-                                enabled: false
-                            },
-                            exporting: {
-                                enabled: false
-                            },
-
-                            {# 차트 반응형 테스트 #}
-                            {% comment %}responsive: {
-                                rules: [{
-                                    condition: {
-                                        maxWidth: 300
-                                    },
-                                }],
+                                    text: `<div style="font-size: 12px; text-align: center;">총<br><strong style="font-size: 30px;">20</strong>분</div>`,
+                                    align: 'center',
+                                    verticalAlign: 'middle',
+                                    x: 0,
+                                    y: 0,
+                                },
+                                tooltip: {
+                                    enabled: false
+                                },
                                 plotOptions: {
                                     pie: {
-                                        center: ['80%', '23%'],
-                                        size: '200%'
+                                        dataLabels: {
+                                            enabled: true,
+                                            distance: 0,
+                                            style: {
+                                                fontWeight: '700',
+                                                color: 'white',
+                                                textOutline: 0,
+                                            }
+                                        },
+                                        startAngle: -150,
+                                        endAngle: 150,
+                                        {#center: ['35%', '30%'],#}
+                                        {#size: '85%'#}
                                     }
                                 },
-                            },{% endcomment %}
-                        });
-                    </script>
+                                series: [{
+                                    type: 'pie',
+                                    name: '',
+                                    innerSize: '90%',
+                                    data: [
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                        ['', 10],
+                                    ]
+                                }],
+                                credits: {
+                                    enabled: false
+                                },
+                                exporting: {
+                                    enabled: false
+                                },
+
+                                {# 차트 반응형 테스트 #}
+                                {% comment %}responsive: {
+                                    rules: [{
+                                        condition: {
+                                            maxWidth: 500
+                                        },
+                                    }],
+                                },{% endcomment %}
+                            });
+
+                            {#timesChart.setSize(300,200);#}
+                            {% comment %}window.onresize = function(e) {
+                                timesChart.setSize(e.target.innerWidth, null, false)
+                            }{% endcomment %}
+
+                        </script>
+                    </div>
+                    <div class="my_reading_record_content_count col-6 py-3">
+                        <figure class="highcharts-figure">
+                            <div id="my_reading_record_content_count_container"></div>
+                        </figure>
+                        <script>
+                            Highcharts.setOptions({
+                                colors: ['#A56B44', '#A56B44', '#A56B44', '#A56B44', '#A56B44', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
+                            });
+
+                            let countChart = Highcharts.chart('my_reading_record_content_count_container', {
+                                chart: {
+                                    plotBackgroundColor: null,
+                                    plotBorderWidth: 0,
+                                    plotShadow: false,
+                                    {#margin: [50, 50, 50, 50],#}
+                                    backgroundColor: 'rgba(255, 255, 255, 0)',
+                                    style: {
+                                        fontFamily: 'Noto Serif KR'
+                                    },
+                                    {#width: 350,#}
+                                    {#height: 230#}
+                                },
+                                title: {
+                                    {% comment %}
+                                        ex)
+                                        {{ record.my_read_count }} {{ record.my_category }}
+                                        text: `<div style="font-size: 12px;"><strong style="font-size: 30px;">{{ record.my_read_count }}</strong>권<br>{{ record.my_category }}</div>`,
+                                    {% endcomment %}
+
+                                    text: `<div style="font-size: 12px;"><strong style="font-size: 30px;">1</strong>권<br>1분야</div>`,
+                                    align: 'center',
+                                    verticalAlign: 'middle',
+                                    x: 0,
+                                    y: 20,
+                                },
+                                tooltip: {
+                                    enabled: false,
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        dataLabels: {
+                                            enabled: true,
+                                            distance: 0,
+                                            style: {
+                                                fontWeight: '700',
+                                                color: 'white',
+                                                textOutline: 0,
+                                            }
+                                        },
+                                        startAngle: 1,
+                                        endAngle: 360,
+                                        {#center: ['80%', '23%'],#}
+                                        {#size: '140%'#}
+                                    }
+                                },
+                                series: [{
+                                    type: 'pie',
+                                    name: '',
+                                    innerSize: '90%',
+                                    data: [
+
+                                        {% comment %}
+                                        ex)
+                                            {% for item in list %}
+                                                ['', {{ record.my_read_count }}]
+                                            {% endfor %}
+
+                                        {% endcomment %}
+
+                                        ['', 1],
+                                        ['', 1],
+                                        ['', 3],
+                                        ['', 7],
+                                    ],
+                                }],
+                                credits: {
+                                    enabled: false
+                                },
+                                exporting: {
+                                    enabled: false
+                                },
+
+                                {# 차트 반응형 테스트 #}
+                                {% comment %}responsive: {
+                                    rules: [{
+                                        condition: {
+                                            maxWidth: 300
+                                        },
+                                    }],
+                                    plotOptions: {
+                                        pie: {
+                                            center: ['80%', '23%'],
+                                            size: '200%'
+                                        }
+                                    },
+                                },{% endcomment %}
+                            });
+                        </script>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="mypage_more m-auto text-center col-12">
-            <a href="{% url 'library:mypage' %}" class="mypage_more_btn d-inline-block mt-5">
-                <span class="mypage_more_btn_text">+ 자세히 알아보기</span>
-            </a>
-        </div>
-
-        <div class="board col-4 mt-5">
-            <div class="board_header">
-                <h3 class="board_header_title">사보 게시판</h3>
-                <a href="#" class="board_header_more text-right">더보기 ></a>
+            <div class="mypage_more m-auto text-center col-12">
+                <a href="{% url 'library:mypage' %}" class="mypage_more_btn d-inline-block mt-5">
+                    <span class="mypage_more_btn_text">+ 자세히 알아보기</span>
+                </a>
             </div>
 
-            <div class="board_content mt-2">
-                <table class="table board_list">
-                    <tbody>
-                    {% comment %}
+            <div class="board col-4 mt-5">
+                <div class="board_header">
+                    <h3 class="board_header_title">사보 게시판</h3>
+                    <a href="#" class="board_header_more text-right">더보기 ></a>
+                </div>
+
+                <div class="board_content mt-2">
+                    <table class="table board_list">
+                        <tbody>
+                        {% comment %}
                     ex)
                     리스트를 5개만 뿌리도록 view 에서 설정 후
 
@@ -479,41 +483,41 @@
                     {% endfor %}
 
                     {% endcomment %}
-                    <tr class="board_list_item">
-                        <td class="board_list_item_title py-0 align-middle"><a href="#">2022년 1월호</a></td>
-                        <td class="board_list_item_date py-0 align-middle">2021-12-30</td>
-                    </tr>
-                    <tr class="board_list_item">
-                        <td class="board_list_item_title py-0 align-middle"><a href="#">2021년 12월호</a></td>
-                        <td class="board_list_item_date py-0 align-middle">2021-11-28</td>
-                    </tr>
-                    <tr class="board_list_item">
-                        <td class="board_list_item_title py-0 align-middle"><a href="#">2021년 11월호</a></td>
-                        <td class="board_list_item_date py-0 align-middle">2021-10-31</td>
-                    </tr>
-                    <tr class="board_list_item">
-                        <td class="board_list_item_title py-0 align-middle"><a href="#">2021년 10월호</a></td>
-                        <td class="board_list_item_date py-0 align-middle">2021-09-30</td>
-                    </tr>
-                    <tr class="board_list_item">
-                        <td class="board_list_item_title py-0 align-middle"><a href="#">2021년 9월호</a></td>
-                        <td class="board_list_item_date py-0 align-middle">2021-08-31</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="notice col-4 mt-5">
-            <div class="notice_header">
-                <h3 class="notice_header_title">공지사항</h3>
-                <a href="#" class="notice_header_more text-right">더보기 ></a>
+                        <tr class="board_list_item">
+                            <td class="board_list_item_title py-0 align-middle"><a href="#">2022년 1월호</a></td>
+                            <td class="board_list_item_date py-0 align-middle">2021-12-30</td>
+                        </tr>
+                        <tr class="board_list_item">
+                            <td class="board_list_item_title py-0 align-middle"><a href="#">2021년 12월호</a></td>
+                            <td class="board_list_item_date py-0 align-middle">2021-11-28</td>
+                        </tr>
+                        <tr class="board_list_item">
+                            <td class="board_list_item_title py-0 align-middle"><a href="#">2021년 11월호</a></td>
+                            <td class="board_list_item_date py-0 align-middle">2021-10-31</td>
+                        </tr>
+                        <tr class="board_list_item">
+                            <td class="board_list_item_title py-0 align-middle"><a href="#">2021년 10월호</a></td>
+                            <td class="board_list_item_date py-0 align-middle">2021-09-30</td>
+                        </tr>
+                        <tr class="board_list_item">
+                            <td class="board_list_item_title py-0 align-middle"><a href="#">2021년 9월호</a></td>
+                            <td class="board_list_item_date py-0 align-middle">2021-08-31</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="notice_content mt-2">
-                <table class="table notice_list">
-                    <tbody>
-                    {% comment %}
+            <div class="notice col-4 mt-5">
+                <div class="notice_header">
+                    <h3 class="notice_header_title">공지사항</h3>
+                    <a href="#" class="notice_header_more text-right">더보기 ></a>
+                </div>
+
+                <div class="notice_content mt-2">
+                    <table class="table notice_list">
+                        <tbody>
+                        {% comment %}
                     ex)
                     리스트를 5개만 뿌리도록 view 에서 설정 후
 
@@ -532,40 +536,40 @@
 
                     {% endcomment %}
 
-                    <tr class="notice_list_item">
-                        <td class="notice_list_item_title py-0 align-middle"><a href="#">[이벤트] 2021 연말 다독왕 시상 결과 발표</a></td>
-                        <td class="notice_list_item_date py-0 align-middle">2021-12-30</td>
-                    </tr>
-                    <tr class="notice_list_item">
-                        <td class="notice_list_item_title py-0 align-middle"><a href="#">[공지] 1월에 꼭 읽어야 할 도서를 추천해주세요</a></td>
-                        <td class="notice_list_item_date py-0 align-middle">2021-11-28</td>
-                    </tr>
-                    <tr class="notice_list_item">
-                        <td class="notice_list_item_title py-0 align-middle"><a href="#">[공지] 밀리의 서재 기업 회원 구독권 이용하기</a></td>
-                        <td class="notice_list_item_date py-0 align-middle">2021-10-31</td>
-                    </tr>
-                    <tr class="notice_list_item">
-                        <td class="notice_list_item_title py-0 align-middle"><a href="#">[이벤트] 겨울은 연말 독서, 다독왕 선정</a></td>
-                        <td class="notice_list_item_date py-0 align-middle">2021-09-30</td>
-                    </tr>
-                    <tr class="notice_list_item">
-                        <td class="notice_list_item_title py-0 align-middle"><a href="#">[공지] 11월 회장님 추천 도서 목록</a></td>
-                        <td class="notice_list_item_date py-0 align-middle">2021-08-31</td>
-                    </tr>
-                    </tbody>
-                </table>
+                        <tr class="notice_list_item">
+                            <td class="notice_list_item_title py-0 align-middle"><a href="#">[이벤트] 2021 연말 다독왕 시상 결과 발표</a></td>
+                            <td class="notice_list_item_date py-0 align-middle">2021-12-30</td>
+                        </tr>
+                        <tr class="notice_list_item">
+                            <td class="notice_list_item_title py-0 align-middle"><a href="#">[공지] 1월에 꼭 읽어야 할 도서를 추천해주세요</a></td>
+                            <td class="notice_list_item_date py-0 align-middle">2021-11-28</td>
+                        </tr>
+                        <tr class="notice_list_item">
+                            <td class="notice_list_item_title py-0 align-middle"><a href="#">[공지] 밀리의 서재 기업 회원 구독권 이용하기</a></td>
+                            <td class="notice_list_item_date py-0 align-middle">2021-10-31</td>
+                        </tr>
+                        <tr class="notice_list_item">
+                            <td class="notice_list_item_title py-0 align-middle"><a href="#">[이벤트] 겨울은 연말 독서, 다독왕 선정</a></td>
+                            <td class="notice_list_item_date py-0 align-middle">2021-09-30</td>
+                        </tr>
+                        <tr class="notice_list_item">
+                            <td class="notice_list_item_title py-0 align-middle"><a href="#">[공지] 11월 회장님 추천 도서 목록</a></td>
+                            <td class="notice_list_item_date py-0 align-middle">2021-08-31</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
 
-        <div class="recommend col-4 mt-5 ml-auto">
-            <a href="#" class="recommend_btn d-block"><img src="{% static 'img/main/recommend_btn.png' %}" alt="recommend_btn_img" class="recommend_btn_img"></a>
-        </div>
+            <div class="recommend col-4 mt-5 ml-auto">
+                <a href="#" class="recommend_btn d-block"><img src="{% static 'img/main/recommend_btn.png' %}" alt="recommend_btn_img" class="recommend_btn_img"></a>
+            </div>
 
+
+        </div>
 
     </div>
 
-</div>
-
-{% comLib_footer %}
+    {% comLib_footer %}
 
 {% endblock %}

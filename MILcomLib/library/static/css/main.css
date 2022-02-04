@@ -334,8 +334,37 @@
     position: absolute;
     left: 200px;
     height: 250px;
-    /*margin-left: 100px;*/
+    /*margin-left: 50px;*/
 }
+
+
+
+
+.my_reading_record_content_times {
+    display: grid;
+}
+
+
+.my_reading_record_content_times .highcharts-figure {
+    /*width: 300px;*/
+    /*height: 230px;*/
+/*    max-width: 300px;
+    min-height: 230px;
+    max-height: 230px;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+
+#my_reading_record_content_times_container{
+    /*height: 230px;*/
+    /*min-width: 200px;*/
+    /*max-width: 300px;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+
 
 
 .mypage_more{
