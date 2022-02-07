@@ -154,7 +154,7 @@
     padding: 13px 0 !important;
     background-image: url("../img/statistics/user_rank_content_item_body.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: bottom;
 }
 

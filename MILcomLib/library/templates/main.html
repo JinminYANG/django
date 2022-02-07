@@ -277,8 +277,6 @@
                                     style: {
                                         fontFamily: 'Noto Serif KR'
                                     },
-                                    width: 350,
-                                    height: 230
                                 },
                                 title: {
                                     {% comment %}
@@ -309,8 +307,6 @@
                                         },
                                         startAngle: -150,
                                         endAngle: 150,
-                                        {#center: ['35%', '30%'],#}
-                                        {#size: '85%'#}
                                     }
                                 },
                                 series: [{
@@ -336,22 +332,7 @@
                                 exporting: {
                                     enabled: false
                                 },
-
-                                {# 차트 반응형 테스트 #}
-                                {% comment %}responsive: {
-                                    rules: [{
-                                        condition: {
-                                            maxWidth: 500
-                                        },
-                                    }],
-                                },{% endcomment %}
                             });
-
-                            {#timesChart.setSize(300,200);#}
-                            {% comment %}window.onresize = function(e) {
-                                timesChart.setSize(e.target.innerWidth, null, false)
-                            }{% endcomment %}
-
                         </script>
                     </div>
                     <div class="my_reading_record_content_count col-6 py-3">
@@ -373,8 +354,6 @@
                                     style: {
                                         fontFamily: 'Noto Serif KR'
                                     },
-                                    {#width: 350,#}
-                                    {#height: 230#}
                                 },
                                 title: {
                                     {% comment %}
@@ -405,8 +384,6 @@
                                         },
                                         startAngle: 1,
                                         endAngle: 360,
-                                        {#center: ['80%', '23%'],#}
-                                        {#size: '140%'#}
                                     }
                                 },
                                 series: [{
@@ -435,21 +412,6 @@
                                 exporting: {
                                     enabled: false
                                 },
-
-                                {# 차트 반응형 테스트 #}
-                                {% comment %}responsive: {
-                                    rules: [{
-                                        condition: {
-                                            maxWidth: 300
-                                        },
-                                    }],
-                                    plotOptions: {
-                                        pie: {
-                                            center: ['80%', '23%'],
-                                            size: '200%'
-                                        }
-                                    },
-                                },{% endcomment %}
                             });
                         </script>
                     </div>
