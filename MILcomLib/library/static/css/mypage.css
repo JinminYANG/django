@@ -146,24 +146,36 @@ body {
     height: 100%;
 }
 
+.monthly_taste_content .highcharts-figure{
+    width: 100%;
+    height: 100%;
+}
+
 .monthly_taste_content_chart,
 .monthly_reading_time_content_chart,
 .year_in_taste_content_chart,
 .year_in_reading_time_content_chart,
 .year_in_settlement_content_chart {
+    width: 100%;
+    height: 65%;
+}
 
+.monthly_taste_content_chart_container{
+    width: 100%;
+    height: 100%;
 }
 
 .monthly_taste_content_table,
 .monthly_reading_time_content_table,
 .year_in_taste_content_table,
 .year_in_reading_time_content_table {
-    position: absolute;
-    top: 160px;
-    right: 0;
-    width: 100%;
+    /*position: absolute;*/
+    /*top: 160px;*/
+    /*right: 0;*/
+    width: 85%;
     font-size: 8px;
-    max-height: 50px;
+    /*max-height: 50px;*/
+    height: 15%;
     overflow: hidden;
 }
 
@@ -172,18 +184,27 @@ body {
     margin-right: 20px;;
 }
 
+.monthly_taste_content_table_item .count:after{
+    content: '권';
+    color: lightgray;
+}
+
+.monthly_taste_content_table_item .percentage:after{
+    content: '%';
+    color: lightgray;
+}
+
 .table td, .table th {
     padding: 0.5rem;
 }
 
 .monthly .table .rank,
-.monthly .table .emphasis_text {
+.monthly .table .count,
+.monthly .table .percentage{
     font-weight: bold;
     color: #A56B44;
 }
 
-.monthly .table .count,
-.monthly .table .percentage,
 .monthly .table .date,
 .monthly .table .minute {
     color: lightgray;

@@ -1,4 +1,4 @@
-.date{
+.date {
     position: relative;
     height: 50px !important;
     line-height: 50px !important;
@@ -8,17 +8,17 @@
     background-size: contain;
 }
 
-.pagination{
+.pagination {
 
 }
 
 /* datepicker */
 
-.k-icon{
+.k-icon {
     font-family: WebComponentsIcons !important;
 }
 
-.k-input{
+.k-input {
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
     padding: 1.2rem 0.75rem;
@@ -26,7 +26,7 @@
     border-radius: 0.25rem;
 }
 
-.selectMonth{
+.selectMonth {
     line-height: 46px;
 }
 
@@ -36,7 +36,7 @@
     height: 390px;
 }
 
-.monthly_read_count_content{
+.monthly_read_count_content {
     width: 90%;
     height: 100%;
     background-image: url("../img/statistics/read_count_bg.png");
@@ -44,7 +44,7 @@
     background-size: cover;
 }
 
-.monthly_read_count_text_header{
+.monthly_read_count_text_header {
     position: absolute;
     right: 146px;
     top: 50px;
@@ -52,7 +52,7 @@
     font-weight: bold;
 }
 
-.monthly_read_count_text_body{
+.monthly_read_count_text_body {
     position: absolute;
     bottom: 45px;
     right: 100px;
@@ -61,19 +61,18 @@
     color: #736357;
 }
 
-.monthly_read_count_text_body .emphasis_text{
+.monthly_read_count_text_body .emphasis_text {
     font-size: 70px;
 }
 
 
-
-.monthly_times{
+.monthly_times {
     position: relative;
     color: #736357;
     height: 390px;
 }
 
-.monthly_times_content{
+.monthly_times_content {
     width: 100%;
     height: 100%;
     background-image: url("../img/statistics/times_bg.png");
@@ -81,7 +80,7 @@
     background-size: cover;
 }
 
-.monthly_times_text_header{
+.monthly_times_text_header {
     position: absolute;
     top: 116px;
     right: 102px;
@@ -89,14 +88,15 @@
     font-weight: bold;
 }
 
-.monthly_times_text_header .top{
+.monthly_times_text_header .top {
 
 }
-.monthly_times_text_header .bottom{
+
+.monthly_times_text_header .bottom {
     margin-left: 70px;
 }
 
-.monthly_times_text_body{
+.monthly_times_text_body {
     position: absolute;
     left: 62px;
     bottom: 40px;
@@ -105,22 +105,21 @@
     color: #998675;
 }
 
-.monthly_times_text_body .emphasis_text{
+.monthly_times_text_body .emphasis_text {
     font-size: 50px;
     color: #736357;
 }
 
-.monthly_times_text_body .bottom{
+.monthly_times_text_body .bottom {
     margin-left: 160px;
 }
 
 
-
-.monthly_user_rank{
+.monthly_user_rank {
 
 }
 
-.monthly_user_rank_header{
+.monthly_user_rank_header {
     width: 180px;
     height: 30px;
     background-image: url("../img/statistics/user_rank_header.png");
@@ -129,7 +128,7 @@
     text-align: center;
 }
 
-.monthly_user_rank_header_title{
+.monthly_user_rank_header_title {
     position: absolute;
     left: 56px;
     /*top: 1px;*/
@@ -138,19 +137,19 @@
     line-height: 25px;
 }
 
-.monthly_user_rank_content{
+.monthly_user_rank_content {
 
 }
 
-.monthly_user_rank_content_item{
+.monthly_user_rank_content_item {
 
 }
 
-.monthly_user_rank_content_item_img{
+.monthly_user_rank_content_item_img {
     width: 95%;
 }
 
-.monthly_user_rank_content_item_body{
+.monthly_user_rank_content_item_body {
     padding: 13px 0 !important;
     background-image: url("../img/statistics/user_rank_content_item_body.png");
     background-repeat: no-repeat;
@@ -158,26 +157,26 @@
     background-position: bottom;
 }
 
-.card-body{
+.card-body {
     padding: 0;
 }
 
-.monthly_user_rank_content_item_body_title{
+.monthly_user_rank_content_item_body_title {
     color: #998675;
 }
 
-.monthly_user_rank_content_item_body_count{
+.monthly_user_rank_content_item_body_count {
     font-size: 22px;
     font-weight: 900;
     color: #736357;
 }
 
 
-.monthly_favorite_books{
+.monthly_favorite_books {
 
 }
 
-.monthly_favorite_books_header{
+.monthly_favorite_books_header {
     width: 180px;
     height: 30px;
     background-image: url("../img/statistics/user_rank_header.png");
@@ -186,7 +185,7 @@
     text-align: center;
 }
 
-.monthly_favorite_books_header_title{
+.monthly_favorite_books_header_title {
     position: absolute;
     left: 56px;
     /*top: 1px;*/
@@ -195,7 +194,7 @@
     line-height: 25px;
 }
 
-.monthly_favorite_books_content{
+.monthly_favorite_books_content {
     width: 100%;
     height: 100%;
     background-image: url("../img/statistics/favorite_books_bg.png");
@@ -204,20 +203,20 @@
     background-position: 0 230px;
 }
 
-.monthly_favorite_books_content_item{
+.monthly_favorite_books_content_item {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-.monthly_favorite_books_content_item_header{
+.monthly_favorite_books_content_item_header {
     position: relative;
     bottom: 0;
     width: 100%;
     height: 250px;
 }
 
-.monthly_favorite_books_content_item_icon{
+.monthly_favorite_books_content_item_icon {
     position: absolute;
     z-index: 10;
     left: 20%;
@@ -225,7 +224,7 @@
     width: 60px;
 }
 
-.monthly_favorite_books_content_item_img{
+.monthly_favorite_books_content_item_img {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -233,42 +232,42 @@
     width: 100px;
 }
 
-.monthly_favorite_books_content_item:nth-child(3) .monthly_favorite_books_content_item_img{
+.monthly_favorite_books_content_item:nth-child(3) .monthly_favorite_books_content_item_img {
     width: 160px;
 }
 
 .monthly_favorite_books_content_item:nth-child(2) .monthly_favorite_books_content_item_img,
-.monthly_favorite_books_content_item:nth-child(4) .monthly_favorite_books_content_item_img{
+.monthly_favorite_books_content_item:nth-child(4) .monthly_favorite_books_content_item_img {
     width: 140px;
 }
 
-.monthly_favorite_books_content_item:nth-child(3) .monthly_favorite_books_content_item_icon{
+.monthly_favorite_books_content_item:nth-child(3) .monthly_favorite_books_content_item_icon {
     left: 10%;
 }
 
 .monthly_favorite_books_content_item:nth-child(2) .monthly_favorite_books_content_item_icon,
-.monthly_favorite_books_content_item:nth-child(4) .monthly_favorite_books_content_item_icon{
+.monthly_favorite_books_content_item:nth-child(4) .monthly_favorite_books_content_item_icon {
     left: 15%;
 }
 
 
-.monthly_favorite_books_content_item_body{
+.monthly_favorite_books_content_item_body {
     margin-top: 110px;
 }
 
-.monthly_favorite_books_content_item_body_title{
+.monthly_favorite_books_content_item_body_title {
     font-size: 15px;
     font-weight: bold;
     color: #736357;
 }
 
-.monthly_favorite_books_content_item_body_author{
+.monthly_favorite_books_content_item_body_author {
     font-size: 12px;
     font-weight: bold;
     color: #998675;
 }
 
-.monthly_favorite_books_content_item_body_count{
+.monthly_favorite_books_content_item_body_count {
     width: 50px;
     height: 26px;
     background-image: url("../img/statistics/favorite_books_content_item_body_count.png");
@@ -276,18 +275,18 @@
     background-size: contain;
 }
 
-.monthly_favorite_books_content_item_body_count_text{
+.monthly_favorite_books_content_item_body_count_text {
     font-size: 9px;
     color: #736357;
     line-height: 26px;
 }
 
 
-.favorite_category{
+.favorite_category {
 
 }
 
-.favorite_category_header{
+.favorite_category_header {
     width: 180px;
     height: 30px;
     background-image: url("../img/statistics/user_rank_header.png");
@@ -296,7 +295,7 @@
     text-align: center;
 }
 
-.favorite_category_header_title{
+.favorite_category_header_title {
     position: absolute;
     left: 56px;
     /*top: 1px;*/
@@ -305,11 +304,11 @@
     line-height: 25px;
 }
 
-.favorite_category_content{
+.favorite_category_content {
 
 }
 
-.favorite_category_chart{
+.favorite_category_chart {
     width: 100%;
     height: 100%;
     background-image: url("../img/statistics/favorite_category_chart_bg.png");
@@ -317,19 +316,19 @@
     background-size: contain;
 }
 
-.favorite_category_table{
+.favorite_category_table {
 
 }
 
-.favorite_category_table_header{
+.favorite_category_table_header {
     height: 185px;
 }
 
-.favorite_category_table_header_img{
+.favorite_category_table_header_img {
     height: 100%;
 }
 
-.favorite_category_table_content{
+.favorite_category_table_content {
     position: relative;
     height: 220px;
     background-image: url("../img/statistics/favorite_category_table_body.png");
@@ -338,27 +337,33 @@
     background-position: right;
 }
 
-.favorite_category_table_content_list{
+.favorite_category_table_content_list {
     position: absolute;
     top: 20px;
     right: 30px;
     width: 30%;
     font-size: 11px;
+    font-weight: normal;
 }
 
-.favorite_category_table_content_item{
+.favorite_category_table_content_item {
     width: 50%;
 }
 
 .favorite_category_table_content_list.table td,
-.favorite_category_table_content_list.table th{
+.favorite_category_table_content_list.table th {
     padding: 0.8rem !important;
+    font-weight: normal;
 }
 
-.favorite_category_table_content_item_title{
+.favorite_category_table_content_item_title {
     /*width: 60px !important;*/
 }
 
-.favorite_category_table_content_item_percentage{
+.favorite_category_table_content_item_percentage {
     /*width: 60px !important;*/
+}
+
+.favorite_category_table_content_item_percentage:after {
+    content: '%';
 }

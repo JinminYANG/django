@@ -324,154 +324,13 @@
 
                 <div class="favorite_category_content row mt-2">
 
-                    <div class="favorite_category_chart col-7 m-0">
-                        <figure class="highcharts-figure">
-                            <div id="favorite_category_container"></div>
-                            <p class="highcharts-description">
-                            </p>
-                        </figure>
-
-                        <script>
-                            Highcharts.setOptions({
-                                colors: ['#736357', '#FDEA60', '#A5A5A5', '#0178D3', '#FFB704', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
-                            });
-
-                            Highcharts.chart('favorite_category_container', {
-                                chart: {
-                                    plotBackgroundColor: null,
-                                    plotBorderWidth: 0,
-                                    plotShadow: false,
-                                    backgroundColor: 'rgba(255, 255, 255, 0)',
-                                    style: {
-                                        fontFamily: 'Noto Serif KR',
-                                        color: '#595959',
-                                    }
-                                },
-                                title: {
-                                    text: ``,
-                                },
-                                tooltip: {
-                                    enabled: false,
-                                },
-                                plotOptions: {
-                                    pie: {
-                                        dataLabels: {
-                                            enabled: true,
-                                            {#distance: -50,#}
-                                            style: {
-                                                fontWeight: 'bold',
-                                                color: 'white'
-                                            }
-                                        },
-                                        startAngle: 0,
-                                        endAngle: 360,
-                                        {#center: ['50%', '50%'],#}
-                                        {#size: '90%',#}
-                                        showInLegend: true,
-                                        borderColor: 'rgba(255,255,255,0)',
-                                    }
-                                },
-                                legend: {
-                                    symbolHeight: 10,
-                                    symbolWidth: 10,
-                                    symbolPadding: 5,
-                                    symbolRadius: 0,
-                                    itemStyle: {
-                                        color: '#595959',
-                                        fontSize: '14px',
-                                        fontWeight: 'bold'
-                                    }
-                                },
-                                series: [{
-                                    type: 'pie',
-                                    name: '',
-                                    innerSize: '80%',
-                                    data: [
-
-                                        {% comment %}
-                                            {% for item in list %}
-                                                [`{{ item.category_title }}`, {{ item.category_percentage }}],
-                                            {% endfor %}
-                                        {% endcomment %}
-
-                                        ['소설', 35],
-                                        ['자기계발', 17],
-                                        ['경제', 12],
-                                        ['에세이', 8],
-                                        ['인문', 6],
-                                    ],
-                                    dataLabels: {
-                                        enabled: false,
-                                    }
-                                }],
-                                dataLabels: {
-                                    enabled: false
-                                },
-                                credits: {
-                                    enabled: false
-                                },
-                                exporting: {
-                                    enabled: false
-                                },
-                            });
-                        </script>
-                    </div>
-
-                    <div class="favorite_category_table col-5 m-0">
-                        <div class="favorite_category_table_header text-right mr-4">
-                            <img src="{% static 'img/statistics/favorite_category_table_header.png' %}"
-                                 alt="favorite_category_table_header" class="favorite_category_table_header_img">
-                        </div>
-
-                        <div class="favorite_category_table_content mt-2">
-                            <table class="table favorite_category_table_content_list text-right ml-auto mr-4 mb-0 pt-5">
-                                <tbody>
-
-                                {% comment %}
-                            ex)
-                            리스트를 5개만 뿌리도록 view 에서 설정 후
-
-                            {% for item in list %}
-                            <tr class="favorite_category_table_content_item">
-                                <td class="favorite_category_table_content_item_title border-0 text-left w-50">{{ item.category_title }}</td>
-                                <td class="favorite_category_table_content_item_percentage border-0 w-50">{{ item.category_percentage }}%</td>
-                            </tr>
-                            {% endfor %}
-
-                            {% endcomment %}
-
-                                <tr class="favorite_category_table_content_item">
-                                    <td class="favorite_category_table_content_item_title border-0 text-left w-50">소설
-                                    </td>
-                                    <td class="favorite_category_table_content_item_percentage border-0 w-50">35%</td>
-                                </tr>
-                                <tr class="favorite_category_table_content_item">
-                                    <td class="favorite_category_table_content_item_title border-0 text-left">자기계발</td>
-                                    <td class="favorite_category_table_content_item_percentage border-0">17%</td>
-                                </tr>
-                                <tr class="favorite_category_table_content_item">
-                                    <td class="favorite_category_table_content_item_title border-0 text-left">경제</td>
-                                    <td class="favorite_category_table_content_item_percentage border-0">12%</td>
-                                </tr>
-                                <tr class="favorite_category_table_content_item">
-                                    <td class="favorite_category_table_content_item_title border-0 text-left">에세이</td>
-                                    <td class="favorite_category_table_content_item_percentage border-0">8%</td>
-                                </tr>
-                                <tr class="favorite_category_table_content_item">
-                                    <td class="favorite_category_table_content_item_title border-0 text-left">인문</td>
-                                    <td class="favorite_category_table_content_item_percentage border-0">6%</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-
                     <div class="col-12">
                         <figure class="highcharts-figure row">
 
-                            <div id="test-container" class="favorite_category_chart col-7" style="min-width: 310px; height: 400px; margin: 0 auto">
+                            <div class="favorite_category_chart col-7">
+                                <div id="favoriteCategoryContainer" class="favorite_category_container">
 
+                                </div>
                             </div>
 
                             <div class="favorite_category_table col-5">
@@ -482,39 +341,49 @@
                                 </div>
 
                                 <div class="favorite_category_table_content mt-2">
-                                    <table id="datatable" class="table favorite_category_table_content_list text-right ml-auto mr-4 mb-0 pt-5">
-                                        <thead>
+                                    <table id="favoriteCategoryDatatable" class="table favorite_category_table_content_list text-right ml-auto mr-4 mb-0 pt-5">
+                                        <thead class="d-none">
                                         <tr>
-                                            <th></th>
-                                            <th></th>
+                                            <th class=""></th>
+                                            <th class=""></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th>소설</th>
-                                            <td>35</td>
+                                        {% comment %}
+                                            ex)
+                                            리스트를 5개만 뿌리도록 view 에서 설정 후
+
+                                            {% for item in list %}
+                                            <tr class="favorite_category_table_content_item">
+                                                <td class="favorite_category_table_content_item_title border-0 text-left w-50">{{ item.category_title }}</td>
+                                                <td class="favorite_category_table_content_item_percentage border-0 w-50">{{ item.category_percentage }}</td>
+                                            </tr>
+                                            {% endfor %}
+
+                                        {% endcomment %}
+                                        <tr class="favorite_category_table_content_item">
+                                            <th class="favorite_category_table_content_item_title border-0 text-left w-50">소설</th>
+                                            <td class="favorite_category_table_content_item_percentage border-0 w-50">35</td>
                                         </tr>
-                                        <tr>
-                                            <th>자기계발</th>
-                                            <td>17</td>
+                                        <tr class="favorite_category_table_content_item">
+                                            <th class="favorite_category_table_content_item_title border-0 text-left w-50">자기계발</th>
+                                            <td class="favorite_category_table_content_item_percentage border-0 w-50">17</td>
                                         </tr>
-                                        <tr>
-                                            <th>경제</th>
-                                            <td>12</td>
+                                        <tr class="favorite_category_table_content_item">
+                                            <th class="favorite_category_table_content_item_title border-0 text-left w-50">경제</th>
+                                            <td class="favorite_category_table_content_item_percentage border-0 w-50">12</td>
                                         </tr>
-                                        <tr>
-                                            <th>에세이</th>
-                                            <td>8</td>
+                                        <tr class="favorite_category_table_content_item">
+                                            <th class="favorite_category_table_content_item_title border-0 text-left w-50">에세이</th>
+                                            <td class="favorite_category_table_content_item_percentage border-0 w-50">8</td>
                                         </tr>
-                                        <tr>
-                                            <th>인문</th>
-                                            <td>6</td>
+                                        <tr class="favorite_category_table_content_item">
+                                            <th class="favorite_category_table_content_item_title border-0 text-left w-50">인문</th>
+                                            <td class="favorite_category_table_content_item_percentage border-0 w-50">6</td>
                                         </tr>
                                         </tbody>
-                                        <tfoot></tfoot>
                                     </table>
                                 </div>
-
 
                             </div>
 
@@ -526,18 +395,20 @@
                                 colors: ['#736357', '#FDEA60', '#A5A5A5', '#0178D3', '#FFB704', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE', '#EEEEEE']
                             });
 
-                            Highcharts.chart('test-container', {
+                            Highcharts.chart('favoriteCategoryContainer', {
                                 data: {
-                                    table: document.getElementById('datatable')
+                                    table: document.getElementById('favoriteCategoryDatatable')
                                 },
                                 chart: {
                                     type: 'pie',
                                     plotBackgroundColor: null,
                                     plotBorderWidth: null,
                                     plotShadow: false,
+                                    backgroundColor: 'rgba(255, 255, 255, 0)',
                                     style: {
                                         fontFamily: 'Noto Serif KR',
                                         color: '#595959',
+                                        fontWeight: 'normal'
                                     }
                                 },
                                 legend: {
