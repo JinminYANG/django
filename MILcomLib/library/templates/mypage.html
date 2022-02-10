@@ -327,11 +327,29 @@
                             칸만큼 데이터 생성해서 삽입하는 방식 테스트
                             {% endcomment %}
 
-                            const longDayTimes = parseInt(document.querySelector('#monthlyReadingTimeLongDay').innerText);
-                            const shortDayTimes = parseInt(document.querySelector('#monthlyReadingTimeShortDay').innerText);
+                            let longDayTimes = parseInt(document.querySelector('#monthlyReadingTimeLongDay').innerText);
+                            let shortDayTimes = parseInt(document.querySelector('#monthlyReadingTimeShortDay').innerText);
                             const calcTimes = Math.round((longDayTimes + shortDayTimes) / 6);
                             const chartDivision = 10;
                             const dummyTimes = chartDivision - calcTimes;
+
+                            let longDayCount = 0;
+
+                            if (longDayTimes > 10){
+                                longDayCount = longDayTimes / 10;
+                            } else if (longDayTimes > 1){
+                                longDayCount = 1;
+                            } else {
+                                longDayCount = 0;
+                            }
+
+                            console.log(shortDayTimes);
+                            if (shortDayTimes > 10){
+                                shortDayTimes = shortDayTimes / 10;
+                            }
+                            console.log(shortDayTimes);
+
+
 
                             console.log(calcTimes);
                             console.log(dummyTimes);
@@ -341,6 +359,7 @@
                             for (let i = 0; i < calcTimes; i++) {
                                 colorsArr.push('#A56B44');
                             }
+
                             for (let i = 0; i < dummyTimes; i++) {
                                 colorsArr.push('#EEEEEE');
                             }
