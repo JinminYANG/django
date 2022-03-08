@@ -1,0 +1,32 @@
+.nav__contents {
+    display: block;
+    width: 100%;
+    height: 5vh;
+}
+
+.nav__logo{
+
+}
+
+.nav__contents ul {
+    display: flex;
+    column-gap: 20px;
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.nav__contents li {
+    flex: auto;
+    float: left;
+    text-align: center;
+    list-style: none;
+    line-height: 5vh;
+}
+
+.nav__contents a {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
